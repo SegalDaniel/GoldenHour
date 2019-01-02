@@ -13,6 +13,8 @@
 		18180EB921DCE85100A52AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18180EB821DCE85100A52AC2 /* Assets.xcassets */; };
 		18180EBC21DCE85100A52AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18180EBA21DCE85100A52AC2 /* LaunchScreen.storyboard */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
+		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
+		A824166621DD4DF700131C0E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166521DD4DF700131C0E /* Comment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		18180EBB21DCE85100A52AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18180EBD21DCE85100A52AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A824166521DD4DF700131C0E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				A824166021DD204900131C0E /* User.swift */,
+				A824166321DD4C4500131C0E /* Post.swift */,
+				A824166521DD4DF700131C0E /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,9 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A824166621DD4DF700131C0E /* Comment.swift in Sources */,
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
 				A824166121DD204900131C0E /* User.swift in Sources */,
+				A824166421DD4C4500131C0E /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
