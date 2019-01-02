@@ -12,6 +12,7 @@
 		18180EB721DCE85000A52AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18180EB521DCE85000A52AC2 /* Main.storyboard */; };
 		18180EB921DCE85100A52AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18180EB821DCE85100A52AC2 /* Assets.xcassets */; };
 		18180EBC21DCE85100A52AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18180EBA21DCE85100A52AC2 /* LaunchScreen.storyboard */; };
+		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		18180EB821DCE85100A52AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18180EBB21DCE85100A52AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18180EBD21DCE85100A52AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			isa = PBXGroup;
 			children = (
 				18180EB021DCE85000A52AC2 /* GoldenHour */,
+				A824166221DD20D400131C0E /* Model */,
 				18180EAF21DCE85000A52AC2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +65,14 @@
 				18180EBD21DCE85100A52AC2 /* Info.plist */,
 			);
 			path = GoldenHour;
+			sourceTree = "<group>";
+		};
+		A824166221DD20D400131C0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A824166021DD204900131C0E /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			files = (
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
+				A824166121DD204900131C0E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
