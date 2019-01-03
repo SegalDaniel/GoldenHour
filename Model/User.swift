@@ -13,14 +13,16 @@ class User{
     var profileImage:UIImage
     let description:String
     let url:String
+    var post:[Post]
     //post,gear
     
-    private init(_id:String, _name:String, _profileImage:UIImage, _description:String, _url:String){
+    private init(_id:String, _name:String, _profileImage:UIImage, _description:String, _url:String, _post:[Post]){
         self.id=_id
         self.name=_name
         self.profileImage=_profileImage
         self.description=_description
         self.url=_url
+        self.post=_post
     }
     
     init(json:[String:Any]) {
@@ -33,6 +35,7 @@ class User{
         }else{
             url = ""
         }
+        post = json["post"] as! [Post]
     }
     
     func toJson() -> [String:Any] {
@@ -42,6 +45,7 @@ class User{
         json["profileImage"] = profileImage
         json["description"] = description
         json["url"] = url
+        json["post"] = post
         return json
     }
 }

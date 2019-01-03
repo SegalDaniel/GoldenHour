@@ -15,6 +15,8 @@
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
 		A824166621DD4DF700131C0E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166521DD4DF700131C0E /* Comment.swift */; };
+		A824166821DD746000131C0E /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166721DD746000131C0E /* Like.swift */; };
+		A824166A21DE692C00131C0E /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166921DE692C00131C0E /* Metadata.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A824166521DD4DF700131C0E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		A824166721DD746000131C0E /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		A824166921DE692C00131C0E /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				A824166021DD204900131C0E /* User.swift */,
 				A824166321DD4C4500131C0E /* Post.swift */,
 				A824166521DD4DF700131C0E /* Comment.swift */,
+				A824166721DD746000131C0E /* Like.swift */,
+				A824166921DE692C00131C0E /* Metadata.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,6 +158,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A824166A21DE692C00131C0E /* Metadata.swift in Sources */,
+				A824166821DD746000131C0E /* Like.swift in Sources */,
 				A824166621DD4DF700131C0E /* Comment.swift in Sources */,
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
