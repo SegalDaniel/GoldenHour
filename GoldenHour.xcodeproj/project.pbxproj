@@ -14,6 +14,8 @@
 		18180EBC21DCE85100A52AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18180EBA21DCE85100A52AC2 /* LaunchScreen.storyboard */; };
 		1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1E921E0EB0B006E1B39 /* LoginViewController.swift */; };
 		1818B1EE21E0EDB2006E1B39 /* DayPosterBlackNF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */; };
+		1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */; };
+		1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1F321E1079D006E1B39 /* WallTableViewController.swift */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
 		A824166621DD4DF700131C0E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166521DD4DF700131C0E /* Comment.swift */; };
@@ -31,6 +33,8 @@
 		18180EBD21DCE85100A52AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1818B1E921E0EB0B006E1B39 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DayPosterBlackNF.ttf; sourceTree = "<group>"; };
+		1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		1818B1F321E1079D006E1B39 /* WallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewController.swift; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A824166521DD4DF700131C0E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 			children = (
 				18180EB321DCE85000A52AC2 /* ViewController.swift */,
 				1818B1E921E0EB0B006E1B39 /* LoginViewController.swift */,
+				1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */,
+				1818B1F321E1079D006E1B39 /* WallTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,12 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */,
 				A824166A21DE692C00131C0E /* Metadata.swift in Sources */,
 				A824166821DD746000131C0E /* Like.swift in Sources */,
 				A824166621DD4DF700131C0E /* Comment.swift in Sources */,
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */,
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
+				1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */,
 				A824166121DD204900131C0E /* User.swift in Sources */,
 				A824166421DD4C4500131C0E /* Post.swift in Sources */,
 			);
