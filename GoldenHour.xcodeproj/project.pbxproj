@@ -12,6 +12,8 @@
 		18180EB721DCE85000A52AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18180EB521DCE85000A52AC2 /* Main.storyboard */; };
 		18180EB921DCE85100A52AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18180EB821DCE85100A52AC2 /* Assets.xcassets */; };
 		18180EBC21DCE85100A52AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18180EBA21DCE85100A52AC2 /* LaunchScreen.storyboard */; };
+		1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1E921E0EB0B006E1B39 /* LoginViewController.swift */; };
+		1818B1EE21E0EDB2006E1B39 /* DayPosterBlackNF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
 		A824166621DD4DF700131C0E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166521DD4DF700131C0E /* Comment.swift */; };
@@ -27,6 +29,8 @@
 		18180EB821DCE85100A52AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18180EBB21DCE85100A52AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18180EBD21DCE85100A52AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1818B1E921E0EB0B006E1B39 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DayPosterBlackNF.ttf; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A824166521DD4DF700131C0E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -64,15 +68,33 @@
 		18180EB021DCE85000A52AC2 /* GoldenHour */ = {
 			isa = PBXGroup;
 			children = (
+				1818B1EC21E0ED8B006E1B39 /* fonts */,
 				A824166221DD20D400131C0E /* Model */,
 				18180EB121DCE85000A52AC2 /* AppDelegate.swift */,
-				18180EB321DCE85000A52AC2 /* ViewController.swift */,
+				1818B1EB21E0EB19006E1B39 /* ViewControllers */,
 				18180EB521DCE85000A52AC2 /* Main.storyboard */,
 				18180EB821DCE85100A52AC2 /* Assets.xcassets */,
 				18180EBA21DCE85100A52AC2 /* LaunchScreen.storyboard */,
 				18180EBD21DCE85100A52AC2 /* Info.plist */,
 			);
 			path = GoldenHour;
+			sourceTree = "<group>";
+		};
+		1818B1EB21E0EB19006E1B39 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				18180EB321DCE85000A52AC2 /* ViewController.swift */,
+				1818B1E921E0EB0B006E1B39 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1818B1EC21E0ED8B006E1B39 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		A824166221DD20D400131C0E /* Model */ = {
@@ -145,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1818B1EE21E0EDB2006E1B39 /* DayPosterBlackNF.ttf in Resources */,
 				18180EBC21DCE85100A52AC2 /* LaunchScreen.storyboard in Resources */,
 				18180EB921DCE85100A52AC2 /* Assets.xcassets in Resources */,
 				18180EB721DCE85000A52AC2 /* Main.storyboard in Resources */,
@@ -162,6 +185,7 @@
 				A824166821DD746000131C0E /* Like.swift in Sources */,
 				A824166621DD4DF700131C0E /* Comment.swift in Sources */,
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
+				1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */,
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
 				A824166121DD204900131C0E /* User.swift in Sources */,
 				A824166421DD4C4500131C0E /* Post.swift in Sources */,
