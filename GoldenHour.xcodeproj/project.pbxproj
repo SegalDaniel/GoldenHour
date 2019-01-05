@@ -49,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				18180EB021DCE85000A52AC2 /* GoldenHour */,
-				A824166221DD20D400131C0E /* Model */,
 				18180EAF21DCE85000A52AC2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +64,7 @@
 		18180EB021DCE85000A52AC2 /* GoldenHour */ = {
 			isa = PBXGroup;
 			children = (
+				A824166221DD20D400131C0E /* Model */,
 				18180EB121DCE85000A52AC2 /* AppDelegate.swift */,
 				18180EB321DCE85000A52AC2 /* ViewController.swift */,
 				18180EB521DCE85000A52AC2 /* Main.storyboard */,
