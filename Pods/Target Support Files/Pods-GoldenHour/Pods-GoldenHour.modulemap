@@ -1,0 +1,6 @@
+framework module Pods_GoldenHour {
+  umbrella header "Pods-GoldenHour-umbrella.h"
+
+  export *
+  module * { export * }
+}
