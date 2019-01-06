@@ -16,14 +16,17 @@
 		1818B1EE21E0EDB2006E1B39 /* DayPosterBlackNF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */; };
 		1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */; };
 		1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1F321E1079D006E1B39 /* WallTableViewController.swift */; };
+		9DF3D323B19DBD44E6EB2F0E /* Pods_GoldenHour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169D2262327799BD2CDAA4FF /* Pods_GoldenHour.framework */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
 		A824166621DD4DF700131C0E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166521DD4DF700131C0E /* Comment.swift */; };
 		A824166821DD746000131C0E /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166721DD746000131C0E /* Like.swift */; };
 		A824166A21DE692C00131C0E /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166921DE692C00131C0E /* Metadata.swift */; };
+		A8FA9FA521E1FCF8008482B6 /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FA9FA421E1FCF8008482B6 /* ModelFirebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		169D2262327799BD2CDAA4FF /* Pods_GoldenHour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoldenHour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18180EAE21DCE85000A52AC2 /* GoldenHour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldenHour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18180EB121DCE85000A52AC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18180EB321DCE85000A52AC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,11 +38,14 @@
 		1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DayPosterBlackNF.ttf; sourceTree = "<group>"; };
 		1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1818B1F321E1079D006E1B39 /* WallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewController.swift; sourceTree = "<group>"; };
+		3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenHour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour.debug.xcconfig"; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A824166521DD4DF700131C0E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A824166721DD746000131C0E /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		A824166921DE692C00131C0E /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		A8FA9FA421E1FCF8008482B6 /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
+		F9DF6EC3A8DB373276CF378E /* Pods-GoldenHour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenHour.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF3D323B19DBD44E6EB2F0E /* Pods_GoldenHour.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +65,8 @@
 			children = (
 				18180EB021DCE85000A52AC2 /* GoldenHour */,
 				18180EAF21DCE85000A52AC2 /* Products */,
+				26E8EF416DFFC926523F9E2A /* Pods */,
+				C862D9BD31D7DB8DBB831DBD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +112,15 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		26E8EF416DFFC926523F9E2A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */,
+				F9DF6EC3A8DB373276CF378E /* Pods-GoldenHour.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A824166221DD20D400131C0E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,8 +129,17 @@
 				A824166521DD4DF700131C0E /* Comment.swift */,
 				A824166721DD746000131C0E /* Like.swift */,
 				A824166921DE692C00131C0E /* Metadata.swift */,
+				A8FA9FA421E1FCF8008482B6 /* ModelFirebase.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C862D9BD31D7DB8DBB831DBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				169D2262327799BD2CDAA4FF /* Pods_GoldenHour.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18180EC021DCE85100A52AC2 /* Build configuration list for PBXNativeTarget "GoldenHour" */;
 			buildPhases = (
+				783C06143BA0D457923341E7 /* [CP] Check Pods Manifest.lock */,
 				18180EAA21DCE85000A52AC2 /* Sources */,
 				18180EAB21DCE85000A52AC2 /* Frameworks */,
 				18180EAC21DCE85000A52AC2 /* Resources */,
+				7901ABE2E4366E80CC73CC1C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,6 +211,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		783C06143BA0D457923341E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoldenHour-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7901ABE2E4366E80CC73CC1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18180EAA21DCE85000A52AC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -194,6 +276,7 @@
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */,
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
+				A8FA9FA521E1FCF8008482B6 /* ModelFirebase.swift in Sources */,
 				1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */,
 				A824166121DD204900131C0E /* User.swift in Sources */,
 				A824166421DD4C4500131C0E /* Post.swift in Sources */,
@@ -340,6 +423,7 @@
 		};
 		18180EC121DCE85100A52AC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -358,6 +442,7 @@
 		};
 		18180EC221DCE85100A52AC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9DF6EC3A8DB373276CF378E /* Pods-GoldenHour.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
