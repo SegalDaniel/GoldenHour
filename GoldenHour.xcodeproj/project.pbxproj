@@ -22,6 +22,7 @@
 		A824166621DD4DF700131C0E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166521DD4DF700131C0E /* Comment.swift */; };
 		A824166821DD746000131C0E /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166721DD746000131C0E /* Like.swift */; };
 		A824166A21DE692C00131C0E /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166921DE692C00131C0E /* Metadata.swift */; };
+		A8D84D3521E222A600A245A1 /* ModelSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D84D3421E222A600A245A1 /* ModelSql.swift */; };
 		A8FA9FA521E1FCF8008482B6 /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FA9FA421E1FCF8008482B6 /* ModelFirebase.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		A824166521DD4DF700131C0E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A824166721DD746000131C0E /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		A824166921DE692C00131C0E /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		A8D84D3421E222A600A245A1 /* ModelSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSql.swift; sourceTree = "<group>"; };
 		A8FA9FA421E1FCF8008482B6 /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
 		F9DF6EC3A8DB373276CF378E /* Pods-GoldenHour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenHour.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 				A824166721DD746000131C0E /* Like.swift */,
 				A824166921DE692C00131C0E /* Metadata.swift */,
 				A8FA9FA421E1FCF8008482B6 /* ModelFirebase.swift */,
+				A8D84D3421E222A600A245A1 /* ModelSql.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -254,6 +258,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -279,6 +284,7 @@
 				A8FA9FA521E1FCF8008482B6 /* ModelFirebase.swift in Sources */,
 				1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */,
 				A824166121DD204900131C0E /* User.swift in Sources */,
+				A8D84D3521E222A600A245A1 /* ModelSql.swift in Sources */,
 				A824166421DD4C4500131C0E /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

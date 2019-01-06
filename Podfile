@@ -9,5 +9,6 @@ target 'GoldenHour' do
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
+pod 'SQLite.swift', '~> 0.11.5'
 
 end
