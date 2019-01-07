@@ -25,10 +25,14 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: Any) {
-        Model.instance.modelFirebase.signIn(mail: usernameTextField.text!, pass: passwordTextField.text!) { (Bool) in
-            if Bool == true{
+        Model.instance.modelFirebase.signIn(mail: usernameTextField.text!, pass: passwordTextField.text!) { (user, error) in
+            if user != nil{
                 print("signin succeed")
                 self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
+            }
+            else{
+                let alert = SimpleAlert(_title: "Could not Sign In", _message: (error?.localizedDescription)!, dissmissCallback:{})
+                self.present(alert.getAlert(), animated: true, completion: nil)
             }
         }
     }

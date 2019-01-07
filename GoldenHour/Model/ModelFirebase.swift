@@ -32,12 +32,12 @@ class ModelFirebase{
         }
     }
     
-    func signIn(mail:String  ,pass:String, callback:@escaping (Bool?)->Void){
+    func signIn(mail:String  ,pass:String, callback:@escaping (AuthDataResult?, Error?)->Void){
         Auth.auth().signIn(withEmail: mail, password: pass) { (user, error) in
             if user != nil{
-                callback(true)
+                callback(user, error)
             }else{
-                callback(false)
+                callback(user, error)
             }
         }
     }
