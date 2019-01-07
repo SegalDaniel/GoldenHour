@@ -130,29 +130,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Qgq-Yp-e4s">
-                                <rect key="frame" x="67" y="20" width="241" height="166"/>
+                                <rect key="frame" x="67" y="20" width="241" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="166" id="p8p-z8-w3h"/>
+                                    <constraint firstAttribute="height" constant="200" id="p8p-z8-w3h"/>
                                 </constraints>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kiX-dx-7RZ">
-                                <rect key="frame" x="10" y="194" width="355" height="50"/>
+                                <rect key="frame" x="10" y="228" width="355" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="dd5-13-xuj"/>
                                 </constraints>
                             </pickerView>
                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJ4-EF-i22">
-                                <rect key="frame" x="10" y="252" width="355" height="50"/>
+                                <rect key="frame" x="10" y="286" width="355" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tMh-bM-bUp"/>
                                 </constraints>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-qe-wPF">
-                                <rect key="frame" x="0.0" y="310" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="344" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="q0Z-eF-tc8"/>
                                 </constraints>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aperture: f/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umb-M0-bs1">
+                                <rect key="frame" x="50" y="402" width="141" height="26"/>
+                                <fontDescription key="fontDescription" name="DayPosterBlackNF" family="Day Poster Black NF" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BoU-Of-nJ2">
+                                <rect key="frame" x="208" y="390" width="85" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="fUt-ls-l8N"/>
+                                    <constraint firstAttribute="height" constant="50" id="ib0-tF-Zc0"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shutter Speed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZU-jO-4qG">
+                                <rect key="frame" x="36" y="436" width="168" height="26"/>
+                                <fontDescription key="fontDescription" name="DayPosterBlackNF" family="Day Poster Black NF" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -160,12 +179,18 @@
                             <constraint firstItem="kiX-dx-7RZ" firstAttribute="top" secondItem="Qgq-Yp-e4s" secondAttribute="bottom" constant="8" id="46g-tw-c7C"/>
                             <constraint firstItem="nJ4-EF-i22" firstAttribute="trailing" secondItem="deh-Ti-neX" secondAttribute="trailing" constant="-10" id="61d-Ia-CdK"/>
                             <constraint firstItem="deh-Ti-neX" firstAttribute="trailing" secondItem="Qgq-Yp-e4s" secondAttribute="trailing" constant="67" id="7BG-Md-w1l"/>
+                            <constraint firstItem="BoU-Of-nJ2" firstAttribute="leading" secondItem="Umb-M0-bs1" secondAttribute="trailing" constant="17" id="FnK-id-gSg"/>
                             <constraint firstItem="kiX-dx-7RZ" firstAttribute="trailing" secondItem="deh-Ti-neX" secondAttribute="trailing" constant="-10" id="KpV-4W-hcV"/>
                             <constraint firstItem="nJ4-EF-i22" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" constant="10" id="NEO-9j-fyN"/>
+                            <constraint firstItem="BoU-Of-nJ2" firstAttribute="centerY" secondItem="Umb-M0-bs1" secondAttribute="centerY" id="Nxc-uz-nhv"/>
+                            <constraint firstItem="zZU-jO-4qG" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" constant="36" id="Ofx-zA-v57"/>
+                            <constraint firstItem="Umb-M0-bs1" firstAttribute="top" secondItem="DSA-qe-wPF" secondAttribute="bottom" constant="8" id="Osh-xv-bXR"/>
                             <constraint firstItem="DSA-qe-wPF" firstAttribute="top" secondItem="nJ4-EF-i22" secondAttribute="bottom" constant="8" id="Wok-28-1ZL"/>
                             <constraint firstItem="Qgq-Yp-e4s" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" constant="67" id="cEm-eF-XXs"/>
                             <constraint firstItem="nJ4-EF-i22" firstAttribute="top" secondItem="kiX-dx-7RZ" secondAttribute="bottom" constant="8" id="h9B-uH-JtW"/>
+                            <constraint firstItem="Umb-M0-bs1" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" constant="50" id="jpB-oZ-Cnc"/>
                             <constraint firstItem="DSA-qe-wPF" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" id="mMW-FK-lRD"/>
+                            <constraint firstItem="zZU-jO-4qG" firstAttribute="firstBaseline" secondItem="Umb-M0-bs1" secondAttribute="baseline" constant="34" id="tEe-U3-q1a"/>
                             <constraint firstItem="kiX-dx-7RZ" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" constant="10" id="xjD-Fe-vAO"/>
                             <constraint firstItem="Qgq-Yp-e4s" firstAttribute="top" secondItem="deh-Ti-neX" secondAttribute="top" id="xmJ-TO-krM"/>
                         </constraints>
