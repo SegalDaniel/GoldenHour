@@ -19,6 +19,7 @@ class UploadViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var shutterPicker: UIPickerView!
     
     let imagePicker = UIImagePickerController()
+    var permissions:Permissions?
     
     var x = 0
     var selctedImage: UIImage?
@@ -39,9 +40,8 @@ class UploadViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         shutterPicker.delegate = self
         shutterPicker.dataSource = self
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (imageTapped(tapGestureRecognizer:)))
-        userImageView.isUserInteractionEnabled = true
-        userImageView.addGestureRecognizer(tapGestureRecognizer)
+        permissions = Permissions(target: self, imagePicker: imagePicker)
+        Utility.viewTapRecognizer(target: self, toBeTapped: userImageView, action: #selector (imageTapped(tapGestureRecognizer:)))
         // Do any additional setup after loading the view.
     }
     
@@ -49,11 +49,11 @@ class UploadViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     {
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            self.checkPermissionCamera()
+            self.permissions?.checkPermissionCamera()
         }))
         
         alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-            self.checkPermissionGallery()
+            self.permissions?.checkPermissionGallery()
         }))
         self.present(alert, animated: true, completion: nil)
     }

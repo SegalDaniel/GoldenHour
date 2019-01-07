@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golden Hour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPt-ho-uau">
-                                <rect key="frame" x="37.5" y="184" width="300" height="51.5"/>
+                                <rect key="frame" x="37.5" y="140" width="300" height="51.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="QzM-ZE-mXb"/>
                                 </constraints>
@@ -56,14 +56,14 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KyZ-Vx-jvo">
-                                <rect key="frame" x="30" y="290.5" width="315" height="30"/>
+                                <rect key="frame" x="30" y="246.5" width="315" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.44705882352941173" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DayPosterBlackNF" family="Day Poster Black NF" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8HA-NU-tuT">
-                                <rect key="frame" x="30" y="330.5" width="315" height="30"/>
+                                <rect key="frame" x="30" y="286.5" width="315" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.44705882349999998" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DayPosterBlackNF" family="Day Poster Black NF" pointSize="17"/>
@@ -275,14 +275,28 @@
                     <view key="view" contentMode="scaleToFill" id="2NN-W0-wNZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i37-LT-iAh">
+                                <rect key="frame" x="43" y="168" width="270" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="ENt-sm-ySG"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="i37-LT-iAh" firstAttribute="top" secondItem="G9O-N8-z3X" secondAttribute="top" constant="104" id="JzB-Y8-A1c"/>
+                            <constraint firstItem="G9O-N8-z3X" firstAttribute="trailing" secondItem="i37-LT-iAh" secondAttribute="trailing" constant="62" id="LMk-PS-lZu"/>
+                            <constraint firstItem="i37-LT-iAh" firstAttribute="leading" secondItem="G9O-N8-z3X" secondAttribute="leading" constant="43" id="rw6-xw-izg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="G9O-N8-z3X"/>
                     </view>
                     <navigationItem key="navigationItem" id="6HQ-0R-Vaf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyb-Hm-Hfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2841" y="927"/>
+            <point key="canvasLocation" x="2840.8000000000002" y="926.98650674662679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xc6-Cc-0i3">
@@ -310,7 +324,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="qKx-oK-Z4d">
-                                <rect key="frame" x="20" y="179" width="140" height="140"/>
+                                <rect key="frame" x="20" y="135" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="B4w-OY-Mtn"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="NsL-wU-5bE"/>
@@ -319,7 +333,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X10-gr-tKa">
-                                <rect key="frame" x="175" y="234" width="180" height="30"/>
+                                <rect key="frame" x="175" y="190" width="180" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.44705882349999998" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="1g4-8F-AuM"/>
@@ -329,7 +343,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-27-79P">
-                                <rect key="frame" x="95" y="369" width="185" height="30"/>
+                                <rect key="frame" x="30" y="325" width="315" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.44705882349999998" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="Zc3-Z1-02w"/>
@@ -339,7 +353,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="STq-pa-RFh">
-                                <rect key="frame" x="95" y="409" width="185" height="30"/>
+                                <rect key="frame" x="30" y="365" width="315" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.44705882349999998" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="2RZ-mK-JH8"/>
@@ -369,11 +383,11 @@
                             <constraint firstItem="STq-pa-RFh" firstAttribute="top" secondItem="GiW-27-79P" secondAttribute="bottom" constant="10" id="Scd-fg-uCo"/>
                             <constraint firstItem="GiW-27-79P" firstAttribute="bottom" secondItem="qKx-oK-Z4d" secondAttribute="bottom" constant="80" id="Uz0-0a-RYC"/>
                             <constraint firstItem="STq-pa-RFh" firstAttribute="leading" secondItem="GiW-27-79P" secondAttribute="leading" id="aVf-4o-ic6"/>
-                            <constraint firstItem="GiW-27-79P" firstAttribute="leading" secondItem="BXA-iS-LtX" secondAttribute="leading" constant="95" id="aa7-Op-RMY"/>
+                            <constraint firstItem="GiW-27-79P" firstAttribute="leading" secondItem="BXA-iS-LtX" secondAttribute="leading" constant="30" id="aa7-Op-RMY"/>
                             <constraint firstItem="BXA-iS-LtX" firstAttribute="trailing" secondItem="X10-gr-tKa" secondAttribute="trailing" constant="20" id="bZ1-vJ-skJ"/>
                             <constraint firstItem="STq-pa-RFh" firstAttribute="trailing" secondItem="GiW-27-79P" secondAttribute="trailing" id="hgR-ll-y9p"/>
                             <constraint firstItem="X10-gr-tKa" firstAttribute="leading" secondItem="qKx-oK-Z4d" secondAttribute="trailing" constant="15" id="irf-ax-XJz"/>
-                            <constraint firstItem="BXA-iS-LtX" firstAttribute="trailing" secondItem="GiW-27-79P" secondAttribute="trailing" constant="95" id="phe-nM-a1C"/>
+                            <constraint firstItem="BXA-iS-LtX" firstAttribute="trailing" secondItem="GiW-27-79P" secondAttribute="trailing" constant="30" id="phe-nM-a1C"/>
                             <constraint firstItem="qKx-oK-Z4d" firstAttribute="top" secondItem="BXA-iS-LtX" secondAttribute="top" constant="115" id="yfU-i4-J6I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BXA-iS-LtX"/>
@@ -467,5 +481,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yHa-z4-s7M"/>
+        <segue reference="ENt-sm-ySG"/>
     </inferredMetricsTieBreakers>
 </document>
