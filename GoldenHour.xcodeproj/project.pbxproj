@@ -16,6 +16,7 @@
 		1818B1EE21E0EDB2006E1B39 /* DayPosterBlackNF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */; };
 		1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */; };
 		1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1F321E1079D006E1B39 /* WallTableViewController.swift */; };
+		18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848721E33DE000B9BA55 /* UploadViewController.swift */; };
 		9DF3D323B19DBD44E6EB2F0E /* Pods_GoldenHour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169D2262327799BD2CDAA4FF /* Pods_GoldenHour.framework */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
@@ -39,6 +40,7 @@
 		1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DayPosterBlackNF.ttf; sourceTree = "<group>"; };
 		1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1818B1F321E1079D006E1B39 /* WallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewController.swift; sourceTree = "<group>"; };
+		18CE848721E33DE000B9BA55 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenHour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour.debug.xcconfig"; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				1818B1E921E0EB0B006E1B39 /* LoginViewController.swift */,
 				1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */,
 				1818B1F321E1079D006E1B39 /* WallTableViewController.swift */,
+				18CE848721E33DE000B9BA55 /* UploadViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */,
 				1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */,
 				A824166A21DE692C00131C0E /* Metadata.swift in Sources */,
 				A824166821DD746000131C0E /* Like.swift in Sources */,

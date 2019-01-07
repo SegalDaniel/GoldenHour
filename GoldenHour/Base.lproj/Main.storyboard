@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4q-mn-1Y7">
-                                <rect key="frame" x="115" y="427" width="145" height="45"/>
+                                <rect key="frame" x="125" y="427" width="125" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="zO2-Al-SLN"/>
                                 </constraints>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1J-SR-BVo">
-                                <rect key="frame" x="115" y="482" width="145" height="45"/>
+                                <rect key="frame" x="125" y="482" width="125" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="M6w-TM-TUC"/>
                                 </constraints>
@@ -73,13 +73,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68235294117647061" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="h4q-mn-1Y7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="115" id="0h9-aB-dGc"/>
-                            <constraint firstItem="I1J-SR-BVo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="115" id="2ev-Va-rex"/>
+                            <constraint firstItem="h4q-mn-1Y7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="0h9-aB-dGc"/>
+                            <constraint firstItem="I1J-SR-BVo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="2ev-Va-rex"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KyZ-Vx-jvo" secondAttribute="trailing" constant="30" id="6Tj-sc-de9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h4q-mn-1Y7" secondAttribute="trailing" constant="115" id="Foe-cv-XOE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h4q-mn-1Y7" secondAttribute="trailing" constant="125" id="Foe-cv-XOE"/>
                             <constraint firstItem="vPt-ho-uau" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="VkW-tk-C0f"/>
                             <constraint firstItem="vPt-ho-uau" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xhq-hb-Be1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I1J-SR-BVo" secondAttribute="trailing" constant="115" id="ZJD-Nz-Btt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I1J-SR-BVo" secondAttribute="trailing" constant="125" id="ZJD-Nz-Btt"/>
                             <constraint firstItem="KyZ-Vx-jvo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fee-Ba-SWZ"/>
                             <constraint firstItem="KyZ-Vx-jvo" firstAttribute="top" secondItem="vPt-ho-uau" secondAttribute="bottom" constant="55" id="nnm-Sg-4YU"/>
                             <constraint firstItem="8HA-NU-tuT" firstAttribute="top" secondItem="KyZ-Vx-jvo" secondAttribute="bottom" constant="10" id="ot9-SJ-XCK"/>
@@ -124,18 +124,64 @@
         <!--Upload-->
         <scene sceneID="ICr-jd-QfX">
             <objects>
-                <viewController id="XaF-Uh-k12" sceneMemberID="viewController">
+                <viewController id="XaF-Uh-k12" customClass="UploadViewController" customModule="GoldenHour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hc4-QI-A7t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Qgq-Yp-e4s">
+                                <rect key="frame" x="67" y="20" width="241" height="166"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="166" id="p8p-z8-w3h"/>
+                                </constraints>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kiX-dx-7RZ">
+                                <rect key="frame" x="10" y="194" width="355" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dd5-13-xuj"/>
+                                </constraints>
+                            </pickerView>
+                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJ4-EF-i22">
+                                <rect key="frame" x="10" y="252" width="355" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="tMh-bM-bUp"/>
+                                </constraints>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-qe-wPF">
+                                <rect key="frame" x="0.0" y="310" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="q0Z-eF-tc8"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="DSA-qe-wPF" firstAttribute="trailing" secondItem="deh-Ti-neX" secondAttribute="trailing" id="2IY-JQ-LrH"/>
+                            <constraint firstItem="kiX-dx-7RZ" firstAttribute="top" secondItem="Qgq-Yp-e4s" secondAttribute="bottom" constant="8" id="46g-tw-c7C"/>
+                            <constraint firstItem="nJ4-EF-i22" firstAttribute="trailing" secondItem="deh-Ti-neX" secondAttribute="trailing" constant="-10" id="61d-Ia-CdK"/>
+                            <constraint firstItem="deh-Ti-neX" firstAttribute="trailing" secondItem="Qgq-Yp-e4s" secondAttribute="trailing" constant="67" id="7BG-Md-w1l"/>
+                            <constraint firstItem="kiX-dx-7RZ" firstAttribute="trailing" secondItem="deh-Ti-neX" secondAttribute="trailing" constant="-10" id="KpV-4W-hcV"/>
+                            <constraint firstItem="nJ4-EF-i22" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" constant="10" id="NEO-9j-fyN"/>
+                            <constraint firstItem="DSA-qe-wPF" firstAttribute="top" secondItem="nJ4-EF-i22" secondAttribute="bottom" constant="8" id="Wok-28-1ZL"/>
+                            <constraint firstItem="Qgq-Yp-e4s" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" constant="67" id="cEm-eF-XXs"/>
+                            <constraint firstItem="nJ4-EF-i22" firstAttribute="top" secondItem="kiX-dx-7RZ" secondAttribute="bottom" constant="8" id="h9B-uH-JtW"/>
+                            <constraint firstItem="DSA-qe-wPF" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" id="mMW-FK-lRD"/>
+                            <constraint firstItem="kiX-dx-7RZ" firstAttribute="leading" secondItem="deh-Ti-neX" secondAttribute="leading" constant="10" id="xjD-Fe-vAO"/>
+                            <constraint firstItem="Qgq-Yp-e4s" firstAttribute="top" secondItem="deh-Ti-neX" secondAttribute="top" id="xmJ-TO-krM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="deh-Ti-neX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="camera_icon" id="gkN-nG-2Xf"/>
+                    <connections>
+                        <outlet property="camManPicker" destination="kiX-dx-7RZ" id="SI5-Vb-rcU"/>
+                        <outlet property="camModelPicker" destination="nJ4-EF-i22" id="1Eg-CA-xnV"/>
+                        <outlet property="lensModelPicker" destination="DSA-qe-wPF" id="sTP-R2-UWs"/>
+                        <outlet property="userImageView" destination="Qgq-Yp-e4s" id="7T2-dy-rC1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alB-pU-E26" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2132" y="-439"/>
+            <point key="canvasLocation" x="2132" y="-439.43028485757122"/>
         </scene>
         <!--Search-->
         <scene sceneID="vah-qe-wQX">
@@ -252,7 +298,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="new-password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ew-Zv-RYt">
-                                <rect key="frame" x="115" y="482" width="145" height="45"/>
+                                <rect key="frame" x="125" y="482" width="125" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ksq-RH-AeV"/>
                                 </constraints>
@@ -264,8 +310,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="BXA-iS-LtX" firstAttribute="trailing" secondItem="3ew-Zv-RYt" secondAttribute="trailing" constant="115" id="4Y0-7U-PRe"/>
-                            <constraint firstItem="3ew-Zv-RYt" firstAttribute="leading" secondItem="BXA-iS-LtX" secondAttribute="leading" constant="115" id="5m6-6s-lMO"/>
+                            <constraint firstItem="BXA-iS-LtX" firstAttribute="trailing" secondItem="3ew-Zv-RYt" secondAttribute="trailing" constant="125" id="4Y0-7U-PRe"/>
+                            <constraint firstItem="3ew-Zv-RYt" firstAttribute="leading" secondItem="BXA-iS-LtX" secondAttribute="leading" constant="125" id="5m6-6s-lMO"/>
                             <constraint firstItem="X10-gr-tKa" firstAttribute="centerY" secondItem="qKx-oK-Z4d" secondAttribute="centerY" id="7JV-Xj-lVW"/>
                             <constraint firstItem="qKx-oK-Z4d" firstAttribute="leading" secondItem="BXA-iS-LtX" secondAttribute="leading" constant="20" id="Hem-X1-lP5"/>
                             <constraint firstItem="BXA-iS-LtX" firstAttribute="bottom" secondItem="3ew-Zv-RYt" secondAttribute="bottom" constant="140" id="LW1-dD-ZlN"/>
@@ -356,14 +402,14 @@
     </scenes>
     <resources>
         <image name="Image_placeholder" width="75" height="75"/>
-        <image name="camera_icon" width="75" height="75"/>
+        <image name="camera_icon" width="58" height="46"/>
         <image name="login_btn" width="457" height="132"/>
         <image name="login_pressed" width="457" height="132"/>
-        <image name="profile_icon" width="75" height="75"/>
+        <image name="profile_icon" width="52" height="53"/>
         <image name="profile_placeholder" width="75" height="75"/>
         <image name="register_btn" width="457" height="148"/>
         <image name="register_pressed" width="457" height="148"/>
-        <image name="search_icon" width="75" height="75"/>
-        <image name="wall_icon" width="75" height="75"/>
+        <image name="search_icon" width="53" height="53"/>
+        <image name="wall_icon" width="56" height="51"/>
     </resources>
 </document>
