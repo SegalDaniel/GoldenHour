@@ -11,21 +11,33 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 class ModelFirebase{
-    
+
     var ref : DatabaseReference!
     var posts = [Post]()
     init(){
-        FirebaseApp.configure()
+        
         ref = Database.database().reference()
     }
     
-    func registerUser(mail:String  ,pass:String, callback:@escaping (Bool?)->Void)
+    func registerUser(mail:String  ,pass:String, callback:@escaping (AuthDataResult?, Error?)->Void)
     {
+        
         Auth.auth().createUser(withEmail: mail, password: pass) { (user, error) in
             if error != nil{
-                callback(false)
+                print(error!)
+                callback(user, error)
             }else{
+                callback(user, error)
+            }
+        }
+    }
+    
+    func signIn(mail:String  ,pass:String, callback:@escaping (Bool?)->Void){
+        Auth.auth().signIn(withEmail: mail, password: pass) { (user, error) in
+            if user != nil{
                 callback(true)
+            }else{
+                callback(false)
             }
         }
     }
@@ -57,7 +69,9 @@ class ModelFirebase{
         })
     }
     
-    
+    func checkIfSignIn() -> Bool {
+        return (Auth.auth().currentUser != nil)
+    }
     
     func addNewUser(user : User){
         ref.child("users").child(user.id).setValue(user.toJson())

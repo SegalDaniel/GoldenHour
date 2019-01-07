@@ -41,7 +41,6 @@
                                 <state key="highlighted" image="login_pressed"/>
                                 <connections>
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cMV-yc-Neh"/>
-                                    <segue destination="6yk-zq-E7z" kind="presentation" id="4eo-l4-Kau"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1J-SR-BVo">
@@ -56,12 +55,12 @@
                                     <segue destination="N1k-5U-UQk" kind="show" id="ey0-bT-XM7"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KyZ-Vx-jvo">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KyZ-Vx-jvo">
                                 <rect key="frame" x="30" y="290.5" width="315" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.44705882352941173" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DayPosterBlackNF" family="Day Poster Black NF" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8HA-NU-tuT">
                                 <rect key="frame" x="30" y="330.5" width="315" height="30"/>
@@ -94,6 +93,7 @@
                     <connections>
                         <outlet property="passwordTextField" destination="8HA-NU-tuT" id="RlM-UJ-9xD"/>
                         <outlet property="usernameTextField" destination="KyZ-Vx-jvo" id="dnf-bs-EAF"/>
+                        <segue destination="6yk-zq-E7z" kind="presentation" identifier="loggedInSegue" id="Nfa-4D-xvR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -103,7 +103,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="fn8-Vk-R9I">
             <objects>
-                <tabBarController id="6yk-zq-E7z" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabsViewCintroller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6yk-zq-E7z" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="top" insetsLayoutMarginsFromSafeArea="NO" id="cDl-in-nA8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -357,6 +357,7 @@
                         <outlet property="passwordTextField" destination="STq-pa-RFh" id="jH2-wt-C9S"/>
                         <outlet property="profileImageView" destination="qKx-oK-Z4d" id="dL7-Bq-Hsw"/>
                         <outlet property="usernameTextField" destination="X10-gr-tKa" id="8CD-hv-cWg"/>
+                        <segue destination="6yk-zq-E7z" kind="presentation" identifier="RegisteredSegue" id="yHa-z4-s7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tkr-Xb-HRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,4 +438,7 @@
         <image name="search_icon" width="53" height="53"/>
         <image name="wall_icon" width="56" height="51"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="yHa-z4-s7M"/>
+    </inferredMetricsTieBreakers>
 </document>

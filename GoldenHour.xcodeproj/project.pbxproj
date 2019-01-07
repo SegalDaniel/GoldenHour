@@ -17,6 +17,9 @@
 		1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */; };
 		1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1F321E1079D006E1B39 /* WallTableViewController.swift */; };
 		18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848721E33DE000B9BA55 /* UploadViewController.swift */; };
+		18CE848A21E3994200B9BA55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18CE848921E3994200B9BA55 /* GoogleService-Info.plist */; };
+		18CE848C21E39EA300B9BA55 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848B21E39EA300B9BA55 /* Model.swift */; };
+		18CE848F21E3AA0800B9BA55 /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848E21E3AA0800B9BA55 /* SimpleAlert.swift */; };
 		9DF3D323B19DBD44E6EB2F0E /* Pods_GoldenHour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169D2262327799BD2CDAA4FF /* Pods_GoldenHour.framework */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
@@ -41,6 +44,9 @@
 		1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1818B1F321E1079D006E1B39 /* WallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewController.swift; sourceTree = "<group>"; };
 		18CE848721E33DE000B9BA55 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		18CE848921E3994200B9BA55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18CE848B21E39EA300B9BA55 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		18CE848E21E3AA0800B9BA55 /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenHour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour.debug.xcconfig"; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 		18180EB021DCE85000A52AC2 /* GoldenHour */ = {
 			isa = PBXGroup;
 			children = (
+				18CE848D21E3A9EC00B9BA55 /* Views */,
 				1818B1EC21E0ED8B006E1B39 /* fonts */,
 				A824166221DD20D400131C0E /* Model */,
 				18180EB121DCE85000A52AC2 /* AppDelegate.swift */,
@@ -92,6 +99,7 @@
 				18180EB521DCE85000A52AC2 /* Main.storyboard */,
 				18180EB821DCE85100A52AC2 /* Assets.xcassets */,
 				18180EBA21DCE85100A52AC2 /* LaunchScreen.storyboard */,
+				18CE848921E3994200B9BA55 /* GoogleService-Info.plist */,
 				18180EBD21DCE85100A52AC2 /* Info.plist */,
 			);
 			path = GoldenHour;
@@ -117,6 +125,14 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		18CE848D21E3A9EC00B9BA55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18CE848E21E3AA0800B9BA55 /* SimpleAlert.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		26E8EF416DFFC926523F9E2A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +152,7 @@
 				A824166921DE692C00131C0E /* Metadata.swift */,
 				A8FA9FA421E1FCF8008482B6 /* ModelFirebase.swift */,
 				A8D84D3421E222A600A245A1 /* ModelSql.swift */,
+				18CE848B21E39EA300B9BA55 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,6 +227,7 @@
 			files = (
 				1818B1EE21E0EDB2006E1B39 /* DayPosterBlackNF.ttf in Resources */,
 				18180EBC21DCE85100A52AC2 /* LaunchScreen.storyboard in Resources */,
+				18CE848A21E3994200B9BA55 /* GoogleService-Info.plist in Resources */,
 				18180EB921DCE85100A52AC2 /* Assets.xcassets in Resources */,
 				18180EB721DCE85000A52AC2 /* Main.storyboard in Resources */,
 			);
@@ -280,10 +298,12 @@
 				18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */,
 				1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */,
 				A824166A21DE692C00131C0E /* Metadata.swift in Sources */,
+				18CE848F21E3AA0800B9BA55 /* SimpleAlert.swift in Sources */,
 				A824166821DD746000131C0E /* Like.swift in Sources */,
 				A824166621DD4DF700131C0E /* Comment.swift in Sources */,
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */,
+				18CE848C21E39EA300B9BA55 /* Model.swift in Sources */,
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
 				A8FA9FA521E1FCF8008482B6 /* ModelFirebase.swift in Sources */,
 				1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */,

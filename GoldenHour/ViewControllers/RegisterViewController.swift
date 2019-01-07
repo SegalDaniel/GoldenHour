@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,30 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerPressed(_ sender: Any) {
+        let model = Model.instance
+       
+        model.modelFirebase.registerUser(mail: emailTextField.text!, pass: passwordTextField.text!) { (user ,error)  in
+            if error != nil{
+                let alert = SimpleAlert(_title: "Error", _message: error!.localizedDescription) {() in
+                    print("alert dissmissed, user didn't registered")
+                }
+                self.present(alert.getAlert(), animated: true, completion: nil)
+                
+            }else{
+                if model.modelFirebase.checkIfSignIn(){
+                    let alert = SimpleAlert(_title: "Congratulations!", _message: "you have secessfully registered!"){() in
+                        self.performSegue(withIdentifier: "RegisteredSegue", sender: nil)
+                    }
+                    self.present(alert.getAlert(), animated: true, completion: nil)
+                }
+                else{
+                    self.dismiss(animated: true, completion: nil)
+                }
+                print("user register callback")
+            }
+            
+        }
+        
     }
     
     /*

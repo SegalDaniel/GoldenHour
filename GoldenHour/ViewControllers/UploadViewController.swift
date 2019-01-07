@@ -71,12 +71,10 @@ class UploadViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 self.openCamera()
             }
             else{
-                let alert = UIAlertController( title: "GoldenHour Would Like To Access the Camera", message: "Go To Settings -> \nGoldenHour -> Camera", preferredStyle: .alert )
-                let dissmisAction = UIAlertAction(title: "Dissmis", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
-                    alert.dismiss(animated: true, completion: nil)
-                })
-                alert.addAction(dissmisAction)
-                self.present(alert, animated: true, completion: nil)
+                let alert = SimpleAlert(_title: "GoldenHour Would Like To Access the Camera", _message: "Go To Settings -> \nGoldenHour -> Camera"){() in
+                    
+                }
+                self.present(alert.getAlert(), animated: true, completion: nil)
             }
         }
     }
