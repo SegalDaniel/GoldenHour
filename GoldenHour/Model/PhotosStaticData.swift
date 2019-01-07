@@ -16,6 +16,7 @@ class PhotosStaticData{
     let aptRange:[String]
     let shutterRange:[String]
     
+    
     init(){
         cameraManufacture = ["Camera Manufacture", "Canon", "Fujifilm", "Nikon", "Sony"]
         cameraModels = [
