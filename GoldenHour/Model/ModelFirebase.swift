@@ -78,7 +78,7 @@ class ModelFirebase{
         print("")
     }
     func addNewUser(email : String , pass : String , userName : String , url : String){
-        var id = getUserId()
+        let id = getUserId()
         ref.child("users").child(id).setValue(["email":email , "pass":pass , "userName":userName , "url_profile_image" : url])
     }
     

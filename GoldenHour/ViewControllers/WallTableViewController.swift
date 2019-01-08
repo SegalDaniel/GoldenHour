@@ -10,6 +10,8 @@ import UIKit
 
 class WallTableViewController: UITableViewController {
 
+    var data:[Post]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,18 +26,20 @@ class WallTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 10
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "wallCell", for: indexPath) as! WallTableViewCell
 
+        cell.commentsTableView.delegate = cell
+        cell.commentsTableView.dataSource = cell
         // Configure the cell...
 
         return cell
