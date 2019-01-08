@@ -25,6 +25,7 @@
 		18CE849521E3E3F300B9BA55 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE849421E3E3F300B9BA55 /* Utility.swift */; };
 		18EC370021E5020700709CFF /* WallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC36FF21E5020700709CFF /* WallTableViewCell.swift */; };
 		18EC370221E509CC00709CFF /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC370121E509CC00709CFF /* CommentsTableViewCell.swift */; };
+		18EC370421E51D1400709CFF /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC370321E51D1400709CFF /* FullScreenImageViewController.swift */; };
 		9DF3D323B19DBD44E6EB2F0E /* Pods_GoldenHour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169D2262327799BD2CDAA4FF /* Pods_GoldenHour.framework */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
@@ -57,6 +58,7 @@
 		18CE849421E3E3F300B9BA55 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		18EC36FF21E5020700709CFF /* WallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewCell.swift; sourceTree = "<group>"; };
 		18EC370121E509CC00709CFF /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		18EC370321E51D1400709CFF /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenHour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour.debug.xcconfig"; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */,
 				1818B1F321E1079D006E1B39 /* WallTableViewController.swift */,
 				18CE848721E33DE000B9BA55 /* UploadViewController.swift */,
+				18EC370321E51D1400709CFF /* FullScreenImageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				18CE849321E3C37E00B9BA55 /* PhotosStaticData.swift in Sources */,
 				1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */,
+				18EC370421E51D1400709CFF /* FullScreenImageViewController.swift in Sources */,
 				18CE849121E3C22F00B9BA55 /* Permissions.swift in Sources */,
 				18CE848C21E39EA300B9BA55 /* Model.swift in Sources */,
 				18EC370021E5020700709CFF /* WallTableViewCell.swift in Sources */,

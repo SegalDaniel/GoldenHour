@@ -24,8 +24,6 @@ class WallTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //commentsTableView.delegate = self
-        //commentsTableView.dataSource = self
         
     }
 
@@ -52,7 +50,6 @@ class WallTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentsTableViewCell
         
         cell.commentLabel.text = "costum Comment"
-        // Configure the cell...
         
         return cell
     }
