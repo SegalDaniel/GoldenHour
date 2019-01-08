@@ -8,8 +8,10 @@ target 'GoldenHour' do
   # Pods for GoldenHour
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'Firebase/Storage'
 pod 'Firebase/Auth'
 pod 'SQLite.swift', '~> 0.11.5'
 pod 'Kingfisher', '~> 5.0'
+pod 'SVProgressHUD'
 
 end
