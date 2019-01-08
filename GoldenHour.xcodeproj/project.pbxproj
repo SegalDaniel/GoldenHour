@@ -22,6 +22,7 @@
 		18CE848F21E3AA0800B9BA55 /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848E21E3AA0800B9BA55 /* SimpleAlert.swift */; };
 		18CE849121E3C22F00B9BA55 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE849021E3C22F00B9BA55 /* Permissions.swift */; };
 		18CE849321E3C37E00B9BA55 /* PhotosStaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE849221E3C37E00B9BA55 /* PhotosStaticData.swift */; };
+		18CE849521E3E3F300B9BA55 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE849421E3E3F300B9BA55 /* Utility.swift */; };
 		9DF3D323B19DBD44E6EB2F0E /* Pods_GoldenHour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169D2262327799BD2CDAA4FF /* Pods_GoldenHour.framework */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
@@ -51,6 +52,7 @@
 		18CE848E21E3AA0800B9BA55 /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		18CE849021E3C22F00B9BA55 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		18CE849221E3C37E00B9BA55 /* PhotosStaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosStaticData.swift; sourceTree = "<group>"; };
+		18CE849421E3E3F300B9BA55 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenHour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour.debug.xcconfig"; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				18CE848B21E39EA300B9BA55 /* Model.swift */,
 				18CE849021E3C22F00B9BA55 /* Permissions.swift */,
 				18CE849221E3C37E00B9BA55 /* PhotosStaticData.swift */,
+				18CE849421E3E3F300B9BA55 /* Utility.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			files = (
 				18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */,
 				1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */,
+				18CE849521E3E3F300B9BA55 /* Utility.swift in Sources */,
 				A824166A21DE692C00131C0E /* Metadata.swift in Sources */,
 				18CE848F21E3AA0800B9BA55 /* SimpleAlert.swift in Sources */,
 				A824166821DD746000131C0E /* Like.swift in Sources */,

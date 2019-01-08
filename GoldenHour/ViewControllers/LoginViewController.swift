@@ -16,10 +16,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        Utility.viewTapRecognizer(target: self.view, toBeTapped: self.view, action: #selector(UIView.endEditing(_:)))
+       
         let model = Model.instance
         if model.modelFirebase.checkIfSignIn(){
-            print(model.modelFirebase.getUserId() + " " + model.modelFirebase.getUserName()!)
+            usernameTextField.text = model.modelFirebase.getUserName()!
         }
         // Do any additional setup after loading the view.
     }
@@ -27,7 +28,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginPressed(_ sender: Any) {
         Model.instance.modelFirebase.signIn(mail: usernameTextField.text!, pass: passwordTextField.text!) { (user, error) in
             if user != nil{
-                print("signin succeed")
+                //print("signin succeed")
                 self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
             }
             else{

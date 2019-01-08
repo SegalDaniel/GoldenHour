@@ -10,7 +10,15 @@ import Foundation
 import Photos
 import AVKit
 
-extension UploadViewController{
+class Permissions{
+    
+    let target:UIViewController
+    let imagePicker:UIImagePickerController
+    
+    init(target:UIViewController, imagePicker:UIImagePickerController) {
+        self.target = target
+        self.imagePicker = imagePicker
+    }
     
     func checkPermissionCamera(){
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
@@ -18,10 +26,9 @@ extension UploadViewController{
                 self.openCamera()
             }
             else{
-                let alert = SimpleAlert(_title: "GoldenHour Would Like To Access the Camera", _message: "Go To Settings -> \nGoldenHour -> Camera"){() in
-                    
+                let alert = SimpleAlert(_title: "GoldenHour Would Like To Access the Camera", _message: "Go To Settings -> \nGoldenHour -> Camera"){() 
                 }
-                self.present(alert.getAlert(), animated: true, completion: nil)
+                self.target.present(alert.getAlert(), animated: true, completion: nil)
             }
         }
     }
@@ -51,11 +58,11 @@ extension UploadViewController{
     
     func openCamera(){
         imagePicker.sourceType = .camera
-        self.present(imagePicker, animated: true, completion: nil)
+        target.present(imagePicker, animated: true, completion: nil)
     }
     
     func openGallery(){
         imagePicker.sourceType = .photoLibrary
-        self.present(imagePicker, animated: true, completion: nil)
+        target.present(imagePicker, animated: true, completion: nil)
     }
 }
