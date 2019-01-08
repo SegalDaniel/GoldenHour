@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import SVProgressHUD
 class ModelFirebase{
 
     var ref : DatabaseReference!
@@ -32,6 +33,7 @@ class ModelFirebase{
         }
     }
     
+  
     func signIn(mail:String  ,pass:String, callback:@escaping (AuthDataResult?, Error?)->Void){
         Auth.auth().signIn(withEmail: mail, password: pass) { (user, error) in
             if user != nil{
@@ -43,6 +45,7 @@ class ModelFirebase{
     }
     
     
+  
     func getAllUsers(callback:@escaping ([User])->Void){
         ref.child("users").observe(.value, with:
             {
@@ -55,6 +58,8 @@ class ModelFirebase{
                 callback(data)
         })
     }
+    
+   
     
     func getUserInfo(userId:String, callback:@escaping ([User])->Void){
         ref.child("users").observe(.value, with:
@@ -69,31 +74,45 @@ class ModelFirebase{
         })
     }
     
+   
+    
     func checkIfSignIn() -> Bool {
         return (Auth.auth().currentUser != nil)
     }
+    
+   
     
     func addNewUser(user : User){
         ref.child("users").child(user.id).setValue(user.toJson())
         print("")
     }
+  
+    
+    
     func addNewUser(email : String , pass : String , userName : String , url : String){
         let id = getUserId()
         ref.child("users").child(id).setValue(["email":email , "pass":pass , "userName":userName , "url_profile_image" : url])
     }
     
+  
     func getUserId()->String{
         return Auth.auth().currentUser!.uid
     }
+    
+  
     
     func getUserName()->String?{
         return Auth.auth().currentUser?.email
     }
     
+ 
     func getUser(byId : String)->Void{
         getUserInfo(userId: byId, callback: { (data) in
             print(data)
         })
     }
+    
+
+    
     
 }
