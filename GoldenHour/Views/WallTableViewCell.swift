@@ -50,6 +50,7 @@ class WallTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentsTableViewCell
         
         cell.commentLabel.text = "costum Comment"
+        Utility.roundImageView(imageView: cell.userProfileImageView)
         
         return cell
     }
