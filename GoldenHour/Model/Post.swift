@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 class Post {
-    let id:String
     let userId:String
     let title:String
     let imageUrl:String
@@ -19,8 +18,7 @@ class Post {
     var metaData:[Metadata]?
     
     
-    init(_id:String, _userId:String, _title:String,_imageUrl:String){
-        id = _id
+    init(_userId:String, _title:String,_imageUrl:String){
         userId = _userId
         title = _title
         imageUrl = _imageUrl
@@ -31,7 +29,6 @@ class Post {
     }
     
     init(json:[String:Any]) {
-        id = json["id"] as! String
         userId = json["userId"] as! String
         title = json["title"] as! String
         imageUrl = json["imageUrl"] as! String
@@ -44,7 +41,6 @@ class Post {
     
     func toJson() -> [String:Any] {
         var json = [String:Any]()
-        json["id"] = id
         json["userId"] = userId
         json["title"] = title
         json["imageUrl"] = imageUrl

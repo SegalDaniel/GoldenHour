@@ -41,7 +41,7 @@ class User{
         }else{
             url = ""
         }
-        post = json["post"] as? [Post]
+        post = json["posts"] as? [Post]
     }
     
     func toJson() -> [String:Any] {
@@ -53,7 +53,7 @@ class User{
         json["profileImage"] = profileImage
         json["description"] = description
         json["url"] = url
-        json["post"] = post
+        json["posts"] = post
         return json
     }
 }
