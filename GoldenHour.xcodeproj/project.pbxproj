@@ -16,6 +16,13 @@
 		1818B1EE21E0EDB2006E1B39 /* DayPosterBlackNF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */; };
 		1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */; };
 		1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1F321E1079D006E1B39 /* WallTableViewController.swift */; };
+		181DB11221E5E42200E01FDA /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DB11121E5E42200E01FDA /* PickerViewController.swift */; };
+		18393D0421E7BB310031384B /* AddPostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0321E7BB310031384B /* AddPostInfoViewController.swift */; };
+		18393D0B21E7D0F60031384B /* MyPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */; };
+		1855CD7A21E63EB50055FA4A /* pfennigbolditalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7621E63EB50055FA4A /* pfennigbolditalic-webfont.ttf */; };
+		1855CD7B21E63EB50055FA4A /* pfennigitalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7721E63EB50055FA4A /* pfennigitalic-webfont.ttf */; };
+		1855CD7C21E63EB50055FA4A /* pfennig-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */; };
+		1855CD7D21E63EB50055FA4A /* pfennigbold-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7921E63EB50055FA4A /* pfennigbold-webfont.ttf */; };
 		18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848721E33DE000B9BA55 /* UploadViewController.swift */; };
 		18CE848A21E3994200B9BA55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18CE848921E3994200B9BA55 /* GoogleService-Info.plist */; };
 		18CE848C21E39EA300B9BA55 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848B21E39EA300B9BA55 /* Model.swift */; };
@@ -49,6 +56,14 @@
 		1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DayPosterBlackNF.ttf; sourceTree = "<group>"; };
 		1818B1EF21E0F903006E1B39 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1818B1F321E1079D006E1B39 /* WallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTableViewController.swift; sourceTree = "<group>"; };
+		181DB11121E5E42200E01FDA /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		18393D0321E7BB310031384B /* AddPostInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostInfoViewController.swift; sourceTree = "<group>"; };
+		18393D0521E7BDCF0031384B /* GoldenHour.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoldenHour.entitlements; sourceTree = "<group>"; };
+		18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerDelegate.swift; sourceTree = "<group>"; };
+		1855CD7621E63EB50055FA4A /* pfennigbolditalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennigbolditalic-webfont.ttf"; sourceTree = "<group>"; };
+		1855CD7721E63EB50055FA4A /* pfennigitalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennigitalic-webfont.ttf"; sourceTree = "<group>"; };
+		1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennig-webfont.ttf"; sourceTree = "<group>"; };
+		1855CD7921E63EB50055FA4A /* pfennigbold-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennigbold-webfont.ttf"; sourceTree = "<group>"; };
 		18CE848721E33DE000B9BA55 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		18CE848921E3994200B9BA55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18CE848B21E39EA300B9BA55 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -103,6 +118,8 @@
 		18180EB021DCE85000A52AC2 /* GoldenHour */ = {
 			isa = PBXGroup;
 			children = (
+				18393D0921E7D0E80031384B /* Protocols */,
+				18393D0521E7BDCF0031384B /* GoldenHour.entitlements */,
 				18CE848D21E3A9EC00B9BA55 /* Views */,
 				1818B1EC21E0ED8B006E1B39 /* fonts */,
 				A824166221DD20D400131C0E /* Model */,
@@ -126,6 +143,8 @@
 				1818B1F321E1079D006E1B39 /* WallTableViewController.swift */,
 				18CE848721E33DE000B9BA55 /* UploadViewController.swift */,
 				18EC370321E51D1400709CFF /* FullScreenImageViewController.swift */,
+				181DB11121E5E42200E01FDA /* PickerViewController.swift */,
+				18393D0321E7BB310031384B /* AddPostInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -133,9 +152,21 @@
 		1818B1EC21E0ED8B006E1B39 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */,
+				1855CD7921E63EB50055FA4A /* pfennigbold-webfont.ttf */,
+				1855CD7621E63EB50055FA4A /* pfennigbolditalic-webfont.ttf */,
+				1855CD7721E63EB50055FA4A /* pfennigitalic-webfont.ttf */,
 				1818B1ED21E0EDB2006E1B39 /* DayPosterBlackNF.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		18393D0921E7D0E80031384B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		18CE848D21E3A9EC00B9BA55 /* Views */ = {
@@ -217,6 +248,11 @@
 				TargetAttributes = {
 					18180EAD21DCE85000A52AC2 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -243,11 +279,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1855CD7C21E63EB50055FA4A /* pfennig-webfont.ttf in Resources */,
+				1855CD7D21E63EB50055FA4A /* pfennigbold-webfont.ttf in Resources */,
 				1818B1EE21E0EDB2006E1B39 /* DayPosterBlackNF.ttf in Resources */,
 				18180EBC21DCE85100A52AC2 /* LaunchScreen.storyboard in Resources */,
 				18CE848A21E3994200B9BA55 /* GoogleService-Info.plist in Resources */,
+				1855CD7A21E63EB50055FA4A /* pfennigbolditalic-webfont.ttf in Resources */,
 				18180EB921DCE85100A52AC2 /* Assets.xcassets in Resources */,
 				18180EB721DCE85000A52AC2 /* Main.storyboard in Resources */,
+				1855CD7B21E63EB50055FA4A /* pfennigitalic-webfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +357,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18393D0B21E7D0F60031384B /* MyPickerDelegate.swift in Sources */,
 				18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */,
+				18393D0421E7BB310031384B /* AddPostInfoViewController.swift in Sources */,
 				1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */,
 				18CE849521E3E3F300B9BA55 /* Utility.swift in Sources */,
 				A824166A21DE692C00131C0E /* Metadata.swift in Sources */,
@@ -335,6 +377,7 @@
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
 				A8FA9FA521E1FCF8008482B6 /* ModelFirebase.swift in Sources */,
 				1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */,
+				181DB11221E5E42200E01FDA /* PickerViewController.swift in Sources */,
 				A824166121DD204900131C0E /* User.swift in Sources */,
 				A8D84D3521E222A600A245A1 /* ModelSql.swift in Sources */,
 				A824166421DD4C4500131C0E /* Post.swift in Sources */,
@@ -484,6 +527,7 @@
 			baseConfigurationReference = 3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GoldenHour/GoldenHour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKNQ4Y4FEY;
 				INFOPLIST_FILE = GoldenHour/Info.plist;
@@ -503,6 +547,7 @@
 			baseConfigurationReference = F9DF6EC3A8DB373276CF378E /* Pods-GoldenHour.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GoldenHour/GoldenHour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKNQ4Y4FEY;
 				INFOPLIST_FILE = GoldenHour/Info.plist;

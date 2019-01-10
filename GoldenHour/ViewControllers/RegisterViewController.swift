@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -26,6 +26,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         Utility.viewTapRecognizer(target: self, toBeTapped: profileImageView, action: #selector (imageTapped(tapGestureRecognizer:)))
         permissions = Permissions(target: self, imagePicker: imagePicker)
         imagePicker.delegate = self
+        usernameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -78,14 +81,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         profileImageView.image = image
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
-    */
 
 }

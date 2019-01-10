@@ -37,6 +37,10 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>DayPosterBlackNF.ttf</string>
+		<string>pfennig-webfont.ttf</string>
+		<string>pfennigbold-webfont.ttf</string>
+		<string>pfennigbolditalic-webfont.ttf</string>
+		<string>pfennigitalic-webfont.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
