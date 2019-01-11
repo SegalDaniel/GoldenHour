@@ -67,7 +67,6 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         self.view.frame = frame
         self.view.dropShadow()
-        self.view.layer.cornerRadius = self.view.frame.height/1.2
     }
 
 }
