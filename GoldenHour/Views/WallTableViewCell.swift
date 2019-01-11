@@ -8,13 +8,15 @@
 
 import UIKit
 
-class WallTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
+class WallTableViewCell: UITableViewCell {
 
     var data:[Comment]?
     
     @IBOutlet weak var ranksLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
-    @IBOutlet weak var commentsTableView: UITableView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var imageByLabel: UILabel!
+    
     
     func setComments(commets:[Comment]){
         self.data = commets
@@ -24,7 +26,7 @@ class WallTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        Utility.roundImageView(imageView: profileImageView)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,27 +34,9 @@ class WallTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
 
         // Configure the view for the selected state
     }
-
-
     
-    //CommentstableView Configurations
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+    @IBAction func commentsBtnPressed(_ sender: Any) {
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10
-    }
     
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentsTableViewCell
-        
-        cell.commentLabel.text = "costum Comment"
-        Utility.roundImageView(imageView: cell.userProfileImageView)
-        
-        return cell
-    }
-
 }

@@ -60,9 +60,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLayoutSubviews() {
         let width:CGFloat  = self.view.bounds.width/1.3
-        let height:CGFloat = self.view.bounds.height/1.8 //- statusBarHeight - 30 //- CGFloat(navBarHeight!)
-        let x:CGFloat      = self.view.center.x - (width/2)//bounds.origin.x
-        let y:CGFloat      = self.view.center.y - (height/2)//bounds.origin.y //+ statusBarHeight + 100//+ CGFloat(navBarHeight!)
+        let height:CGFloat = self.view.bounds.height/1.8
+        let x:CGFloat      = self.view.center.x - (width/2)
+        let y:CGFloat      = self.view.center.y - (height/2)
         let frame:CGRect   = CGRect(x: x, y: y, width: width, height: height)
         
         self.view.frame = frame

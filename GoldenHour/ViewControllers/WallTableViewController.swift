@@ -33,8 +33,7 @@ class WallTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "wallCell", for: indexPath) as! WallTableViewCell
         // Configure the cell...
-        cell.commentsTableView.delegate = cell
-        cell.commentsTableView.dataSource = cell
+        
 
         return cell
     }
