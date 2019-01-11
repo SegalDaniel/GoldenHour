@@ -85,7 +85,7 @@ class ModelFirebase{
     
     
     func addNewUser(email : String , password : String , userName : String , url : String){
-        var id = getUserId()
+        let id = getUserId()
         ref.child("users").child(id).setValue(["email":email , "password":password , "userName":userName , "url" : url])
     }
     
@@ -213,6 +213,7 @@ class ModelFirebase{
             try Auth.auth().signOut()
             return true
         }catch let error{
+            print(error.localizedDescription)
             return false
         }
     }
