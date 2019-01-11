@@ -581,7 +581,7 @@
                                             <state key="normal" image="msg_icon"/>
                                             <connections>
                                                 <action selector="commentsBtnPressed:" destination="tnT-li-MyU" eventType="touchUpInside" id="FlH-5r-JHy"/>
-                                                <segue destination="NLo-K6-bec" kind="show" id="SEE-wk-sFP"/>
+                                                <segue destination="NLo-K6-bec" kind="show" identifier="commentsSegue" id="SEE-wk-sFP"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -631,38 +631,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muN-Ow-3gn">
-                                <rect key="frame" x="325" y="27" width="30" height="43"/>
-                                <fontDescription key="fontDescription" name="DayPosterBlackNF" family="Day Poster Black NF" pointSize="24"/>
-                                <state key="normal" title="X">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="xBtnPressed:" destination="bQ2-Sc-DK7" eventType="touchUpInside" id="W4U-yZ-Qm6"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oth-aQ-Vkm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-R3-U5v">
+                                <rect key="frame" x="0.0" y="582" width="375" height="85"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohV-b1-wk0">
+                                        <rect key="frame" x="25" y="7.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Byl-OO-l7h"/>
+                                            <constraint firstAttribute="width" secondItem="ohV-b1-wk0" secondAttribute="height" multiplier="1:1" id="L4y-ka-qxc"/>
+                                            <constraint firstAttribute="width" constant="50" id="QUk-Je-zkd"/>
+                                        </constraints>
+                                        <state key="normal" image="info_icon"/>
+                                        <state key="highlighted" image="info_icon_pressed"/>
+                                        <connections>
+                                            <action selector="imageInfoBtnPressed:" destination="bQ2-Sc-DK7" eventType="touchUpInside" id="HLM-S5-by2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NO-qt-C9a">
+                                        <rect key="frame" x="162.5" y="7.5" width="50" height="50"/>
+                                        <state key="normal" image="msg_icon"/>
+                                        <state key="highlighted" image="msg_icon_pressed"/>
+                                        <connections>
+                                            <action selector="commentsBtnPressed:" destination="bQ2-Sc-DK7" eventType="touchUpInside" id="ieG-1U-8YS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQE-tX-9of">
+                                        <rect key="frame" x="310" y="-5" width="50" height="75"/>
+                                        <state key="normal" image="share_icon"/>
+                                        <state key="highlighted" image="share_icon_pressed"/>
+                                        <connections>
+                                            <action selector="sharedBtnPressed:" destination="bQ2-Sc-DK7" eventType="touchUpInside" id="1lr-Jj-9Dn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0NO-qt-C9a" firstAttribute="centerY" secondItem="S4J-R3-U5v" secondAttribute="centerY" constant="-10" id="8II-Ag-HVI"/>
+                                    <constraint firstItem="wQE-tX-9of" firstAttribute="width" secondItem="0NO-qt-C9a" secondAttribute="height" multiplier="1:1" id="FMj-Mv-dpi"/>
+                                    <constraint firstItem="wQE-tX-9of" firstAttribute="centerY" secondItem="S4J-R3-U5v" secondAttribute="centerY" constant="-10" id="LkZ-k6-xW4"/>
+                                    <constraint firstItem="0NO-qt-C9a" firstAttribute="centerX" secondItem="S4J-R3-U5v" secondAttribute="centerX" id="NSy-iM-nSl"/>
+                                    <constraint firstItem="0NO-qt-C9a" firstAttribute="width" secondItem="ohV-b1-wk0" secondAttribute="width" id="NUc-oN-PhF"/>
+                                    <constraint firstItem="wQE-tX-9of" firstAttribute="width" secondItem="0NO-qt-C9a" secondAttribute="width" id="OSZ-KN-g8Z"/>
+                                    <constraint firstItem="0NO-qt-C9a" firstAttribute="width" secondItem="ohV-b1-wk0" secondAttribute="height" multiplier="1:1" id="Wo7-TX-87A"/>
+                                    <constraint firstItem="ohV-b1-wk0" firstAttribute="leading" secondItem="S4J-R3-U5v" secondAttribute="leading" constant="25" id="c6p-4m-6C6"/>
+                                    <constraint firstItem="ohV-b1-wk0" firstAttribute="centerY" secondItem="S4J-R3-U5v" secondAttribute="centerY" constant="-10" id="pLG-Ue-vce"/>
+                                    <constraint firstAttribute="height" constant="85" id="v9X-jK-wqZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="wQE-tX-9of" secondAttribute="trailing" constant="15" id="vc0-SQ-SC9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="muN-Ow-3gn" firstAttribute="trailing" secondItem="Oth-aQ-Vkm" secondAttribute="trailing" constant="-20" id="0Jw-Xp-Mcj"/>
+                            <constraint firstItem="S4J-R3-U5v" firstAttribute="centerX" secondItem="1ux-rh-YbS" secondAttribute="centerX" id="2MV-wW-MNh"/>
                             <constraint firstItem="Oth-aQ-Vkm" firstAttribute="top" secondItem="1ux-rh-YbS" secondAttribute="top" id="3TM-Sn-MSz"/>
                             <constraint firstItem="Oth-aQ-Vkm" firstAttribute="bottom" secondItem="OoO-rX-dgI" secondAttribute="bottom" id="4EU-cp-E6X"/>
                             <constraint firstItem="Oth-aQ-Vkm" firstAttribute="trailing" secondItem="OoO-rX-dgI" secondAttribute="trailing" id="70V-6q-9a4"/>
                             <constraint firstItem="Oth-aQ-Vkm" firstAttribute="leading" secondItem="OoO-rX-dgI" secondAttribute="leading" id="VQm-78-IVS"/>
-                            <constraint firstItem="Oth-aQ-Vkm" firstAttribute="top" secondItem="muN-Ow-3gn" secondAttribute="bottom" constant="-70" id="cnf-ny-4wg"/>
+                            <constraint firstItem="S4J-R3-U5v" firstAttribute="bottom" secondItem="1ux-rh-YbS" secondAttribute="bottom" id="Whh-RN-cVs"/>
+                            <constraint firstItem="S4J-R3-U5v" firstAttribute="width" secondItem="Oth-aQ-Vkm" secondAttribute="width" id="y5P-uJ-iHA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OoO-rX-dgI"/>
                     </view>
                     <connections>
+                        <outlet property="commentsBtn" destination="0NO-qt-C9a" id="GmN-bU-wCs"/>
+                        <outlet property="footerView" destination="S4J-R3-U5v" id="Cdv-m6-ndU"/>
                         <outlet property="fullScreenImageView" destination="Oth-aQ-Vkm" id="9AN-Yd-SIx"/>
+                        <outlet property="imageInfoBtn" destination="ohV-b1-wk0" id="Dxz-fX-L8S"/>
+                        <outlet property="shareBtn" destination="wQE-tX-9of" id="tKT-Vd-R1G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHY-2l-9c9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3612" y="-1129.385307346327"/>
+            <point key="canvasLocation" x="3690.4000000000001" y="-1129.385307346327"/>
         </scene>
         <!--Add Post Info View Controller-->
         <scene sceneID="Qvm-7j-1bk">
@@ -718,6 +761,7 @@
                                     <constraint firstAttribute="height" constant="30" id="eRT-ys-HzF"/>
                                 </constraints>
                                 <state key="normal" image="small_plus"/>
+                                <state key="highlighted" image="small_plus_pressed"/>
                                 <connections>
                                     <action selector="camManBtnPressed:" destination="grh-2A-FSA" eventType="touchUpInside" id="LE5-tN-MaW"/>
                                 </connections>
@@ -725,6 +769,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beJ-ig-Z6N">
                                 <rect key="frame" x="329" y="215" width="30" height="30"/>
                                 <state key="normal" image="small_plus"/>
+                                <state key="highlighted" image="small_plus_pressed"/>
                                 <connections>
                                     <action selector="camModelBtnPressed:" destination="grh-2A-FSA" eventType="touchUpInside" id="Tew-u4-Kd2"/>
                                 </connections>
@@ -744,6 +789,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQJ-sa-hdx">
                                 <rect key="frame" x="329" y="286.5" width="30" height="30"/>
                                 <state key="normal" image="small_plus"/>
+                                <state key="highlighted" image="small_plus_pressed"/>
                                 <connections>
                                     <action selector="lensBtnPressed:" destination="grh-2A-FSA" eventType="touchUpInside" id="ghv-UL-SFv"/>
                                 </connections>
@@ -760,7 +806,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shutter Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="VIH-Th-Km5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Shutter Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="VIH-Th-Km5">
                                 <rect key="frame" x="99" y="397" width="222" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Vnc-Rn-Mm1"/>
@@ -772,6 +818,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZtE-T7-U51">
                                 <rect key="frame" x="329" y="358.5" width="30" height="30"/>
                                 <state key="normal" image="small_plus"/>
+                                <state key="highlighted" image="small_plus_pressed"/>
                                 <connections>
                                     <action selector="aptBtnPressed:" destination="grh-2A-FSA" eventType="touchUpInside" id="VTf-6y-EOL"/>
                                 </connections>
@@ -779,6 +826,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ld2-U0-NxM">
                                 <rect key="frame" x="329" y="397" width="30" height="30"/>
                                 <state key="normal" image="small_plus"/>
+                                <state key="highlighted" image="small_plus_pressed"/>
                                 <connections>
                                     <action selector="ssBtnPressed:" destination="grh-2A-FSA" eventType="touchUpInside" id="eck-PO-cC0"/>
                                 </connections>
@@ -807,6 +855,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buK-US-fdN">
                                 <rect key="frame" x="329" y="559.5" width="30" height="30"/>
                                 <state key="normal" image="small_plus"/>
+                                <state key="highlighted" image="small_plus_pressed"/>
                                 <connections>
                                     <action selector="addLocBtnPressed:" destination="grh-2A-FSA" eventType="touchUpInside" id="JCA-AQ-98v"/>
                                 </connections>
@@ -941,17 +990,22 @@
         <image name="big_plus" width="683" height="678"/>
         <image name="camera_icon" width="58" height="46"/>
         <image name="info_icon" width="75" height="75"/>
+        <image name="info_icon_pressed" width="100" height="100"/>
         <image name="lens_icon" width="75" height="75"/>
         <image name="login_btn" width="457" height="132"/>
         <image name="login_pressed" width="457" height="132"/>
         <image name="msg_icon" width="75" height="75"/>
+        <image name="msg_icon_pressed" width="100" height="100"/>
         <image name="place_icon" width="75" height="75"/>
         <image name="profile_icon" width="52" height="53"/>
         <image name="profile_placeholder" width="75" height="75"/>
         <image name="register_btn" width="457" height="148"/>
         <image name="register_pressed" width="457" height="148"/>
         <image name="search_icon" width="53" height="53"/>
+        <image name="share_icon" width="75" height="75"/>
+        <image name="share_icon_pressed" width="100" height="100"/>
         <image name="small_plus" width="512" height="509"/>
+        <image name="small_plus_pressed" width="512" height="509"/>
         <image name="tripod_icon" width="75" height="75"/>
         <image name="wall_icon" width="56" height="51"/>
     </resources>

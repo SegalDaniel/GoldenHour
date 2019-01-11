@@ -10,10 +10,12 @@ import UIKit
 
 class FullScreenImageViewController: UIViewController {
 
+    @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var fullScreenImageView: UIImageView!
+    @IBOutlet weak var imageInfoBtn: UIButton!
+    @IBOutlet weak var commentsBtn: UIButton!
+    @IBOutlet weak var shareBtn: UIButton!
     var image:UIImage?
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,26 +23,60 @@ class FullScreenImageViewController: UIViewController {
         if image != nil && fullScreenImageView.image != image{
             fullScreenImageView.contentMode = .scaleAspectFit
             fullScreenImageView.image = image
-            print("image arrived")
+            print("image arrived \(image!.description)")
         }
+        toggleHiddenViews()
+        Utility.viewTapRecognizer(target: self, toBeTapped: fullScreenImageView, action: #selector(toggleHiddenViews))
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //self.navigationController?.navigationBar.isHidden = false
+    @IBAction func imageInfoBtnPressed(_ sender: Any) {
     }
-    @IBAction func xBtnPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        //self.navigationController?.setNavigationBarHidden(false, animated: true)
+    
+    @IBAction func commentsBtnPressed(_ sender: Any) {
     }
+    
+    @IBAction func sharedBtnPressed(_ sender: Any) {
+    }
+    
+    @objc func toggleHiddenViews(){
+        if footerView.isHidden{
+            footerView.isHidden = !footerView.isHidden
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.footerView.alpha = 1.0
+                //self.footerView.frame.origin.y = self.footerView.frame.origin.y - 100
+                self.navigationController?.navigationBar.isHidden = false
+            }
+            )}
+        else{
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.footerView.alpha = 0
+                //self.footerView.frame.origin.y = self.footerView.frame.origin.y + 100
+            }) { (bool) in
+                self.footerView.isHidden = !self.footerView.isHidden
+                self.navigationController?.navigationBar.isHidden = true
+            }
+        }
+    }
+    
+    func roundFooter(){
+        footerView.layer.borderWidth = 1
+        footerView.layer.masksToBounds = false
+        footerView.layer.borderColor = UIColor.white.cgColor
+        footerView.layer.cornerRadius = footerView.frame.height/2
+        footerView.clipsToBounds = true
+    }
+    
+    
     
     /*
     // MARK: - Navigation

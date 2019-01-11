@@ -25,17 +25,8 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         addCommTextField.delegate = self
         commentsTableView.drawBorder(width: 2)
         Utility.moveWithKeyboard(viewController: self)
-        
-        let button = UIButton(type: .custom)
-        button.setTitle("Post", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.titleLabel?.font = UIFont(name: "PfennigBold", size: UIFont.labelFontSize)
-        //button.setImage(UIImage(named: "send.png"), for: .normal)
-        //button.imageEdgeInsets = UIEdgeInsetsMake(0, -16, 0, 0)
-        button.frame = CGRect(x: CGFloat(addCommTextField.frame.size.width - 45), y: CGFloat(15), width: CGFloat(45), height: CGFloat(15))
-        button.addTarget(self, action: #selector(self.refresh), for: .touchUpInside)
-        addCommTextField.rightView = button
-        addCommTextField.rightViewMode = .whileEditing
+        addPostBtn()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         // Do any additional setup after loading the view.
     }
     
@@ -58,6 +49,19 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
             print("post pressed")
         }
         
+    }
+    
+    func addPostBtn(){
+        let button = UIButton(type: .custom)
+        button.setTitle("Post", for: .normal)
+        button.setTitleColor(UIColor.blue, for: .normal)
+        button.titleLabel?.font = UIFont(name: "PfennigBold", size: UIFont.labelFontSize)
+        //button.setImage(UIImage(named: "send.png"), for: .normal)
+        //button.imageEdgeInsets = UIEdgeInsetsMake(0, -16, 0, 0)
+        button.frame = CGRect(x: CGFloat(addCommTextField.frame.size.width - 45), y: CGFloat(15), width: CGFloat(45), height: CGFloat(15))
+        button.addTarget(self, action: #selector(self.refresh), for: .touchUpInside)
+        addCommTextField.rightView = button
+        addCommTextField.rightViewMode = .whileEditing
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

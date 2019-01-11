@@ -55,6 +55,10 @@ class WallTableViewController: UITableViewController {
                 vc.image = image
             }
         }
+        else if segue.identifier == "commentsSegue"{
+            //let vc = segue.destination as! RanksAndComViewController
+            
+        }
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
