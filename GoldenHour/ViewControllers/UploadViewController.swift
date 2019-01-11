@@ -11,7 +11,8 @@ import Photos
 
 class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var selectBtn: UIButton!
+    @IBOutlet weak var selectImageLabel: UILabel!
+    @IBOutlet weak var bigPlusImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
     let imagePicker = UIImagePickerController()
     var permissions:Permissions?
@@ -22,7 +23,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        allViewsToucable()
         imagePicker.delegate = self
         permissions = Permissions(target: self, imagePicker: imagePicker)
     }
@@ -38,15 +39,16 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         userImageView.contentMode = .scaleAspectFit
         userImageView.image = image
         self.selctedImage = image
-        selectBtn.isHidden = true
         userImageView.isHidden = false
+        selectImageLabel.isHidden = true
+        bigPlusImageView.isHidden = true
     }
 
     @IBAction func editImagePressed(_ sender: Any) {
-        selectBtnPressed(sender)
+        selectImageTapped()
     }
     
-    @IBAction func selectBtnPressed(_ sender: Any) {
+    @objc func selectImageTapped(){
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
             self.permissions?.checkPermissionCamera()
@@ -70,5 +72,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
      }
     
-    
+    func allViewsToucable(){
+        Utility.viewTapRecognizer(target: self, toBeTapped: self.view, action: #selector(self.selectImageTapped))
+        Utility.viewTapRecognizer(target: self, toBeTapped: bigPlusImageView, action: #selector(self.selectImageTapped))
+        Utility.viewTapRecognizer(target: self, toBeTapped: selectImageLabel, action: #selector(self.selectImageTapped))
+    }
 }

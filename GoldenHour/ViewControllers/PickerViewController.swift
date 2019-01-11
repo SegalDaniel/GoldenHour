@@ -21,6 +21,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         super.viewDidLoad()
         dataPickerView.delegate = self
         dataPickerView.dataSource = self
+        self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -47,33 +48,26 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        if data != nil && selectedRow != nil && sentWith != nil{
+        if data != nil && selectedRow != nil && selectedRow != 0 && sentWith != nil{
             delegate?.userPickedProperty(sender: sentWith!, property: data![selectedRow!])
         }
         else{
             delegate?.userPickedProperty(sender: nil, property: nil)
         }
+        self.navigationController?.navigationBar.isHidden = false
         self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLayoutSubviews() {
-        let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
-        let navBarHeight             = self.navigationController?.navigationBar.frame.size.height
-        
-        print("statusBarHeight: \(statusBarHeight) navBarHeight: \(String(describing: navBarHeight))")
-        
-        // view
-        let x:CGFloat      = self.view.bounds.origin.x
-        let y:CGFloat      = self.view.bounds.origin.y //+ statusBarHeight + 100//+ CGFloat(navBarHeight!)
-        let width:CGFloat  = self.view.bounds.width
-        let height:CGFloat = self.view.bounds.height //- statusBarHeight - 30 //- CGFloat(navBarHeight!)
+        let width:CGFloat  = self.view.bounds.width/1.3
+        let height:CGFloat = self.view.bounds.height/1.8 //- statusBarHeight - 30 //- CGFloat(navBarHeight!)
+        let x:CGFloat      = self.view.center.x - (width/2)//bounds.origin.x
+        let y:CGFloat      = self.view.center.y - (height/2)//bounds.origin.y //+ statusBarHeight + 100//+ CGFloat(navBarHeight!)
         let frame:CGRect   = CGRect(x: x, y: y, width: width, height: height)
         
-        print("x: \(x) y: \(y) width: \(width) height: \(height)")
-        
         self.view.frame = frame
-        //self.view.layer.cornerRadius = self.view.frame.height/6
-        //self.view.backgroundColor = UIColor.red
+        self.view.dropShadow()
+        self.view.layer.cornerRadius = self.view.frame.height/1.2
     }
 
 }

@@ -44,14 +44,14 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     @IBAction func camManBtnPressed(_ sender: Any) {
         pickerData = imageData.cameraManufacture
         self.performSegue(withIdentifier: "picker", sender: sender)
-        self.view.isHidden = true
+        //self.view.isHidden = true
     }
     
     @IBAction func camModelBtnPressed(_ sender: Any) {
         if let x = pickedMan{
             pickerData = imageData.cameraModels[x]
             self.performSegue(withIdentifier: "picker", sender: sender)
-            self.view.isHidden = true
+            //self.view.isHidden = true
         }
         else{
             selectManAlert()
@@ -62,7 +62,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         if let x = pickedMan{
             pickerData = imageData.lensModels[x]
             self.performSegue(withIdentifier: "picker", sender: sender)
-            self.view.isHidden = true
+            //self.view.isHidden = true
         }
         else{
             selectManAlert()
@@ -72,13 +72,13 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     @IBAction func aptBtnPressed(_ sender: Any) {
         pickerData = imageData.aptRange
         self.performSegue(withIdentifier: "picker", sender: sender)
-        self.view.isHidden = true
+        //self.view.isHidden = true
     }
     
     @IBAction func ssBtnPressed(_ sender: Any) {
         pickerData = imageData.shutterRange
         self.performSegue(withIdentifier: "picker", sender: sender)
-        self.view.isHidden = true
+        //self.view.isHidden = true
     }
     
     @IBAction func addLocBtnPressed(_ sender: Any) {
@@ -128,7 +128,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
                 
             }
         }
-        self.view.isHidden = false
+        //self.view.isHidden = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
