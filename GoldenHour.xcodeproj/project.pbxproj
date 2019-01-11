@@ -19,6 +19,7 @@
 		181DB11221E5E42200E01FDA /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DB11121E5E42200E01FDA /* PickerViewController.swift */; };
 		18393D0421E7BB310031384B /* AddPostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0321E7BB310031384B /* AddPostInfoViewController.swift */; };
 		18393D0B21E7D0F60031384B /* MyPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */; };
+		18393D0D21E8FD9B0031384B /* RanksAndComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */; };
 		1855CD7A21E63EB50055FA4A /* pfennigbolditalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7621E63EB50055FA4A /* pfennigbolditalic-webfont.ttf */; };
 		1855CD7B21E63EB50055FA4A /* pfennigitalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7721E63EB50055FA4A /* pfennigitalic-webfont.ttf */; };
 		1855CD7C21E63EB50055FA4A /* pfennig-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */; };
@@ -60,6 +61,7 @@
 		18393D0321E7BB310031384B /* AddPostInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostInfoViewController.swift; sourceTree = "<group>"; };
 		18393D0521E7BDCF0031384B /* GoldenHour.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoldenHour.entitlements; sourceTree = "<group>"; };
 		18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerDelegate.swift; sourceTree = "<group>"; };
+		18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksAndComViewController.swift; sourceTree = "<group>"; };
 		1855CD7621E63EB50055FA4A /* pfennigbolditalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennigbolditalic-webfont.ttf"; sourceTree = "<group>"; };
 		1855CD7721E63EB50055FA4A /* pfennigitalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennigitalic-webfont.ttf"; sourceTree = "<group>"; };
 		1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennig-webfont.ttf"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				18EC370321E51D1400709CFF /* FullScreenImageViewController.swift */,
 				181DB11121E5E42200E01FDA /* PickerViewController.swift */,
 				18393D0321E7BB310031384B /* AddPostInfoViewController.swift */,
+				18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				A824166821DD746000131C0E /* Like.swift in Sources */,
 				A824166621DD4DF700131C0E /* Comment.swift in Sources */,
 				18EC370221E509CC00709CFF /* CommentsTableViewCell.swift in Sources */,
+				18393D0D21E8FD9B0031384B /* RanksAndComViewController.swift in Sources */,
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				18CE849321E3C37E00B9BA55 /* PhotosStaticData.swift in Sources */,
 				1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */,

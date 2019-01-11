@@ -25,6 +25,11 @@ class Utility{
         toBeTapped.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    static func moveWithKeyboard(viewController:UIViewController){
+        NotificationCenter.default.addObserver(viewController, selector: #selector(viewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(viewController, selector: #selector(viewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
 }
 
 extension UIView {
@@ -54,4 +59,29 @@ extension UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
+    
+    func drawBorder(width:CGFloat = 1, color:CGColor = UIColor.black.cgColor){
+        //layer.masksToBounds = false
+        layer.borderWidth = width
+        layer.borderColor = color
+    }
+}
+
+
+extension UIViewController{
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
 }
