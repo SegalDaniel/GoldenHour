@@ -56,8 +56,9 @@ class WallTableViewController: UITableViewController {
             }
         }
         else if segue.identifier == "commentsSegue"{
-            //let vc = segue.destination as! RanksAndComViewController
-            
+            let vc = segue.destination as! RanksAndComViewController
+            vc.navigationController?.setNavigationBarHidden(false, animated: false)
+            vc.navigationController?.navigationBar.isHidden = false
         }
     }
     
@@ -78,13 +79,5 @@ class WallTableViewController: UITableViewController {
                 print("Unhide")
             }, completion: nil)
         }
-    }
-
-    func setLogoTitle(){
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        imageView.contentMode = .scaleAspectFit
-        let image = UIImage(named: "logo")
-        imageView.image = image
-        navigationItem.titleView = imageView
     }
 }

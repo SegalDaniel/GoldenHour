@@ -26,6 +26,8 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         commentsTableView.drawBorder(width: 2)
         Utility.moveWithKeyboard(viewController: self)
         addPostBtn()
+        setLogoTitle()
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         // Do any additional setup after loading the view.
     }

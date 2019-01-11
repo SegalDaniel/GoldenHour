@@ -25,6 +25,7 @@ class FullScreenImageViewController: UIViewController {
             fullScreenImageView.image = image
             print("image arrived \(image!.description)")
         }
+        setLogoTitle()
         toggleHiddenViews()
         Utility.viewTapRecognizer(target: self, toBeTapped: fullScreenImageView, action: #selector(toggleHiddenViews))
         // Do any additional setup after loading the view.
