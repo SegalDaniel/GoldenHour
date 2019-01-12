@@ -8,7 +8,10 @@
 
 import Foundation
 import SQLite
-class ModelSql{
+import Firebase
+import FirebaseCore
+import FirebaseDatabase
+class ModelSql : CacheService{
     
     var dbSql: OpaquePointer? = nil
     init() {
@@ -21,17 +24,32 @@ class ModelSql{
                 return
             }
             
-            CreateTable()
         }
     }
     
-    func CreateTable(){
-        
-        
+
+    func create(name: String, data: String?, onSuccess: ()->Void, onError: ()->Void) {
+        guard let columns = data else { return }
+        var errormsg: UnsafeMutablePointer<Int8>? = nil
+        let statment = String(format: "CREATE TABLE IF NOT EXISTS %@%@", name, columns)
+        let response = sqlite3_exec(dbSql, statment, nil, nil, &errormsg);
+        if (response != 0) {
+            onError(); return
+        }
+        onSuccess()
     }
-    func dropTable(){
-        
+    
+    func delete(name: String, onSuccess: ()->Void, onError: ()->Void) {
+        let statment = String(format: "DROP TABLE %@;", name)
+        var errormsg: UnsafeMutablePointer<Int8>? = nil
+        let response = sqlite3_exec(dbSql, statment, nil, nil, &errormsg);
+        if (response != 0) {
+            onError(); return
+        }
+        onSuccess()
     }
+    
     
     
 }
+
