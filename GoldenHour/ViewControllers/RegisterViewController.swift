@@ -34,6 +34,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        self.view.endEditing(true)
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
             self.permissions?.checkPermissionCamera()
@@ -46,27 +47,29 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func registerPressed(_ sender: Any) {
-        let model = Model.instance
-       
-        model.modelFirebase.registerUser(mail: emailTextField.text!, pass: passwordTextField.text!) { (user ,error)  in
-            if error != nil{
-                let alert = SimpleAlert(_title: "Error", _message: error!.localizedDescription) {() in
-                    print("alert dissmissed, user didn't registered")
+        if usernameTextField.text == "" {
+            let alert = SimpleAlert(_title: "Wait!", _message: "Please Enter an User Name") {}
+            self.present(alert.getAlert(), animated: true, completion: nil)
+        }
+
+        else{
+            let newUser = User(_id: "", _userName: self.usernameTextField.text!, _password: self.passwordTextField.text!, _profileImage: "", _description: "", _email: self.emailTextField.text!, _post: nil)
+            Model.instance.addNewUser(user: newUser, profileImage: self.profileImageView.image, callback: { (error, reference) in
+                if error != nil{
+                    let alert = SimpleAlert(_title: "Error", _message: error!.localizedDescription) {() in
+                        print("alert dissmissed, user didn't registered")
+                    }
+                    self.present(alert.getAlert(), animated: true, completion: nil)
+                    
                 }
-                self.present(alert.getAlert(), animated: true, completion: nil)
-                
-            }else{
-                if model.modelFirebase.checkIfSignIn(){
+                else{
                     let alert = SimpleAlert(_title: "Congratulations!", _message: "you have secessfully registered!"){() in
                         self.performSegue(withIdentifier: "RegisteredSegue", sender: nil)
                     }
                     self.present(alert.getAlert(), animated: true, completion: nil)
                 }
-                else{
-                    self.dismiss(animated: true, completion: nil)
-                }
-                print("user register callback")
-            }
+            })
+            print("user register callback")
         }
     }
     
@@ -77,7 +80,6 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             print("No image found")
             return
         }
-        profileImageView.contentMode = .scaleAspectFill
         profileImageView.image = image
     }
     

@@ -16,12 +16,12 @@ class FullScreenImageViewController: UIViewController {
     @IBOutlet weak var commentsBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     var image:UIImage?
+    var url:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fullScreenImageView.contentMode = .scaleAspectFit
         if image != nil && fullScreenImageView.image != image{
-            fullScreenImageView.contentMode = .scaleAspectFit
             fullScreenImageView.image = image
             print("image arrived \(image!.description)")
         }

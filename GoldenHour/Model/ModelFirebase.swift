@@ -15,6 +15,7 @@ import FirebaseStorage
 class ModelFirebase{
     
     var ref : DatabaseReference!
+    lazy var storageRef = Storage.storage().reference(forURL: "gs://goldenhour-871f0.appspot.com")
     var posts = [Post]()
     init(){
         
@@ -62,7 +63,7 @@ class ModelFirebase{
     
     
     
-    func getUserInfo(userId:String, callback:@escaping ([User])->Void){
+    func getAllUserInfo(userId:String, callback:@escaping ([User])->Void){
         ref.child("users").observe(.value, with:
             {
                 (snapshot) in
@@ -75,11 +76,24 @@ class ModelFirebase{
         })
     }
     
+    func getUserInfo(userId:String, callback:@escaping (User)->Void){
+        ref.child("users").child(userId).observe(.value, with:
+            {
+                (snapshot) in
+                //var data = [User]()
+                let value = snapshot.value as! [String : Any]
+                //for(_, json) in value {
+                let user = User(json: value)
+                //}
+                callback(user)
+        })
+    }
     
-    
-    func addNewUser(user : User){
-        ref.child("users").child(user.id).setValue(user.toJson())
-        print("")
+    func addNewUser(user : User, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("users").child(user.id).setValue(user.toJson()){ (error, reference) in
+            print(reference.debugDescription)
+            callback(error, reference)
+        }
     }
     
     
@@ -107,10 +121,45 @@ class ModelFirebase{
         })
     }
     
+    func saveImage(image:UIImage, name:String ,callback:@escaping (String?)->Void){
+        let data = image.jpegData(compressionQuality: 0.8)
+        let imageRef = storageRef.child("post_images").child(name)
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        imageRef.putData(data!, metadata: metadata) { (metadata, error) in
+            imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+                print("url: \(downloadURL.absoluteString)")
+                callback(downloadURL.absoluteString)
+            }
+        }
+    }
     
+    func saveProfileImage(image:UIImage, name:String ,callback:@escaping (String?)->Void){
+        let data = image.jpegData(compressionQuality: 0.8)
+        let imageRef = storageRef.child("profile_images").child(name)
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        imageRef.putData(data!, metadata: metadata) { (metadata, error) in
+            imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+                print("url: \(downloadURL.absoluteString)")
+                callback(downloadURL.absoluteString)
+            }
+        }
+    }
     
-    lazy var storageRef = Storage.storage().reference(forURL: "gs://goldenhour-871f0.appspot.com")
-    
+    /*
     func saveImage(image : UIImage , name : (String),child : String,text : String,callback : @escaping(String?)->Void)->String{
         let data = image.jpegData(compressionQuality: 0.8)
         let imageRef = storageRef.child(child).child(name)
@@ -143,7 +192,7 @@ class ModelFirebase{
         
         return the_url
     }
-    
+    */
     
     func getImage(url : String , callback :@escaping (UIImage?)->Void){
         let ref = Storage.storage().reference(forURL: url)

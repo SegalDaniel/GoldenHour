@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Foundation
+import FirebaseDatabase
 class ModelNotification{
     
     static let usersListNotification = MyNotification<[User]>("app.GoldenHour.userList")
@@ -71,11 +72,40 @@ class Model {
         //return User.getAll(database: modelSql!.database);
     }
     
-   
+    func checkIfSignIn() -> Bool {
+        return modelFirebase.checkIfSignIn()
+    }
     
-    func addNewUser(user : User){
-        modelFirebase.addNewUser(user: user)
-        //User.addNew(database: modelSql!.database, student: student)
+    func addNewUser(user : User, profileImage:UIImage?, callback:@escaping (Error?, DatabaseReference?)->Void){
+        modelFirebase.registerUser(mail: user.email, pass: user.password) { (result ,error)  in
+            if error != nil{
+                callback(error!, nil)
+                return
+            }
+            else{
+                user.id = self.modelFirebase.getUserId()
+                if let img = profileImage{
+                    self.modelFirebase.saveProfileImage(image: img, name: user.id, callback: { (imageURL) in
+                        user.profileImage = imageURL
+                        self.modelFirebase.addNewUser(user: user, callback: { (error, reference) in
+                            print("error: \(error?.localizedDescription ?? "no error") reference: \(reference)")
+                            callback(error, reference)
+                            return
+                        })
+                    })
+                }
+                else{
+                    self.modelFirebase.addNewUser(user: user, callback: { (error, reference) in
+                        print("error: \(error?.localizedDescription ?? "no error") reference: \(reference)")
+                        callback(error, reference)
+                        return
+                    })
+                }
+            }
+            //STILL NEED TO IMPLEMENT SQL SAVING
+            //User.addNew(database: modelSql!.database, student: student)
+            //callback(err, ref)
+        }
     }
     
     

@@ -68,6 +68,16 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
             editProfileBtn.isHidden = true
         }
         else{
+            /******************************************Getting user from FB**************************************************/
+            let fb = Model.instance.modelFirebase
+            fb.getUserInfo(userId: fb.getUserId()) { (user) in
+                self.user = user
+                fb.getImage(url: self.user?.profileImage ?? "", callback: { (image) in
+                    self.profileImageView.image = image
+                })
+                self.userNameLabel.text = self.user?.userName
+            }
+             /******************************************Getting user from FB**************************************************/
             logoutBtn.isHidden = false
             editProfileBtn.isHidden = false
         }
@@ -80,6 +90,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
      //fullScreenImageSegue , logoutSegue
         if segue.identifier == "fullScreenImageSegue"{
             let vc = segue.destination as! FullScreenImageViewController
+            vc.hidesBottomBarWhenPushed = true
             vc.image = sender as? UIImage
         }
         else if segue.identifier == "logoutSegue"{

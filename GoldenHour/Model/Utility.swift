@@ -17,6 +17,7 @@ class Utility{
         imageView.layer.borderColor = UIColor.black.cgColor
         imageView.layer.cornerRadius = imageView.frame.height/2
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
     }
     
     static func viewTapRecognizer(target:Any, toBeTapped:UIView, action:Selector){

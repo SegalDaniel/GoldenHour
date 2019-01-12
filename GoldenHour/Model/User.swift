@@ -8,51 +8,47 @@
 import UIKit
 import Foundation
 class User{
-    let id:String
-    let name:String
+    var id:String
+    //let name:String
     let userName : String
     let password : String
-    var profileImage:UIImage?
+    var profileImage:String?
     let description:String
-    let url:String
+    let email:String
     var post:[Post]?
     //gear
     
-    init(_id:String, _name:String, _userName:String, _password:String, _profileImage:UIImage?, _description:String, _url:String, _post:[Post]?){
+    init(_id:String, /*_name:String,*/ _userName:String, _password:String, _profileImage:String?, _description:String, _email:String, _post:[Post]?){
         self.id=_id
-        self.name=_name
+        //self.name=_name
         self.userName=_userName
         self.password=_password
         self.profileImage=_profileImage
         self.description=_description
-        self.url=_url
+        self.email=_email
         self.post=_post
     }
     
     init(json:[String:Any]) {
         id = json["id"] as! String
-        name = json["name"] as! String
+        //name = json["name"] as! String
         userName = json["userName"] as! String
         password = json["password"] as! String
         description = json["description"] as! String
-        profileImage = json["profileImage"] as? UIImage
-        if json["url"] != nil{
-            url = json["url"] as! String
-        }else{
-            url = ""
-        }
+        profileImage = json["profileImage"] as? String
+        email = json["email"] as! String
         post = json["posts"] as? [Post]
     }
     
     func toJson() -> [String:Any] {
         var json = [String:Any]()
         json["id"] = id
-        json["name"] = name
+        //json["name"] = name
         json["userName"] = userName
         json["password"] = password
         json["profileImage"] = profileImage
         json["description"] = description
-        json["url"] = url
+        json["email"] = email
         json["posts"] = post
         return json
     }

@@ -165,9 +165,9 @@
                                     <constraint firstAttribute="width" secondItem="CpF-3Y-F3O" secondAttribute="height" multiplier="683:678" id="Eep-AU-skT"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Enywhere To Select Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3L-ga-E9N">
-                                <rect key="frame" x="0.0" y="422" width="375" height="31.5"/>
-                                <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Anywhere To Select An Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3L-ga-E9N">
+                                <rect key="frame" x="0.0" y="422" width="375" height="29"/>
+                                <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="23"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -358,7 +358,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="c6U-7C-HEV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="102"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -444,7 +444,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="qKx-oK-Z4d">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="qKx-oK-Z4d">
                                 <rect key="frame" x="20" y="179" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="B4w-OY-Mtn"/>
@@ -1077,6 +1077,7 @@
                         <outlet property="ssBtn" destination="Ld2-U0-NxM" id="MKb-M9-cl1"/>
                         <outlet property="ssLabel" destination="VIH-Th-Km5" id="JJm-OA-3OU"/>
                         <segue destination="d2Y-C0-dJI" kind="presentation" identifier="picker" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="wGK-C8-rhg"/>
+                        <segue destination="bQ2-Sc-DK7" kind="show" identifier="fullScreenSegue" id="c4c-E8-Ipx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dan-VS-qgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1098,7 +1099,6 @@
         <image name="msg_icon_pressed" width="100" height="100"/>
         <image name="place_icon" width="75" height="75"/>
         <image name="profile_icon" width="52" height="53"/>
-        <image name="profile_placeholder" width="75" height="75"/>
         <image name="register_btn" width="457" height="148"/>
         <image name="register_pressed" width="457" height="148"/>
         <image name="search_icon" width="53" height="53"/>
@@ -1110,7 +1110,7 @@
         <image name="wall_icon" width="56" height="51"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P7S-HF-ORT"/>
+        <segue reference="c4c-E8-Ipx"/>
         <segue reference="2Fu-is-grV"/>
         <segue reference="yHa-z4-s7M"/>
     </inferredMetricsTieBreakers>

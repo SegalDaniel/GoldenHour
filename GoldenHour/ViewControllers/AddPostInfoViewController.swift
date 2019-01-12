@@ -85,6 +85,15 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     }
     
     @IBAction func uploadBtnPressed(_ sender: Any) {
+        if userImage != nil{
+            Model.instance.modelFirebase.saveImage(image: userImage!, name: "test") { (url) in
+                print("callback from upload image")
+                let alert = SimpleAlert(_title: "WooHoo", _message: "Image uploaded seccfully", dissmissCallback: {
+                    self.performSegue(withIdentifier: "fullScreenSegue", sender: url)
+                })
+                self.present(alert.getAlert(), animated: true, completion: nil)
+            }
+        }
     }
     
     
@@ -102,6 +111,11 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             vc.delegate = self
             vc.sentWith = sender as? UIButton
             vc.data = pickerData
+        }
+        else if segue.identifier == "fullScreenSegue"{
+            let vc = segue.destination as! FullScreenImageViewController
+            vc.hidesBottomBarWhenPushed = true
+            vc.url = sender as? String
         }
     }
     
