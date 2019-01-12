@@ -20,6 +20,8 @@
 		18393D0421E7BB310031384B /* AddPostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0321E7BB310031384B /* AddPostInfoViewController.swift */; };
 		18393D0B21E7D0F60031384B /* MyPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */; };
 		18393D0D21E8FD9B0031384B /* RanksAndComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */; };
+		184DF82521E9E2FF00118DE0 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF82421E9E2FF00118DE0 /* MyProfileViewController.swift */; };
+		184DF82721E9E42C00118DE0 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF82621E9E42C00118DE0 /* PostCollectionViewCell.swift */; };
 		1855CD7A21E63EB50055FA4A /* pfennigbolditalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7621E63EB50055FA4A /* pfennigbolditalic-webfont.ttf */; };
 		1855CD7B21E63EB50055FA4A /* pfennigitalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7721E63EB50055FA4A /* pfennigitalic-webfont.ttf */; };
 		1855CD7C21E63EB50055FA4A /* pfennig-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */; };
@@ -62,6 +64,8 @@
 		18393D0521E7BDCF0031384B /* GoldenHour.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoldenHour.entitlements; sourceTree = "<group>"; };
 		18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerDelegate.swift; sourceTree = "<group>"; };
 		18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksAndComViewController.swift; sourceTree = "<group>"; };
+		184DF82421E9E2FF00118DE0 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		184DF82621E9E42C00118DE0 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		1855CD7621E63EB50055FA4A /* pfennigbolditalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennigbolditalic-webfont.ttf"; sourceTree = "<group>"; };
 		1855CD7721E63EB50055FA4A /* pfennigitalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennigitalic-webfont.ttf"; sourceTree = "<group>"; };
 		1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennig-webfont.ttf"; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				181DB11121E5E42200E01FDA /* PickerViewController.swift */,
 				18393D0321E7BB310031384B /* AddPostInfoViewController.swift */,
 				18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */,
+				184DF82421E9E2FF00118DE0 /* MyProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				18CE848E21E3AA0800B9BA55 /* SimpleAlert.swift */,
 				18EC36FF21E5020700709CFF /* WallTableViewCell.swift */,
 				18EC370121E509CC00709CFF /* CommentsTableViewCell.swift */,
+				184DF82621E9E42C00118DE0 /* PostCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184DF82521E9E2FF00118DE0 /* MyProfileViewController.swift in Sources */,
 				18393D0B21E7D0F60031384B /* MyPickerDelegate.swift in Sources */,
 				18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */,
 				18393D0421E7BB310031384B /* AddPostInfoViewController.swift in Sources */,
@@ -385,6 +392,7 @@
 				A824166121DD204900131C0E /* User.swift in Sources */,
 				A8D84D3521E222A600A245A1 /* ModelSql.swift in Sources */,
 				A824166421DD4C4500131C0E /* Post.swift in Sources */,
+				184DF82721E9E42C00118DE0 /* PostCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

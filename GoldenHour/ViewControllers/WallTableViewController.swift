@@ -33,8 +33,10 @@ class WallTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "wallCell", for: indexPath) as! WallTableViewCell
         // Configure the cell...
+        Utility.viewTapRecognizer(target: self, toBeTapped: cell.profileImageView, action: #selector(self.showPostOwnerUser))
+        Utility.viewTapRecognizer(target: self, toBeTapped: cell.imageByLabel, action: #selector(self.showPostOwnerUser))
+        Utility.viewTapRecognizer(target: self, toBeTapped: cell.ranksLabel, action: #selector(self.showRanksAndComments))
         
-
         return cell
     }
     
@@ -56,10 +58,23 @@ class WallTableViewController: UITableViewController {
             }
         }
         else if segue.identifier == "commentsSegue"{
-            let vc = segue.destination as! RanksAndComViewController
-            vc.navigationController?.setNavigationBarHidden(false, animated: false)
-            vc.navigationController?.navigationBar.isHidden = false
+//            let vc = segue.destination as! RanksAndComViewController
+//            vc.navigationController?.setNavigationBarHidden(false, animated: false)
+//            vc.navigationController?.navigationBar.isHidden = false
         }
+        else if segue.identifier == "showPhotographer"{
+            let vc = segue.destination as! MyProfileViewController
+            //vc.user = enter the post owner user
+            vc.showBtns = false
+        }
+    }
+    
+    @objc func showPostOwnerUser(){
+        self.performSegue(withIdentifier: "showPhotographer", sender: nil)
+    }
+    
+    @objc func showRanksAndComments(){
+        self.performSegue(withIdentifier: "commentsSegue", sender: nil)
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

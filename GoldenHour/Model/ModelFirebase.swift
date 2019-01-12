@@ -208,13 +208,13 @@ class ModelFirebase{
     }
     
     
-    func sign_Out() -> Bool{
+    func sign_Out() -> (Bool, Error?){
         do{
             try Auth.auth().signOut()
-            return true
+            return (true, nil)
         }catch let error{
             print(error.localizedDescription)
-            return false
+            return (false, error)
         }
     }
     
