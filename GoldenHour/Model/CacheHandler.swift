@@ -14,4 +14,7 @@ class CacheHandler{
 
 protocol CacheService {
     func create(name: String, data: String?, onSuccess: ()->Void, onError: ()->Void)
+    func delete(name: String, onSuccess: ()->Void, onError: ()->Void)
+//    func get(name: String, onSuccess: (Array<[String]>)->Void, onError: ()->Void)
+//    func save(name: String, dataToSave: [String], onSuccess: ()->Void, onError: ()->Void)
 }

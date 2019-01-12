@@ -52,4 +52,23 @@ class User{
         json["posts"] = post
         return json
     }
+    
+    
+    
+    func createTable()  {
+        CacheHandler.cache.create(name: "USERS", data: "(USER_ID TEXT PRIMARY KEY, USER_NAME TEXT, EMAIL TEXT, PROFILE_IMG_URL TEXT)",
+                                  onSuccess: {
+                                    print("Success - createTable")
+        }, onError: {
+            print("Error - createTable")
+        })
+    }
+    
+    func dropTable() {
+        CacheHandler.cache.delete(name: "USERS", onSuccess: {
+            print("Success - dropTable")
+        }, onError: {
+            print("Error - dropTable")
+        })
+    }
 }
