@@ -76,6 +76,25 @@ class ModelSql : CacheService{
         return String(questionMarks.dropLast())
     }
     
+    func get(name: String, onSuccess: (Array<[String]>)->Void, onError: ()->Void) {
+        var dataToRetrieve = Array<[String]>()
+        var sqlite3_stmt: OpaquePointer? = nil
+        let statment = String(format: "SELECT * from %@;", name)
+        if (sqlite3_prepare_v2(dbSql, statment, -1, &sqlite3_stmt, nil) == SQLITE_OK) {
+            let numOfColumn = sqlite3_column_count(sqlite3_stmt)
+            while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
+                var data = [String]()
+                for index in 0..<numOfColumn {
+                    data.append(String(cString:sqlite3_column_text(sqlite3_stmt,index)!))
+                }
+                dataToRetrieve.append(data)
+            }
+            onSuccess(dataToRetrieve)
+        }
+        else { onError() }
+        sqlite3_finalize(sqlite3_stmt)
+    }
+    
     
     
 }
