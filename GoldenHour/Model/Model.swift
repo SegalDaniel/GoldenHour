@@ -86,7 +86,7 @@ class Model {
                 user.id = self.modelFirebase.getUserId()
                 if let img = profileImage{
                     self.modelFirebase.saveProfileImage(image: img, name: user.id, callback: { (imageURL) in
-                        user.profileImage = imageURL
+                        user.profileImage = imageURL!
                         self.modelFirebase.addNewUser(user: user, callback: { (error, reference) in
                             print("error: \(error?.localizedDescription ?? "no error") reference: \(reference)")
                             callback(error, reference)

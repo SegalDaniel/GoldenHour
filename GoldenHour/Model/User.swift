@@ -12,13 +12,13 @@ class User{
     //let name:String
     let userName : String
     let password : String
-    var profileImage:String?
+    var profileImage:String
     let description:String
     let email:String
     var post:[Post]?
     //gear
     
-    init(_id:String, /*_name:String,*/ _userName:String, _password:String, _profileImage:String?, _description:String, _email:String, _post:[Post]?){
+    init(_id:String, /*_name:String,*/ _userName:String, _password:String, _profileImage:String, _description:String, _email:String, _post:[Post]?){
         self.id=_id
         //self.name=_name
         self.userName=_userName
@@ -35,7 +35,7 @@ class User{
         userName = json["userName"] as! String
         password = json["password"] as! String
         description = json["description"] as! String
-        profileImage = json["profileImage"] as? String
+        profileImage = json["profileImage"] as! String
         email = json["email"] as! String
         post = json["posts"] as? [Post]
     }
@@ -71,4 +71,20 @@ class User{
             print("Error - dropTable")
         })
     }
+    
+    func saveCache(users: [User]) {
+        for user in users {
+            var userAsString = [String]()
+            userAsString.append(user.id)
+            userAsString.append(user.userName)
+            userAsString.append(user.email)
+            userAsString.append(user.description)
+            userAsString.append(user.profileImage)
+            CacheHandler.cache.save(name: "USERS", dataToSave: userAsString, onSuccess: {
+                print("User saved locally")
+            }, onError: {
+                print("Faild to save post locally")
+            })
+        }
+}
 }
