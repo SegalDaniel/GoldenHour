@@ -160,39 +160,39 @@ class ModelFirebase{
     }
     
     /*
-    func saveImage(image : UIImage , name : (String),child : String,text : String,callback : @escaping(String?)->Void)->String{
-        let data = image.jpegData(compressionQuality: 0.8)
-        let imageRef = storageRef.child(child).child(name)
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpeg"
-        var the_url = ""
-        imageRef.putData(data!, metadata: metaData) { (metadata, error) in
-            imageRef.downloadURL(completion: { (url, error) in
-                guard let downloadURL = url else {
-                    
-                    print("error imageUrl")
-                    SVProgressHUD.showError(withStatus: error?.localizedDescription)
-                    return
-                }
-                print("url:\(downloadURL)")
-                callback(downloadURL.absoluteString)
-                the_url = downloadURL.absoluteString
-                if child == "profileImage"{
-                    self.sendDataToDataBase(imageUrl: the_url)
-                }
-                if child == "posts"{
-                    
-                    //                    self.sendPostToDb(imageUrl: the_url,other prop)
-                }
-                
-                
-            })
-            
-        }
-        
-        return the_url
-    }
-    */
+     func saveImage(image : UIImage , name : (String),child : String,text : String,callback : @escaping(String?)->Void)->String{
+     let data = image.jpegData(compressionQuality: 0.8)
+     let imageRef = storageRef.child(child).child(name)
+     let metaData = StorageMetadata()
+     metaData.contentType = "image/jpeg"
+     var the_url = ""
+     imageRef.putData(data!, metadata: metaData) { (metadata, error) in
+     imageRef.downloadURL(completion: { (url, error) in
+     guard let downloadURL = url else {
+     
+     print("error imageUrl")
+     SVProgressHUD.showError(withStatus: error?.localizedDescription)
+     return
+     }
+     print("url:\(downloadURL)")
+     callback(downloadURL.absoluteString)
+     the_url = downloadURL.absoluteString
+     if child == "profileImage"{
+     self.sendDataToDataBase(imageUrl: the_url)
+     }
+     if child == "posts"{
+     
+     //                    self.sendPostToDb(imageUrl: the_url,other prop)
+     }
+     
+     
+     })
+     
+     }
+     
+     return the_url
+     }
+     */
     
     func getImage(url : String , callback :@escaping (UIImage?)->Void){
         let ref = Storage.storage().reference(forURL: url)
@@ -268,20 +268,6 @@ class ModelFirebase{
     }
     
     
-//    func loadPost(table_view: UITableView) {
-//
-//        ref.child("posts").observe(.childAdded) { (snapshot) in
-//            if let dictionary = snapshot.value as? [String : Any]{
-//                var post = Post.transformPostPhoto(dictionary: dictionary)
-//                //let post = Post.transformPostPhoto(dictionary: dictionary)
-//                //post.transformPost(dictionary: dictionary)
-//
-//                self.posts.append(post)
-//                table_view.reloadData()
-//
-//            }
-//        }
-//    }
 }
 
 

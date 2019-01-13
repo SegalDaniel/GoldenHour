@@ -108,6 +108,8 @@ class Model {
         }
     }
     
+    ////////////////////////////////////////////////////////////////USER TABLE////////////////////////////////////////////////////////////////
+    
     func createUsersTable()  {
         CacheHandler.cache.create(name: "USERS", data: "(USER_ID TEXT PRIMARY KEY, USER_NAME TEXT, EMAIL TEXT, PROFILE_IMG_URL TEXT)",
                                   onSuccess: {
@@ -117,7 +119,7 @@ class Model {
         })
     }
     
-    func dropTable() {
+    func dropUsersTable() {
         CacheHandler.cache.delete(name: "USERS", onSuccess: {
             print("Success - dropTable")
         }, onError: {
@@ -125,7 +127,7 @@ class Model {
         })
     }
     
-    func saveCache(users: [User]) {
+    func saveUsersCache(users: [User]) {
         for user in users {
             var userAsString = [String]()
             userAsString.append(user.id)
@@ -142,13 +144,35 @@ class Model {
     }
     
     
-//    func saveImage(image : UIImage, name:(String),child:(String),text:(String),callback:@escaping (String?)->Void){
-//        modelFirebase.saveImage(image: image, name: name,child: child,text: text, callback: callback)
-//    }
-//    
-//    func getImage(url:String, callback:@escaping (UIImage?)->Void){
-//        modelFirebase.getImage(url: url, callback: callback)
-//    }
+      ////////////////////////////////////////////////////////////////POST TABLE////////////////////////////////////////////////////////////////
+    
+    func createPostTable(completion: ((Bool)->Void)? = nil)   {
+        let tableName   = "POSTS"
+        let tableColumn = "(POST_ID TEXT PRIMARY KEY, USER_ID TEXT, PHOTO_URL TEXT, TITLE TEXT, DATE INTEGER)"
+        CacheHandler.cache.create(name: tableName, data: tableColumn, onSuccess: {
+            completion?(true)
+        }, onError: {
+            completion?(false)
+        })
+    }
+    
+    func dropPostTable(completion: ((Bool)->Void)? = nil)  {
+        let tableName = "POSTS"
+        CacheHandler.cache.delete(name: tableName, onSuccess: {
+            completion?(true)
+        }, onError: {
+            completion?(false)
+        })
+    }
+    
+    
+    //    func saveImage(image : UIImage, name:(String),child:(String),text:(String),callback:@escaping (String?)->Void){
+    //        modelFirebase.saveImage(image: image, name: name,child: child,text: text, callback: callback)
+    //    }
+    //
+    //    func getImage(url:String, callback:@escaping (UIImage?)->Void){
+    //        modelFirebase.getImage(url: url, callback: callback)
+    //    }
     
 }
 
