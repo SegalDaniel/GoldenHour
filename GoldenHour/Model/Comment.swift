@@ -10,18 +10,24 @@ import UIKit
 import Foundation
 
 class Comment {
+    let commentId:String
+    let userId:String
     let comment:String
     let userName:String
     let date :String
     
     
-    init(_comment:String,_userName:String){
+    init(_commentId:String, _userId:String, _comment:String,_userName:String){
+        commentId = _commentId
+        userId = _userId
         comment = _comment
         userName = _userName
         date = DateFormatter.sharedFormatter.string(from: Date())
     }
     
     init(json:[String:Any]) {
+        commentId = json["commentId"] as! String
+        userId = json["userId"] as! String
         comment = json["comment"] as! String
         userName = json["userName"] as! String
         date = DateFormatter.sharedFormatter.string(from: Date())
@@ -31,6 +37,8 @@ class Comment {
     
     func toJson() -> [String:Any] {
         var json = [String:Any]()
+        json["commentId"] = commentId
+        json["userId"] = userId
         json["comment"] = comment
         json["userName"] = userName
         json["date"] = date

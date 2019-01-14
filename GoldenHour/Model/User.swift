@@ -53,7 +53,4 @@ class User{
         return json
     }
     
-    
-    
-    
 }

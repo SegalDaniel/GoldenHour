@@ -39,6 +39,8 @@
 		9DF3D323B19DBD44E6EB2F0E /* Pods_GoldenHour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169D2262327799BD2CDAA4FF /* Pods_GoldenHour.framework */; };
 		A821CF8921EA987900308AA3 /* CacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A821CF8821EA987900308AA3 /* CacheHandler.swift */; };
 		A821CF8B21EA9DF800308AA3 /* CacheFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A821CF8A21EA9DF800308AA3 /* CacheFactory.swift */; };
+		A821CF8D21ECCA5B00308AA3 /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A821CF8C21ECCA5B00308AA3 /* UserCache.swift */; };
+		A821CF8F21ECCAB100308AA3 /* PostCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A821CF8E21ECCAB100308AA3 /* PostCache.swift */; };
 		A824166121DD204900131C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166021DD204900131C0E /* User.swift */; };
 		A824166421DD4C4500131C0E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166321DD4C4500131C0E /* Post.swift */; };
 		A824166621DD4DF700131C0E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A824166521DD4DF700131C0E /* Comment.swift */; };
@@ -85,6 +87,8 @@
 		3E7687D45DF2DE52D2CA8B77 /* Pods-GoldenHour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenHour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenHour/Pods-GoldenHour.debug.xcconfig"; sourceTree = "<group>"; };
 		A821CF8821EA987900308AA3 /* CacheHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheHandler.swift; sourceTree = "<group>"; };
 		A821CF8A21EA9DF800308AA3 /* CacheFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFactory.swift; sourceTree = "<group>"; };
+		A821CF8C21ECCA5B00308AA3 /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
+		A821CF8E21ECCAB100308AA3 /* PostCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCache.swift; sourceTree = "<group>"; };
 		A824166021DD204900131C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A824166321DD4C4500131C0E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A824166521DD4DF700131C0E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				A8D84D3421E222A600A245A1 /* ModelSql.swift */,
 				A821CF8821EA987900308AA3 /* CacheHandler.swift */,
 				A821CF8A21EA9DF800308AA3 /* CacheFactory.swift */,
+				A821CF8C21ECCA5B00308AA3 /* UserCache.swift */,
+				A821CF8E21ECCAB100308AA3 /* PostCache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -387,10 +393,12 @@
 				18393D0D21E8FD9B0031384B /* RanksAndComViewController.swift in Sources */,
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				18CE849321E3C37E00B9BA55 /* PhotosStaticData.swift in Sources */,
+				A821CF8F21ECCAB100308AA3 /* PostCache.swift in Sources */,
 				1818B1EA21E0EB0B006E1B39 /* LoginViewController.swift in Sources */,
 				A821CF8B21EA9DF800308AA3 /* CacheFactory.swift in Sources */,
 				18EC370421E51D1400709CFF /* FullScreenImageViewController.swift in Sources */,
 				18CE849121E3C22F00B9BA55 /* Permissions.swift in Sources */,
+				A821CF8D21ECCA5B00308AA3 /* UserCache.swift in Sources */,
 				18CE848C21E39EA300B9BA55 /* Model.swift in Sources */,
 				18EC370021E5020700709CFF /* WallTableViewCell.swift in Sources */,
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,

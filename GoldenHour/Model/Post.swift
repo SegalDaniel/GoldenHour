@@ -11,17 +11,18 @@ import Foundation
 class Post {
     let userId:String
     let postId:String
+    let rankId:String
     let title:String
     let imageUrl:String
     let rank:[User]?
     let date:String
     var comments:[Comment]?
-    var metaData:[Metadata]?
+    var metaData:[Metadata]?//remove
     
-    
-    init(_userId:String, _postId:String, _title:String,_imageUrl:String){
+    init(_userId:String, _postId:String, _rankId:String, _title:String,_imageUrl:String){
         userId = _userId
         postId = _postId
+        rankId = _rankId
         title = _title
         imageUrl = _imageUrl
         rank = nil
@@ -33,6 +34,7 @@ class Post {
     init(json:[String:Any]) {
         userId = json["userId"] as! String
         postId = json["postId"] as! String
+        rankId = json["rankId"] as! String
         title = json["title"] as! String
         imageUrl = json["imageUrl"] as! String
         rank = json["rank"] as! [User]?
@@ -46,6 +48,7 @@ class Post {
         var json = [String:Any]()
         json["userId"] = userId
         json["postId"] = postId
+        json["rankId"] = rankId
         json["title"] = title
         json["imageUrl"] = imageUrl
         json["rank"] = rank
