@@ -53,7 +53,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         }
 
         else{
-            let newUser = User(_id: "", _userName: self.usernameTextField.text!, _password: self.passwordTextField.text!, _profileImage: "", _description: "", _email: self.emailTextField.text!, _post: nil)
+            let newUser = User(_id: "", _userName: self.usernameTextField.text!, _password: self.passwordTextField.text!, _profileImage: "", _description: "", _email: self.emailTextField.text!, _post: [""])
             Model.instance.addNewUser(user: newUser, profileImage: self.profileImageView.image, callback: { (error, reference) in
                 if error != nil{
                     let alert = SimpleAlert(_title: "Error", _message: error!.localizedDescription) {() in

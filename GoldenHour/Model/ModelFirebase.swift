@@ -95,9 +95,7 @@ class ModelFirebase{
             callback(error, reference)
         }
     }
-    
-    
-    
+
     func addNewUser(email : String , password : String , userName : String , url : String){
         let id = getUserId()
         ref.child("users").child(id).setValue(["email":email , "password":password , "userName":userName , "url" : url])
@@ -119,6 +117,20 @@ class ModelFirebase{
         getUserInfo(userId: byId, callback: { (data) in
             print(data)
         })
+    }
+    
+    func addNewPost(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("posts").child(post.postId).setValue(post.toJson()){ (error, reference) in
+            print(reference.debugDescription)
+            callback(error, reference)
+        }
+    }
+    
+    func addPostUrlToUser(userID:String, postID:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("users").child(userID).child("posts").child("\(Model.connectedUser!.post.count+1)").setValue(postID){ (error, reference) in
+            print(reference.debugDescription)
+            callback(error, reference)
+        }
     }
     
     func saveImage(image:UIImage, name:String ,callback:@escaping (String?)->Void){

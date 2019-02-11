@@ -15,10 +15,10 @@ class User{
     var profileImage:String
     let description:String
     let email:String
-    var post:[Post]?
+    var post:[String] = []
     //gear
     
-    init(_id:String, /*_name:String,*/ _userName:String, _password:String, _profileImage:String, _description:String, _email:String, _post:[Post]?){
+    init(_id:String, /*_name:String,*/ _userName:String, _password:String, _profileImage:String, _description:String, _email:String, _post:[String]){
         self.id=_id
         //self.name=_name
         self.userName=_userName
@@ -37,8 +37,20 @@ class User{
         description = json["description"] as! String
         profileImage = json["profileImage"] as! String
         email = json["email"] as! String
-        post = json["posts"] as? [Post]
+        let posts = json["posts"] as! NSMutableArray
+        posts.forEach { (value) in
+            let p = value as? String
+            if p != nil{
+                post.append(value as! String)
+            }
+            
+        }
+//        let posts:[String] = json["posts"] as! [String]
+//        posts.forEach { (value) in
+//            post.append(value)
+//        }
     }
+
     
     func toJson() -> [String:Any] {
         var json = [String:Any]()

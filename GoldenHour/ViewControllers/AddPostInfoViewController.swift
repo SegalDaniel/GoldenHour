@@ -86,13 +86,21 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     
     @IBAction func uploadBtnPressed(_ sender: Any) {
         if userImage != nil{
-            Model.instance.modelFirebase.saveImage(image: userImage!, name: "test") { (url) in
-                print("callback from upload image")
-                let alert = SimpleAlert(_title: "WooHoo", _message: "Image uploaded seccfully", dissmissCallback: {
-                    self.performSegue(withIdentifier: "fullScreenSegue", sender: url)
-                })
-                self.present(alert.getAlert(), animated: true, completion: nil)
+            let postID = "\(Model.connectedUser!.id)\(Model.connectedUser!.post.count + 1)"
+            let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil)
+            Model.instance.savePostImage(image: userImage!, name: descritionTextField.text!) { (url) in
+                post.imageUrl = url
+                Model.instance.addNewPost(post: post) { (error, ref) in
+                    print("new post at \(ref)")
+                }
             }
+//            Model.instance.modelFirebase.saveImage(image: userImage!, name: "test") { (url) in
+//                print("callback from upload image")
+//                let alert = SimpleAlert(_title: "WooHoo", _message: "Image uploaded seccfully", dissmissCallback: {
+//                    self.performSegue(withIdentifier: "fullScreenSegue", sender: url)
+//                })
+//                self.present(alert.getAlert(), animated: true, completion: nil)
+//            }
         }
     }
     

@@ -11,18 +11,18 @@ import Foundation
 class Post {
     let userId:String
     let postId:String
-    let rankId:String
+    //let rankId:String
     let title:String
-    let imageUrl:String
+    var imageUrl:String?
     let rank:[User]?
     let date:String
     var comments:[Comment]?
     var metaData:[Metadata]?//remove
     
-    init(_userId:String, _postId:String, _rankId:String, _title:String,_imageUrl:String){
+    init(_userId:String, _postId:String, /*_rankId:String,*/ _title:String,_imageUrl:String?){
         userId = _userId
         postId = _postId
-        rankId = _rankId
+        //rankId = _rankId
         title = _title
         imageUrl = _imageUrl
         rank = nil
@@ -34,9 +34,9 @@ class Post {
     init(json:[String:Any]) {
         userId = json["userId"] as! String
         postId = json["postId"] as! String
-        rankId = json["rankId"] as! String
+        //rankId = json["rankId"] as! String
         title = json["title"] as! String
-        imageUrl = json["imageUrl"] as! String
+        imageUrl = json["imageUrl"] as! String?
         rank = json["rank"] as! [User]?
         date = json["date"] as! String
         comments = nil
@@ -48,7 +48,7 @@ class Post {
         var json = [String:Any]()
         json["userId"] = userId
         json["postId"] = postId
-        json["rankId"] = rankId
+        //json["rankId"] = rankId
         json["title"] = title
         json["imageUrl"] = imageUrl
         json["rank"] = rank

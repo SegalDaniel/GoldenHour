@@ -32,7 +32,7 @@ extension Model{
             var postAsString = [String]()
             postAsString.append(post.postId)
             postAsString.append(post.userId)
-            postAsString.append(post.imageUrl)
+            postAsString.append(post.imageUrl!)
             postAsString.append(post.date)
             //
             CacheHandler.cache.save(name: "POSTS", dataToSave: postAsString, onSuccess: {

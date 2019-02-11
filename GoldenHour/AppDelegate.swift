@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -55,6 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
+           
+            Model.instance.getUserInfo(userId: Model.instance.modelFirebase.getUserId()){ (user) in
+                Model.connectedUser = user
+            }
         }
     }
 

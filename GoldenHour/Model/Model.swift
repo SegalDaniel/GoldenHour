@@ -49,7 +49,7 @@ class ModelNotification{
 
 class Model {
     static let instance:Model = Model()
-    
+    static var connectedUser:User?
     
     var modelSql = ModelSql();
     var modelFirebase = ModelFirebase();
@@ -64,8 +64,6 @@ class Model {
             ModelNotification.usersListNotification.notify(data: data)
         })
     }
-    
-    
     
     func getAllUsers(callback:@escaping ([User])->Void){
         modelFirebase.getAllUsers(callback: callback);
@@ -106,11 +104,23 @@ class Model {
         }
     }
     
+    func addNewPost(post:Post, callback: @escaping (Error?, DatabaseReference) -> Void){
+        modelFirebase.addNewPost(post: post) { (error, ref) in
+            self.modelFirebase.addPostUrlToUser(userID: Model.connectedUser!.id, postID: post.postId, callback: callback)
+        }
+    }
     
+    func getUserInfo(userId:String, callback:@escaping (User)->Void){
+        modelFirebase.getUserInfo(userId: userId, callback: callback)
+    }
     
-    //    func saveImage(image : UIImage, name:(String),child:(String),text:(String),callback:@escaping (String?)->Void){
-    //        modelFirebase.saveImage(image: image, name: name,child: child,text: text, callback: callback)
-    //    }
+    func getUserID() -> String{
+        return modelFirebase.getUserId()
+    }
+    
+    func savePostImage(image : UIImage, name:(String),callback:@escaping (String?)->Void){
+        modelFirebase.saveImage(image: image, name: name, callback: callback)
+    }
     //
     //    func getImage(url:String, callback:@escaping (UIImage?)->Void){
     //        modelFirebase.getImage(url: url, callback: callback)
