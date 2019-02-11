@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,27 @@
  * limitations under the License.
  */
 
-#ifndef FIRCoreConfigurable_h
-#define FIRCoreConfigurable_h
-
-#import <Foundation/Foundation.h>
-
 @class FIRApp;
+@class GTMSessionFetcherService;
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// Provides an interface to set up an SDK once a `FIRApp` is configured.
-NS_SWIFT_NAME(CoreConfigurable)
-@protocol FIRCoreConfigurable
+@interface FIRStorage ()
 
-/// Configure the SDK if needed ahead of time. This method is called when the developer calls
-/// `FirebaseApp.configure()`.
-+ (void)configureWithApp:(FIRApp *)app;
+@property(strong, nonatomic, readwrite) FIRApp *app;
+
+@property(strong, nonatomic) GTMSessionFetcherService *fetcherServiceForApp;
+
+@property(nonatomic, readonly) dispatch_queue_t dispatchQueue;
+
+@property(strong, nonatomic) NSString *storageBucket;
+
+/**
+ * Enables/disables GTMSessionFetcher HTTP logging
+ * @param isLoggingEnabled Boolean passed through to enable/disable GTMSessionFetcher logging
+ */
++ (void)setGTMSessionFetcherLoggingEnabled:(BOOL)isLoggingEnabled;
 
 @end
 
 NS_ASSUME_NONNULL_END
-
-#endif /* FIRCoreConfigurable_h */
