@@ -41,7 +41,7 @@ class User{
         posts.forEach { (value) in
             let p = value as? String
             if p != nil{
-                post.append(value as! String)
+              post.append(value as! String)
             }
             
         }

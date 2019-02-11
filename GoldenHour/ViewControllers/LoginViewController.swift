@@ -54,4 +54,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loggedInSegue"{
+            Model.instance.getUserInfo(userId: Model.instance.getUserID()){ (user) in
+                Model.connectedUser = user
+            }
+        }
+    }
 }

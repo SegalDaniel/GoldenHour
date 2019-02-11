@@ -28,6 +28,10 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        user = Model.connectedUser
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
         
@@ -68,16 +72,6 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
             editProfileBtn.isHidden = true
         }
         else{
-            /******************************************Getting user from FB**************************************************/
-            let fb = Model.instance.modelFirebase
-            fb.getUserInfo(userId: fb.getUserId()) { (user) in
-                self.user = user
-                fb.getImage(url: self.user?.profileImage ?? "", callback: { (image) in
-                    self.profileImageView.image = image
-                })
-                self.userNameLabel.text = self.user?.userName
-            }
-             /******************************************Getting user from FB**************************************************/
             logoutBtn.isHidden = false
             editProfileBtn.isHidden = false
         }
