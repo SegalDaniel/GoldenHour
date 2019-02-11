@@ -17,6 +17,8 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var userDescLabel: UILabel!
     @IBOutlet weak var userPostsCollection: UICollectionView!
     var user:User?
+    var posts:[Post] = []
+    var postsImages:[UIImage] = []
     var showBtns:Bool = true
     
     override func viewDidLoad() {
@@ -25,23 +27,20 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         userPostsCollection.dataSource = self
         Utility.roundImageView(imageView: profileImageView)
         hideButtons()
+        loadPosts()
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        user = Model.connectedUser
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return postsImages.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userPostCell", for: indexPath) as! PostCollectionViewCell
-        
-        
-        
+        cell.image = postsImages[indexPath.row]
+        cell.post = posts[indexPath.row]
+        cell.awakeFromNib()
         return cell
     }
     
@@ -66,12 +65,31 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
+    func loadPosts(){
+        if let user = user{
+            Model.instance.getImage(url: user.profileImage) { (image) in
+                if let image = image{
+                    self.profileImageView.image = image
+                }
+            }
+            userNameLabel.text = user.userName
+            user.post.forEach { (postId) in
+                Model.instance.getPost(postId: postId, callback: { (post, image) in
+                    self.posts.append(post)
+                    self.postsImages.append(image)
+                    self.userPostsCollection.reloadData()
+                })
+            }
+        }
+    }
+    
     func hideButtons(){
         if !showBtns{
             logoutBtn.isHidden = true
             editProfileBtn.isHidden = true
         }
         else{
+            user = Model.connectedUser
             logoutBtn.isHidden = false
             editProfileBtn.isHidden = false
         }

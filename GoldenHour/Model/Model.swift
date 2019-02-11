@@ -110,6 +110,20 @@ class Model {
         }
     }
     
+    func getPost(postId:String, callback:@escaping (Post, UIImage) -> Void){
+        modelFirebase.getPost(postId: postId) { (post) in
+            self.modelFirebase.getImage(url: post.imageUrl!, callback: { (image) in
+                if let image = image{
+                    callback(post, image)
+                }
+            })
+        }
+    }
+    
+    func getImage(url:String, callback:@escaping (UIImage?) -> Void){
+        modelFirebase.getImage(url: url, callback: callback)
+    }
+    
     func getUserInfo(userId:String, callback:@escaping (User)->Void){
         modelFirebase.getUserInfo(userId: userId, callback: callback)
     }

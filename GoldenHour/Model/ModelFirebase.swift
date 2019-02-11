@@ -119,6 +119,19 @@ class ModelFirebase{
         })
     }
     
+    func getPost(postId:String, callback: @escaping (Post)->Void){
+        ref.child("posts").child(postId).observe(.value, with:
+            {
+                (snapshot) in
+                //var data = [User]()
+                let value = snapshot.value as! [String : Any]
+                //for(_, json) in value {
+                let post = Post(json: value)
+                //}
+                callback(post)
+        })
+    }
+    
     func addNewPost(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
         ref.child("posts").child(post.postId).setValue(post.toJson()){ (error, reference) in
             print(reference.debugDescription)
