@@ -82,6 +82,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     }
     
     @IBAction func addLocBtnPressed(_ sender: Any) {
+        
     }
     
     @IBAction func uploadBtnPressed(_ sender: Any) {
