@@ -53,5 +53,7 @@
 	<string>$(PRODUCT_NAME) use Library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) use Camera</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Do you allow this app to know your current location?</string>
 </dict>
 </plist>

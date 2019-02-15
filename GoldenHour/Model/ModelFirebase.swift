@@ -138,9 +138,10 @@ class ModelFirebase{
             {
                 (snapshot) in
                 var data = [Post]()
-                let value = snapshot.value as! [String : Any]
-                for(_, json) in value {
-                    data.append(Post(json: json as! [String : Any]))
+                if let value = snapshot.value as? [String : Any]{
+                    for(_, json) in value {
+                        data.append(Post(json: json as! [String : Any]))
+                    }
                 }
                 callback(data)
         })

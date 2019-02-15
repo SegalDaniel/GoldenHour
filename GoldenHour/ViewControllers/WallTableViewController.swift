@@ -82,6 +82,8 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
             print("gethered all posts")
         }
     }
+    
+    @IBAction func unwindToWall(segue:UIStoryboardSegue) {}
     /*
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
