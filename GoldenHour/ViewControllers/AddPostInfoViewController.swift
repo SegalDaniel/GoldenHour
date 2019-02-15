@@ -27,41 +27,32 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     @IBOutlet weak var addLocBtn: UIButton!
     
     
-    
-    //let pickerVC = PickerViewController()
     var userImage:UIImage?
     var imageData:PhotosStaticData = PhotosStaticData()
     var pickerData:[String]?
     var pickedMan:Int?
     var locationManager:CLLocationManager!
     var location:String?
+    var metaInfo:[String:String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Utility.viewTapRecognizer(target: self.view, toBeTapped: self.view, action: #selector(UIView.endEditing(_:)))
         descritionTextField.delegate = self
         extnAccTextField.delegate = self
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.startUpdatingLocation()
-        }
+        locationInit()
         // Do any additional setup after loading the view.
     }
     
     @IBAction func camManBtnPressed(_ sender: Any) {
         pickerData = imageData.cameraManufacture
         self.performSegue(withIdentifier: "picker", sender: sender)
-        //self.view.isHidden = true
     }
     
     @IBAction func camModelBtnPressed(_ sender: Any) {
         if let x = pickedMan{
             pickerData = imageData.cameraModels[x]
             self.performSegue(withIdentifier: "picker", sender: sender)
-            //self.view.isHidden = true
         }
         else{
             selectManAlert()
@@ -72,7 +63,6 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         if let x = pickedMan{
             pickerData = imageData.lensModels[x]
             self.performSegue(withIdentifier: "picker", sender: sender)
-            //self.view.isHidden = true
         }
         else{
             selectManAlert()
@@ -82,13 +72,11 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     @IBAction func aptBtnPressed(_ sender: Any) {
         pickerData = imageData.aptRange
         self.performSegue(withIdentifier: "picker", sender: sender)
-        //self.view.isHidden = true
     }
     
     @IBAction func ssBtnPressed(_ sender: Any) {
         pickerData = imageData.shutterRange
         self.performSegue(withIdentifier: "picker", sender: sender)
-        //self.view.isHidden = true
     }
     
     @IBAction func addLocBtnPressed(_ sender: Any) {
@@ -96,6 +84,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         alert.addAction(UIAlertAction(title: "Current", style: .default, handler: { (action) in
             if let loc = self.location{
                 self.addLocLabel.text = loc
+                self.metaInfo["loc"] = loc
             }
             alert.dismiss(animated: true, completion: nil)
         }))
@@ -106,12 +95,131 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             })
             secondAlert.addAction(UIAlertAction(title: "Save", style: .cancel, handler: { (action) in
                 self.addLocLabel.text = secondAlert.textFields?[0].text
+                self.metaInfo["loc"] = secondAlert.textFields?[0].text
                 secondAlert.dismiss(animated: true, completion: nil)
             }))
             self.present(secondAlert, animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func uploadBtnPressed(_ sender: Any) {
+        let meta = getMetaInfo()
+        if userImage != nil && meta.0{
+            let loadingView = Utility.getLoadingAlert(message: "Uploading your post, please wait..")
+            self.present(loadingView, animated: true, completion: nil)
+            let postID = "\(Model.connectedUser!.id)\(Model.connectedUser!.post.count)"
+            let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil, metadata: meta.1!)
+            Model.instance.savePostImage(image: userImage!, name: postID) { (url) in
+                post.imageUrl = url
+                Model.instance.addNewPost(post: post) { (error, ref) in
+                    print("new post at \(ref)")
+                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "unwindToWall", sender: nil)
+                }
+            }
+        }
+        else{
+            let alert = SimpleAlert(_title: "Wait", _message: "Please select an image and fill all necessary fields") {}
+            self.present(alert.getAlert(), animated: true, completion: nil)
+        }
+    }
+    
+    
+    func getMetaInfo()->(Bool,Metadata?){
+        if metaInfo.count < 5{
+            return (false, nil)
+        }
+        if metaInfo["man"] == nil || metaInfo["model"] == nil || metaInfo["lens"] == nil ||
+            metaInfo["apt"] == nil || metaInfo["ss"] == nil{
+            return (false, nil)
+        }
+        
+        return (true, Metadata(_manufacturer: metaInfo["man"]!, _model: metaInfo["model"]!, _lens: metaInfo["lens"]!, _shutterSpeed: metaInfo["ss"]!, _aperture: metaInfo["apt"]!, _description: metaInfo["desc"]!,_externalAccesssories: metaInfo["ext"], _location: metaInfo["loc"]))
+    }
+    
+    func selectManAlert(){
+        let alert = SimpleAlert(_title: "Wait!", _message: "Please Select Manufacturer First") {}
+        self.present(alert.getAlert(), animated: true, completion: nil)
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "picker"{
+            let vc = segue.destination as! PickerViewController
+            vc.delegate = self
+            vc.sentWith = sender as? UIButton
+            vc.data = pickerData
+        }
+        else if segue.identifier == "fullScreenSegue"{
+            let vc = segue.destination as! FullScreenImageViewController
+            vc.hidesBottomBarWhenPushed = true
+            vc.url = sender as? String
+        }
+        else if segue.identifier == "unwindToWall"{
+            var navigationArray = self.navigationController?.viewControllers //To get all UIViewController stack as Array
+            navigationArray!.remove(at: (navigationArray?.count)! - 1) // To remove previous UIViewController
+            let vc = navigationArray!.first! as! UploadViewController
+            vc.userImageView.image = nil
+            vc.userImageView.isHidden = true
+            vc.selectImageLabel.isHidden = false
+            vc.bigPlusImageView.isHidden = false
+            self.navigationController?.viewControllers = navigationArray!
+        }
+    }
+    
+    func userPickedProperty(sender: UIButton?, property: String?) {
+        if sender != nil && property != nil{
+            switch sender!{
+            case camManBtn:
+                camManLabel.text = property!
+                metaInfo["man"] = property!
+                pickedMan = imageData.cameraManufacture.firstIndex(of: property!)
+                break
+            case camModelBtn:
+                camModelLabel.text = property!
+                metaInfo["model"] = property!
+                break
+            case lensBtn:
+                lensModelLabel.text = property!
+                metaInfo["lens"] = property!
+                break
+            case aptBtn:
+                aptLabel.text = "f/" + property!
+                metaInfo["apt"] = "f/" + property!
+                break
+            case ssBtn:
+                ssLabel.text = "Shutter Speed: " + property!
+                metaInfo["ss"] = "Shutter Speed: " + property!
+                break
+            default: break
+                
+            }
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == descritionTextField{
+            metaInfo["desc"] = textField.text
+        }
+        else if textField == extnAccTextField{
+            metaInfo["ext"] = textField.text
+        }
+    }
+    
+    /******************************** Location stuff *********************************/
+    func locationInit(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
@@ -136,77 +244,8 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
                 self.locationManager.stopUpdatingLocation()
             }
         }
-
+        
         print("locations = \(locValue.latitude) \(locValue.longitude)")
-    }
-    
-    @IBAction func uploadBtnPressed(_ sender: Any) {
-        if userImage != nil{
-            let loadingView = Utility.getLoadingAlert(message: "Uploading your post, please wait..")
-            self.present(loadingView, animated: true, completion: nil)
-            let postID = "\(Model.connectedUser!.id)\(Model.connectedUser!.post.count)"
-            let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil)
-            Model.instance.savePostImage(image: userImage!, name: postID) { (url) in
-                post.imageUrl = url
-                Model.instance.addNewPost(post: post) { (error, ref) in
-                    print("new post at \(ref)")
-                    self.dismiss(animated: true, completion: nil)
-                    self.performSegue(withIdentifier: "unwindToWall", sender: nil)
-                }
-            }
-        }
-    }
-    
-    
-    func selectManAlert(){
-        let alert = SimpleAlert(_title: "Wait!", _message: "Please Select Manufacturer First") {}
-        self.present(alert.getAlert(), animated: true, completion: nil)
-    }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "picker"{
-            let vc = segue.destination as! PickerViewController
-            vc.delegate = self
-            vc.sentWith = sender as? UIButton
-            vc.data = pickerData
-        }
-        else if segue.identifier == "fullScreenSegue"{
-            let vc = segue.destination as! FullScreenImageViewController
-            vc.hidesBottomBarWhenPushed = true
-            vc.url = sender as? String
-        }
-        else if segue.identifier == "unwindToWall"{
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    func userPickedProperty(sender: UIButton?, property: String?) {
-        if sender != nil && property != nil{
-            switch sender!{
-            case camManBtn:
-                camManLabel.text = property!
-                pickedMan = imageData.cameraManufacture.firstIndex(of: property!)
-                break
-            case camModelBtn:
-                camModelLabel.text = property!
-                break
-            case lensBtn:
-                lensModelLabel.text = property!
-                break
-            case aptBtn:
-                aptLabel.text = "f/" + property!
-                break
-            case ssBtn:
-                ssLabel.text = "Shutter Speed: " + property!
-                break
-            default: break
-                
-            }
-        }
-        //self.view.isHidden = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
