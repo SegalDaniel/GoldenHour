@@ -27,7 +27,6 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         Utility.roundImageView(imageView: profileImageView)
         hideButtons()
         loadPosts()
-        // Do any additional setup after loading the view.
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,7 +43,6 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userPostCell", for: indexPath) as! PostCollectionViewCell
         self.performSegue(withIdentifier: "fullScreenImageSegue", sender: posts[indexPath.row])
     }
     
@@ -66,6 +64,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func loadPosts(){
         if let user = user{
+            posts = []
             Model.instance.getImageKF(url: user.profileImage, imageView: profileImageView, placeHolderNamed: "profile_placeholder")
             userNameLabel.text = user.userName
             user.post.forEach { (postId) in

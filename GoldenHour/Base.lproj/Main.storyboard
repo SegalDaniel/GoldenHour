@@ -1079,9 +1079,11 @@
                         <segue destination="d2Y-C0-dJI" kind="presentation" identifier="picker" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="wGK-C8-rhg"/>
                         <segue destination="bQ2-Sc-DK7" kind="show" identifier="fullScreenSegue" id="c4c-E8-Ipx"/>
                         <segue destination="fyH-ku-4zR" kind="show" identifier="ProfileSegue" id="T3V-oy-UXP"/>
+                        <segue destination="cvo-p7-Xry" kind="unwind" identifier="unwindToWall" unwindAction="unwindToWallWithSegue:" id="4zZ-QL-hYf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dan-VS-qgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cvo-p7-Xry" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3612" y="-440.32983508245883"/>
         </scene>
@@ -1111,8 +1113,8 @@
         <image name="wall_icon" width="56" height="51"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P7S-HF-ORT"/>
-        <segue reference="2Fu-is-grV"/>
+        <segue reference="c4c-E8-Ipx"/>
+        <segue reference="T3V-oy-UXP"/>
         <segue reference="yHa-z4-s7M"/>
     </inferredMetricsTieBreakers>
 </document>

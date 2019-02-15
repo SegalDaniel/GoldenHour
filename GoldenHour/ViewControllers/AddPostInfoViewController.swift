@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextFieldDelegate {
+class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var descritionTextField: UITextField!
     @IBOutlet weak var extnAccTextField: UITextField!
@@ -32,12 +33,21 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     var imageData:PhotosStaticData = PhotosStaticData()
     var pickerData:[String]?
     var pickedMan:Int?
+    var locationManager:CLLocationManager!
+    var location:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Utility.viewTapRecognizer(target: self.view, toBeTapped: self.view, action: #selector(UIView.endEditing(_:)))
         descritionTextField.delegate = self
         extnAccTextField.delegate = self
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -82,7 +92,52 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     }
     
     @IBAction func addLocBtnPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Location", message: "Please select preffered location insertation", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Current", style: .default, handler: { (action) in
+            if let loc = self.location{
+                self.addLocLabel.text = loc
+            }
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Manually", style: .default, handler: { (action) in
+            let secondAlert = UIAlertController(title: "Location", message: nil, preferredStyle: .alert)
+            secondAlert.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "insert location"
+            })
+            secondAlert.addAction(UIAlertAction(title: "Save", style: .cancel, handler: { (action) in
+                self.addLocLabel.text = secondAlert.textFields?[0].text
+                secondAlert.dismiss(animated: true, completion: nil)
+            }))
+            self.present(secondAlert, animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        let userLocation :CLLocation = locations[0] as CLLocation
         
+        print("user latitude = \(userLocation.coordinate.latitude)")
+        print("user longitude = \(userLocation.coordinate.longitude)")
+        
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+            if (error != nil){
+                print("error in reverseGeocode")
+            }
+            let placemark = placemarks! as [CLPlacemark]
+            if placemark.count>0{
+                let placemark = placemarks![0]
+                print(placemark.locality ?? "")
+                print(placemark.administrativeArea ?? "")
+                print(placemark.country ?? "")
+                
+                self.location = "\(placemark.locality ?? ""), \(placemark.administrativeArea ?? ""), \(placemark.country ?? "")"
+                self.locationManager.stopUpdatingLocation()
+            }
+        }
+
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     @IBAction func uploadBtnPressed(_ sender: Any) {
@@ -96,7 +151,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
                 Model.instance.addNewPost(post: post) { (error, ref) in
                     print("new post at \(ref)")
                     self.dismiss(animated: true, completion: nil)
-                    self.performSegue(withIdentifier: "ProfileSegue", sender: nil)
+                    self.performSegue(withIdentifier: "unwindToWall", sender: nil)
                 }
             }
         }
@@ -123,8 +178,8 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             vc.hidesBottomBarWhenPushed = true
             vc.url = sender as? String
         }
-        else if segue.identifier == "ProfileSegue"{
-            
+        else if segue.identifier == "unwindToWall"{
+            dismiss(animated: true, completion: nil)
         }
     }
     
