@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -18,7 +18,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var userPostsCollection: UICollectionView!
     var user:User?
     var posts:[Post] = []
-    var postsImages:[UIImage] = []
+    var postsImages:[ImageResource] = []
     var showBtns:Bool = true
     
     override func viewDidLoad() {
@@ -38,9 +38,9 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userPostCell", for: indexPath) as! PostCollectionViewCell
-        cell.image = postsImages[indexPath.row]
-        cell.post = posts[indexPath.row]
         cell.awakeFromNib()
+        cell.postImageView.kf.setImage(with: postsImages[indexPath.row])
+        cell.post = posts[indexPath.row]
         return cell
     }
     
@@ -67,16 +67,12 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func loadPosts(){
         if let user = user{
-            Model.instance.getImage(url: user.profileImage) { (image) in
-                if let image = image{
-                    self.profileImageView.image = image
-                }
-            }
+            Model.instance.getImageKF(url: user.profileImage, imageView: profileImageView)
             userNameLabel.text = user.userName
             user.post.forEach { (postId) in
-                Model.instance.getPost(postId: postId, callback: { (post, image) in
+                Model.instance.getPost(postId: postId, callback: { (post, imageRes) in
                     self.posts.append(post)
-                    self.postsImages.append(image)
+                    self.postsImages.append(imageRes)
                     self.userPostsCollection.reloadData()
                 })
             }

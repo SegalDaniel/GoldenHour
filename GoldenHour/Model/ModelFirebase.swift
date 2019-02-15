@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import SVProgressHUD
 import FirebaseStorage
+import Kingfisher
 class ModelFirebase{
     
     var ref : DatabaseReference!
