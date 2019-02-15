@@ -111,11 +111,9 @@ class Model {
         }
     }
     
-    func getPost(postId:String, callback:@escaping (Post, ImageResource) -> Void){
+    func getPost(postId:String, callback:@escaping (Post) -> Void){
         modelFirebase.getPost(postId: postId) { (post) in
-            let url = URL(string: post.imageUrl!)!
-            let resource = ImageResource(downloadURL: url)
-            callback(post, resource)
+            callback(post)
         }
     }
     

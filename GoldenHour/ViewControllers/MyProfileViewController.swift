@@ -18,7 +18,6 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var userPostsCollection: UICollectionView!
     var user:User?
     var posts:[Post] = []
-    var postsImages:[ImageResource] = []
     var showBtns:Bool = true
     
     override func viewDidLoad() {
@@ -32,14 +31,14 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return postsImages.count
+        return posts.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userPostCell", for: indexPath) as! PostCollectionViewCell
         cell.awakeFromNib()
-        cell.postImageView.kf.setImage(with: postsImages[indexPath.row])
+        Model.instance.getImageKF(url: posts[indexPath.row].imageUrl!, imageView: cell.postImageView)
         cell.post = posts[indexPath.row]
         return cell
     }
@@ -67,12 +66,11 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func loadPosts(){
         if let user = user{
-            Model.instance.getImageKF(url: user.profileImage, imageView: profileImageView)
+            Model.instance.getImageKF(url: user.profileImage, imageView: profileImageView, placeHolderNamed: "profile_placeholder")
             userNameLabel.text = user.userName
             user.post.forEach { (postId) in
-                Model.instance.getPost(postId: postId, callback: { (post, imageRes) in
+                Model.instance.getPost(postId: postId, callback: { (post) in
                     self.posts.append(post)
-                    self.postsImages.append(imageRes)
                     self.userPostsCollection.reloadData()
                 })
             }
