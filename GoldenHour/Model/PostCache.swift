@@ -27,6 +27,7 @@ extension Model{
         })
     }
     
+    
     func saveCache(posts: [Post], completion: ((Bool)->Void)? = nil) {
         for post in posts {
             var postAsString = [String]()
