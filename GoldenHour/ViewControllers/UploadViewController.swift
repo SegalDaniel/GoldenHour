@@ -70,6 +70,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         if let img = selctedImage{
             vc.userImage = img
         }
+        vc.data = nil
      }
     
     func allViewsToucable(){

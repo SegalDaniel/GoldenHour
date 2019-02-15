@@ -30,7 +30,7 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         if let data = data{
             return data.count
         }
-        return 10
+        return 0
     }
 
     

@@ -19,6 +19,9 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     @IBOutlet weak var aptLabel: UILabel!
     @IBOutlet weak var ssLabel: UILabel!
     @IBOutlet weak var addLocLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var extLabel: UILabel!
+    @IBOutlet weak var uploadBtn: UIButton!
     @IBOutlet weak var camManBtn: UIButton!
     @IBOutlet weak var camModelBtn: UIButton!
     @IBOutlet weak var lensBtn: UIButton!
@@ -26,6 +29,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     @IBOutlet weak var ssBtn: UIButton!
     @IBOutlet weak var addLocBtn: UIButton!
     
+    var data:Metadata?
     
     var userImage:UIImage?
     var imageData:PhotosStaticData = PhotosStaticData()
@@ -40,10 +44,10 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         Utility.viewTapRecognizer(target: self.view, toBeTapped: self.view, action: #selector(UIView.endEditing(_:)))
         descritionTextField.delegate = self
         extnAccTextField.delegate = self
-        locationInit()
+        hideBtns()
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func camManBtnPressed(_ sender: Any) {
         pickerData = imageData.cameraManufacture
         self.performSegue(withIdentifier: "picker", sender: sender)
@@ -188,11 +192,11 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
                 break
             case aptBtn:
                 aptLabel.text = "f/" + property!
-                metaInfo["apt"] = "f/" + property!
+                metaInfo["apt"] = property!
                 break
             case ssBtn:
                 ssLabel.text = "Shutter Speed: " + property!
-                metaInfo["ss"] = "Shutter Speed: " + property!
+                metaInfo["ss"] = property!
                 break
             default: break
                 
@@ -206,6 +210,46 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         }
         else if textField == extnAccTextField{
             metaInfo["ext"] = textField.text
+        }
+    }
+    
+    func hideBtns(){
+        if let data = data{
+            camManBtn.isHidden = true
+            camModelBtn.isHidden = true
+            lensBtn.isHidden = true
+            aptBtn.isHidden = true
+            ssBtn.isHidden = true
+            addLocBtn.isHidden = true
+            descLabel.isHidden = false
+            descritionTextField.isHidden = true
+            extLabel.isHidden = false
+            extnAccTextField.isHidden = true
+            uploadBtn.isHidden = true
+            
+            camManLabel.text = data.manufacturer
+            camModelLabel.text = data.model
+            lensModelLabel.text = data.lens
+            aptLabel.text = data.aperture
+            ssLabel.text = data.shutterSpeed
+            addLocLabel.text = data.location ?? "No Location"
+            descLabel.text = data.description
+            extLabel.text = data.externalAccesssories ?? "No Accessories"
+            
+        }
+        else{
+            locationInit()
+            camManBtn.isHidden = false
+            camModelBtn.isHidden = false
+            lensBtn.isHidden = false
+            aptBtn.isHidden = false
+            ssBtn.isHidden = false
+            addLocBtn.isHidden = false
+            descLabel.isHidden = true
+            extLabel.isHidden = true
+            descritionTextField.isHidden = false
+            extnAccTextField.isHidden = false
+            uploadBtn.isHidden = false
         }
     }
     
