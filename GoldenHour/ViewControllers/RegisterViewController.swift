@@ -53,8 +53,12 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         }
 
         else{
+            let loadingView = Utility.getLoadingAlert(message: "Register in progress, please wait..")
+            self.present(loadingView, animated: true, completion: nil)
             let newUser = User(_id: "", _userName: self.usernameTextField.text!, _password: self.passwordTextField.text!, _profileImage: "", _description: "", _email: self.emailTextField.text!, _post: [])
             Model.instance.addNewUser(user: newUser, profileImage: self.profileImageView.image, callback: { (error, reference) in
+               //loadingView.removeFromParent()
+                self.dismiss(animated: true, completion: nil)
                 if error != nil{
                     let alert = SimpleAlert(_title: "Error", _message: error!.localizedDescription) {() in
                         print("alert dissmissed, user didn't registered")

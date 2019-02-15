@@ -87,12 +87,15 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     
     @IBAction func uploadBtnPressed(_ sender: Any) {
         if userImage != nil{
+            let loadingView = Utility.getLoadingAlert(message: "Uploading your post, please wait..")
+            self.present(loadingView, animated: true, completion: nil)
             let postID = "\(Model.connectedUser!.id)\(Model.connectedUser!.post.count)"
             let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil)
             Model.instance.savePostImage(image: userImage!, name: postID) { (url) in
                 post.imageUrl = url
                 Model.instance.addNewPost(post: post) { (error, ref) in
                     print("new post at \(ref)")
+                    self.dismiss(animated: true, completion: nil)
                     self.performSegue(withIdentifier: "ProfileSegue", sender: nil)
                 }
             }

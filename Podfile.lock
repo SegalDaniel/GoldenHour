@@ -67,7 +67,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
-  - Hero (1.4.0)
+  - Kingfisher (5.1.1)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -84,7 +84,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
-  - Hero
+  - Kingfisher (~> 5.0)
   - SQLite.swift (~> 0.11.5)
   - SVProgressHUD
 
@@ -101,7 +101,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
-    - Hero
+    - Kingfisher
     - leveldb-library
     - nanopb
     - SQLite.swift
@@ -119,12 +119,12 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
-  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: c110553e434e1344bcbcc6f67b6118b0d12359b8
+PODFILE CHECKSUM: 8d4ce23f524cd372b6176dc25ca57d9f9e7c5721
 
 COCOAPODS: 1.5.3
