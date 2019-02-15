@@ -12,3 +12,8 @@ import UIKit
 protocol MyPickerDelegate {
     func userPickedProperty(sender:UIButton?, property:String?)
 }
+
+protocol wallTableViewCellDelegate{
+    func profileTapped(user:User)
+    func ranksTappd(post:Post)
+}

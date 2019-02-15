@@ -133,6 +133,19 @@ class ModelFirebase{
         })
     }
     
+    func getAllPosts(callback: @escaping ([Post])->Void){
+        ref.child("posts").observe(.value, with:
+            {
+                (snapshot) in
+                var data = [Post]()
+                let value = snapshot.value as! [String : Any]
+                for(_, json) in value {
+                    data.append(Post(json: json as! [String : Any]))
+                }
+                callback(data)
+        })
+    }
+    
     func addNewPost(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
         ref.child("posts").child(post.postId).setValue(post.toJson()){ (error, reference) in
             print(reference.debugDescription)
@@ -184,41 +197,6 @@ class ModelFirebase{
             }
         }
     }
-    
-    /*
-     func saveImage(image : UIImage , name : (String),child : String,text : String,callback : @escaping(String?)->Void)->String{
-     let data = image.jpegData(compressionQuality: 0.8)
-     let imageRef = storageRef.child(child).child(name)
-     let metaData = StorageMetadata()
-     metaData.contentType = "image/jpeg"
-     var the_url = ""
-     imageRef.putData(data!, metadata: metaData) { (metadata, error) in
-     imageRef.downloadURL(completion: { (url, error) in
-     guard let downloadURL = url else {
-     
-     print("error imageUrl")
-     SVProgressHUD.showError(withStatus: error?.localizedDescription)
-     return
-     }
-     print("url:\(downloadURL)")
-     callback(downloadURL.absoluteString)
-     the_url = downloadURL.absoluteString
-     if child == "profileImage"{
-     self.sendDataToDataBase(imageUrl: the_url)
-     }
-     if child == "posts"{
-     
-     //                    self.sendPostToDb(imageUrl: the_url,other prop)
-     }
-     
-     
-     })
-     
-     }
-     
-     return the_url
-     }
-     */
     
     func getImage(url : String , callback :@escaping (UIImage?)->Void){
         let ref = Storage.storage().reference(forURL: url)

@@ -8,13 +8,14 @@
 
 import UIKit
 
-class WallTableViewController: UITableViewController {
-
+class WallTableViewController: UITableViewController, wallTableViewCellDelegate {
+   
     var data:[Post]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setLogoTitle()
+        loadData()
     }
     
     // MARK: - Table view data source
@@ -26,6 +27,9 @@ class WallTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if let data = data{
+            return data.count
+        }
         return 10
     }
 
@@ -33,16 +37,14 @@ class WallTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "wallCell", for: indexPath) as! WallTableViewCell
         // Configure the cell...
-        Utility.viewTapRecognizer(target: self, toBeTapped: cell.profileImageView, action: #selector(self.showPostOwnerUser))
-        Utility.viewTapRecognizer(target: self, toBeTapped: cell.imageByLabel, action: #selector(self.showPostOwnerUser))
-        Utility.viewTapRecognizer(target: self, toBeTapped: cell.ranksLabel, action: #selector(self.showRanksAndComments))
-        
+        cell.delegate = self
+        cell.post = data?[indexPath.row]
+        cell.awakeFromNib()
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "wallCell", for: indexPath) as! WallTableViewCell
-        self.performSegue(withIdentifier: "fullScreen", sender: cell.postImageView.image)
+        self.performSegue(withIdentifier: "fullScreen", sender: data?[indexPath.row])
     }
     // MARK: - Navigation
 
@@ -51,11 +53,7 @@ class WallTableViewController: UITableViewController {
         if segue.identifier == "fullScreen"{
             let vc = segue.destination as! FullScreenImageViewController
             vc.hidesBottomBarWhenPushed = true
-            if var image = sender as? UIImage{
-                //vc.image = image
-                image =  UIImage(named: "Image_placeholder")!
-                vc.image = image
-            }
+            vc.post = sender as? Post
         }
         else if segue.identifier == "commentsSegue"{
 //            let vc = segue.destination as! RanksAndComViewController
@@ -64,19 +62,27 @@ class WallTableViewController: UITableViewController {
         }
         else if segue.identifier == "showPhotographer"{
             let vc = segue.destination as! MyProfileViewController
-            //vc.user = enter the post owner user
+            vc.user = sender as? User
             vc.showBtns = false
         }
     }
     
-    @objc func showPostOwnerUser(){
-        self.performSegue(withIdentifier: "showPhotographer", sender: nil)
+    func profileTapped(user: User) {
+        self.performSegue(withIdentifier: "showPhotographer", sender: user)
     }
     
-    @objc func showRanksAndComments(){
-        self.performSegue(withIdentifier: "commentsSegue", sender: nil)
+    func ranksTappd(post: Post) {
+        self.performSegue(withIdentifier: "commentsSegue", sender: post)
     }
     
+    func loadData(){
+        Model.instance.getAllPosts(){ (posts) in
+            self.data = posts
+            self.tableView.reloadData()
+            print("gethered all posts")
+        }
+    }
+    /*
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         if(velocity.y>0) {
@@ -95,4 +101,5 @@ class WallTableViewController: UITableViewController {
             }, completion: nil)
         }
     }
+  */
 }

@@ -44,8 +44,8 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userPostCell", for: indexPath) as! PostCollectionViewCell
-        self.performSegue(withIdentifier: "fullScreenImageSegue", sender: cell.image)
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userPostCell", for: indexPath) as! PostCollectionViewCell
+        self.performSegue(withIdentifier: "fullScreenImageSegue", sender: posts[indexPath.row])
     }
     
     @IBAction func editProfileBtnPressed(_ sender: Any) {
@@ -74,6 +74,11 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
                     self.userPostsCollection.reloadData()
                 })
             }
+        }else{
+            Model.instance.getUserInfo(userId: Model.instance.getUserID()) { (user) in
+                self.user = user
+                self.loadPosts()
+            }
         }
     }
     
@@ -97,7 +102,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         if segue.identifier == "fullScreenImageSegue"{
             let vc = segue.destination as! FullScreenImageViewController
             vc.hidesBottomBarWhenPushed = true
-            vc.image = sender as? UIImage
+            vc.post = sender as? Post
         }
         else if segue.identifier == "logoutSegue"{
             

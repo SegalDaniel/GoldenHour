@@ -117,6 +117,10 @@ class Model {
         }
     }
     
+    func getAllPosts(callback:@escaping ([Post]) -> Void){
+        modelFirebase.getAllPosts(callback: callback)
+    }
+    
     func getImageKF(url:String, imageView:UIImageView, placeHolderNamed:String = "Image_placeholder"){
         let _url = URL(string: url)
         let image = UIImage(named: placeHolderNamed)

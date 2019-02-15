@@ -15,16 +15,13 @@ class FullScreenImageViewController: UIViewController {
     @IBOutlet weak var imageInfoBtn: UIButton!
     @IBOutlet weak var commentsBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
-    var image:UIImage?
+    var post:Post?
     var url:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fullScreenImageView.contentMode = .scaleAspectFit
-        if image != nil && fullScreenImageView.image != image{
-            fullScreenImageView.image = image
-            print("image arrived \(image!.description)")
-        }
+        setImage()
         setLogoTitle()
         toggleHiddenViews()
         Utility.viewTapRecognizer(target: self, toBeTapped: fullScreenImageView, action: #selector(toggleHiddenViews))
@@ -33,9 +30,14 @@ class FullScreenImageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     @IBAction func imageInfoBtnPressed(_ sender: Any) {
@@ -45,6 +47,12 @@ class FullScreenImageViewController: UIViewController {
     }
     
     @IBAction func sharedBtnPressed(_ sender: Any) {
+    }
+    
+    func setImage(){
+        if let post = post{
+            Model.instance.getImageKF(url: post.imageUrl!, imageView: fullScreenImageView)
+        }
     }
     
     @objc func toggleHiddenViews(){
