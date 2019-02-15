@@ -53,8 +53,12 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         }
 
         else{
-            let newUser = User(_id: "", _userName: self.usernameTextField.text!, _password: self.passwordTextField.text!, _profileImage: "", _description: "", _email: self.emailTextField.text!, _post: [""])
+            let loadingView = Utility.getLoadingAlert(message: "Register in progress, please wait..")
+            self.present(loadingView, animated: true, completion: nil)
+            let newUser = User(_id: "", _userName: self.usernameTextField.text!, _password: self.passwordTextField.text!, _profileImage: "", _description: "", _email: self.emailTextField.text!, _post: [])
             Model.instance.addNewUser(user: newUser, profileImage: self.profileImageView.image, callback: { (error, reference) in
+               //loadingView.removeFromParent()
+                self.dismiss(animated: true, completion: nil)
                 if error != nil{
                     let alert = SimpleAlert(_title: "Error", _message: error!.localizedDescription) {() in
                         print("alert dissmissed, user didn't registered")
@@ -64,12 +68,11 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                 }
                 else{
                     let alert = SimpleAlert(_title: "Congratulations!", _message: "you have secessfully registered!"){() in
-                        self.performSegue(withIdentifier: "RegisteredSegue", sender: nil)
+                        self.performSegue(withIdentifier: "RegisteredSegue", sender: newUser)
                     }
                     self.present(alert.getAlert(), animated: true, completion: nil)
                 }
             })
-            print("user register callback")
         }
     }
     
@@ -88,4 +91,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         return false
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RegisteredSegue"{
+            Model.connectedUser = sender as? User
+        }
+    }
 }

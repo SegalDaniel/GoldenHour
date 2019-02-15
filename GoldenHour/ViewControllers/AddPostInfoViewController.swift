@@ -87,21 +87,18 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     
     @IBAction func uploadBtnPressed(_ sender: Any) {
         if userImage != nil{
-            let postID = "\(Model.connectedUser!.id)\(Model.connectedUser!.post.count + 1)"
+            let loadingView = Utility.getLoadingAlert(message: "Uploading your post, please wait..")
+            self.present(loadingView, animated: true, completion: nil)
+            let postID = "\(Model.connectedUser!.id)\(Model.connectedUser!.post.count)"
             let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil)
-            Model.instance.savePostImage(image: userImage!, name: descritionTextField.text!) { (url) in
+            Model.instance.savePostImage(image: userImage!, name: postID) { (url) in
                 post.imageUrl = url
                 Model.instance.addNewPost(post: post) { (error, ref) in
                     print("new post at \(ref)")
+                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "ProfileSegue", sender: nil)
                 }
             }
-//            Model.instance.modelFirebase.saveImage(image: userImage!, name: "test") { (url) in
-//                print("callback from upload image")
-//                let alert = SimpleAlert(_title: "WooHoo", _message: "Image uploaded seccfully", dissmissCallback: {
-//                    self.performSegue(withIdentifier: "fullScreenSegue", sender: url)
-//                })
-//                self.present(alert.getAlert(), animated: true, completion: nil)
-//            }
         }
     }
     
@@ -125,6 +122,9 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             let vc = segue.destination as! FullScreenImageViewController
             vc.hidesBottomBarWhenPushed = true
             vc.url = sender as? String
+        }
+        else if segue.identifier == "ProfileSegue"{
+            
         }
     }
     

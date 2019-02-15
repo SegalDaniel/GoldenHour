@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Foundation
 import FirebaseDatabase
+import Kingfisher
 class ModelNotification{
     
     static let usersListNotification = MyNotification<[User]>("app.GoldenHour.userList")
@@ -108,6 +109,26 @@ class Model {
         modelFirebase.addNewPost(post: post) { (error, ref) in
             self.modelFirebase.addPostUrlToUser(userID: Model.connectedUser!.id, postID: post.postId, callback: callback)
         }
+    }
+    
+    func getPost(postId:String, callback:@escaping (Post) -> Void){
+        modelFirebase.getPost(postId: postId) { (post) in
+            callback(post)
+        }
+    }
+    
+    func getAllPosts(callback:@escaping ([Post]) -> Void){
+        modelFirebase.getAllPosts(callback: callback)
+    }
+    
+    func getImageKF(url:String, imageView:UIImageView, placeHolderNamed:String = "Image_placeholder"){
+        let _url = URL(string: url)
+        let image = UIImage(named: placeHolderNamed)
+        imageView.kf.setImage(with: _url, placeholder: image)
+    }
+    
+    func getImage(url:String, callback:@escaping (UIImage?) -> Void){
+        modelFirebase.getImage(url: url, callback: callback)
     }
     
     func getUserInfo(userId:String, callback:@escaping (User)->Void){

@@ -664,7 +664,7 @@
                                                 <constraint firstAttribute="height" constant="50" id="MBf-DK-xF9"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image by Daniel Segal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwk-dm-V2r">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwk-dm-V2r">
                                             <rect key="frame" x="74" y="581.5" width="285" height="25.5"/>
                                             <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="20"/>
                                             <nil key="textColor"/>
@@ -1078,6 +1078,7 @@
                         <outlet property="ssLabel" destination="VIH-Th-Km5" id="JJm-OA-3OU"/>
                         <segue destination="d2Y-C0-dJI" kind="presentation" identifier="picker" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="wGK-C8-rhg"/>
                         <segue destination="bQ2-Sc-DK7" kind="show" identifier="fullScreenSegue" id="c4c-E8-Ipx"/>
+                        <segue destination="fyH-ku-4zR" kind="show" identifier="ProfileSegue" id="T3V-oy-UXP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dan-VS-qgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1110,7 +1111,7 @@
         <image name="wall_icon" width="56" height="51"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c4c-E8-Ipx"/>
+        <segue reference="P7S-HF-ORT"/>
         <segue reference="2Fu-is-grV"/>
         <segue reference="yHa-z4-s7M"/>
     </inferredMetricsTieBreakers>

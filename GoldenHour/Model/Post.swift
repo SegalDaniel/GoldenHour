@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 class Post {
+    
     let userId:String
     let postId:String
     //let rankId:String

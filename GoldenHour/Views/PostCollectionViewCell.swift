@@ -12,9 +12,11 @@ class PostCollectionViewCell: UICollectionViewCell {
   
     @IBOutlet weak var postImageView: UIImageView!
     var image:UIImage?
+    var post:Post?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        postImageView.contentMode = .scaleAspectFit
+        postImageView.image = image
     }
 }

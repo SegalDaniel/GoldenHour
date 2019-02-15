@@ -35,7 +35,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginPressed(_ sender: Any) {
+        let loadingView = Utility.getLoadingAlert(message: "We are logging in..")
+        self.present(loadingView, animated: true, completion: nil)
         Model.instance.modelFirebase.signIn(mail: usernameTextField.text!, pass: passwordTextField.text!) { (user, error) in
+            //loadingView.removeFromParent()
+            self.dismiss(animated: true, completion: nil)
             if user != nil{
                 //print("signin succeed")
                 self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
@@ -53,5 +57,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loggedInSegue"{
+            Model.instance.getUserInfo(userId: Model.instance.getUserID()){ (user) in
+                Model.connectedUser = user
+            }
+        }
     }
 }

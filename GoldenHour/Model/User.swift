@@ -37,11 +37,12 @@ class User{
         description = json["description"] as! String
         profileImage = json["profileImage"] as! String
         email = json["email"] as! String
-        let posts = json["posts"] as! NSMutableArray
-        posts.forEach { (value) in
-            let p = value as? String
-            if p != nil{
-                post.append(value as! String)
+        if let posts = json["posts"] as? NSMutableArray{
+            posts.forEach { (value) in
+                let p = value as? String
+                if p != nil{
+                    post.append(value as! String)
+                }
             }
             
         }
