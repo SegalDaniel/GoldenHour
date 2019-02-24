@@ -185,7 +185,7 @@ class ModelFirebase{
         }
     }
     
-    // MARK: - Comment Methods
+    // MARK: - Comment, Rank Methods
     // ============================== Images Methods ==============================
     
     func addCommentToPost(postId:String, comment:Comment, callback:@escaping (Error?, DatabaseReference)->Void){
@@ -207,6 +207,19 @@ class ModelFirebase{
                 }
                 callback(data)
         })
+    }
+    
+    func addRank(postId:String, userId:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("posts").child(postId).child("ranks").child(userId).setValue(userId){ (error, reference) in
+            print(reference.debugDescription)
+            callback(error, reference)
+        }
+    }
+    
+    func removeRank(postId:String, userId:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("posts").child(postId).child("ranks").child(userId).removeValue { (error, reference) in
+            callback(error, reference)
+        }
     }
     
     // MARK: - Images Methods

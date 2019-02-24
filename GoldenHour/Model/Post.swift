@@ -15,7 +15,7 @@ class Post {
     //let rankId:String
     let title:String
     var imageUrl:String?
-    let rank:[String]?
+    var rank:[String]
     let date:String
     var comments:[Comment]
     var metaData:Metadata
@@ -26,7 +26,7 @@ class Post {
         //rankId = _rankId
         title = _title
         imageUrl = _imageUrl
-        rank = nil
+        rank = []
         date = DateFormatter.sharedFormatter.string(from: Date())
         comments = []
         metaData = metadata
@@ -38,13 +38,21 @@ class Post {
         //rankId = json["rankId"] as! String
         title = json["title"] as! String
         imageUrl = json["imageUrl"] as! String?
-        rank = json["rank"] as! [String]?
+        rank = []
+        comments = []
         date = json["date"] as! String
+        
         if let metadata = json["metaData"] as? [String:Any]{
             self.metaData = Metadata(json:metadata)
         }
-        else {metaData = Metadata(json: ["": ""])}
-        comments = []
+        else { metaData = Metadata(json: ["": ""]) }
+        
+        if let ranksData = json["ranks"] as? [String:Any]{
+            ranksData.forEach { (key,value) in
+                rank.append(key)
+            }
+        }
+       
         if let commentsData = json["comments"] as? [String:Any]{
             commentsData.forEach { (key,value) in
                 comments.append(Comment(json: value as! [String:Any]))
@@ -57,10 +65,8 @@ class Post {
         var json = [String:Any]()
         json["userId"] = userId
         json["postId"] = postId
-        //json["rankId"] = rankId
         json["title"] = title
         json["imageUrl"] = imageUrl
-        json["rank"] = rank
         json["date"] = date
         json["metaData"] = metaData.toJson()
         return json

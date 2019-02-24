@@ -9,7 +9,7 @@
 import UIKit
 
 class WallTableViewController: UITableViewController, wallTableViewCellDelegate {
-   
+    
     var data:[Post]?
     
     override func viewDidLoad() {
@@ -40,6 +40,9 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         // Configure the cell...
         cell.delegate = self
         cell.post = data?[indexPath.row]
+        if cell.post!.rank.contains(Model.connectedUser!.id){
+            cell.ranked = true
+        }
         cell.awakeFromNib()
         return cell
     }
@@ -58,9 +61,10 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         }
         else if segue.identifier == "commentsSegue"{
             let vc = segue.destination as! RanksAndComViewController
-            let info = sender as! (String, [Comment])
+            let info = sender as! (String, [Comment], Int)
             vc.postId = info.0
             vc.comments = info.1
+            vc.ranks = info.2
         }
         else if segue.identifier == "showPhotographer"{
             let vc = segue.destination as! MyProfileViewController
@@ -73,8 +77,8 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         self.performSegue(withIdentifier: "showPhotographer", sender: user)
     }
     
-    func ranksTappd(postId:String, comments:[Comment]) {
-        self.performSegue(withIdentifier: "commentsSegue", sender: (postId, comments))
+    func commentsTappd(postId:String, comments:[Comment], ranks:Int) {
+        self.performSegue(withIdentifier: "commentsSegue", sender: (postId, comments, ranks))
     }
     
     func loadData(){

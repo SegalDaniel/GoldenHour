@@ -144,7 +144,7 @@ class Model {
         modelFirebase.getAllPosts(callback: callback)
     }
     
-    // MARK: - Comment Methods
+    // MARK: - Comment, Rank Methods
     // ============================== Comment Methods ==============================
     
     func addCommentToPost(postId:String, comment:Comment, callback:@escaping (Error?, DatabaseReference)->Void){
@@ -153,6 +153,14 @@ class Model {
     
     func getAllCommentsOfPost(postId:String, callback: @escaping ([Comment])->Void){
         modelFirebase.getAllCommentsOfPost(postId: postId, callback: callback)
+    }
+    
+    func addRank(postId:String, userId:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        modelFirebase.addRank(postId: postId, userId: userId, callback: callback)
+    }
+    
+    func removeRank(postId:String, userId:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        modelFirebase.removeRank(postId: postId, userId: userId, callback: callback)
     }
     
     // MARK: - Images Methods

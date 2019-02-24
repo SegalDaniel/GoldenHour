@@ -16,6 +16,7 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var addCommTextField: UITextField!
     
     var postId:String?
+    var ranks:Int?
     var comments:[Comment] = []
     
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         setLogoTitle()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
+        ranksLabel.text = "\(ranks ?? 0) Ranks"
     }
     
     func refreshComments(){
