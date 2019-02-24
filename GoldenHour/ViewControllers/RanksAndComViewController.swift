@@ -10,7 +10,6 @@ import UIKit
 
 class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    
 
     @IBOutlet weak var ranksLabel: UILabel!
     @IBOutlet weak var commentsTableView: UITableView!

@@ -16,6 +16,7 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         super.viewDidLoad()
         setLogoTitle()
         loadData()
+        self.navigationController?.viewControllers = [self]
     }
     
     // MARK: - Table view data source

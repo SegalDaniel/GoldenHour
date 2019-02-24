@@ -170,7 +170,8 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             vc.userImageView.isHidden = true
             vc.selectImageLabel.isHidden = false
             vc.bigPlusImageView.isHidden = false
-            self.navigationController?.viewControllers = navigationArray!
+            self.navigationController?.viewControllers = []
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     
