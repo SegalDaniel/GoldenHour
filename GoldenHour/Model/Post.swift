@@ -17,7 +17,7 @@ class Post {
     var imageUrl:String?
     let rank:[String]?
     let date:String
-    var comments:[Comment]?
+    var comments:[Comment]
     var metaData:Metadata
     
     init(_userId:String, _postId:String, /*_rankId:String,*/ _title:String,_imageUrl:String?, metadata:Metadata){
@@ -28,7 +28,7 @@ class Post {
         imageUrl = _imageUrl
         rank = nil
         date = DateFormatter.sharedFormatter.string(from: Date())
-        comments = nil
+        comments = []
         metaData = metadata
     }
     
@@ -40,11 +40,16 @@ class Post {
         imageUrl = json["imageUrl"] as! String?
         rank = json["rank"] as! [String]?
         date = json["date"] as! String
-        comments = nil
         if let metadata = json["metaData"] as? [String:Any]{
             self.metaData = Metadata(json:metadata)
         }
         else {metaData = Metadata(json: ["": ""])}
+        comments = []
+        if let commentsData = json["comments"] as? [String:Any]{
+            commentsData.forEach { (key,value) in
+                comments.append(Comment(json: value as! [String:Any]))
+            }
+        }
     }
     
     
@@ -57,10 +62,6 @@ class Post {
         json["imageUrl"] = imageUrl
         json["rank"] = rank
         json["date"] = date
-        if(comments != nil)
-        {
-            json["comments"] = comments //temp
-        }
         json["metaData"] = metaData.toJson()
         return json
     }

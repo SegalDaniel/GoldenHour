@@ -35,6 +35,7 @@ class WallTableViewCell: UITableViewCell {
                 Model.instance.getImageKF(url: user.profileImage, imageView: self.profileImageView)
                 self.imageByLabel.text = "Image by \(user.userName)"
             }
+            ranksLabel.text = "Ranks 0 Comments \(post.comments.count)"
         }
     }
 
@@ -45,6 +46,7 @@ class WallTableViewCell: UITableViewCell {
     }
     
     @IBAction func commentsBtnPressed(_ sender: Any) {
+        delegate?.ranksTappd(postId: post!.postId, comments: post!.comments)
     }
     
     @objc func showPostOwnerUser(){
@@ -52,7 +54,7 @@ class WallTableViewCell: UITableViewCell {
     }
     
     @objc func showRanksAndComments(){
-       delegate?.ranksTappd(post: post!)
+       delegate?.ranksTappd(postId: post!.postId, comments: post!.comments)
     }
 }
 

@@ -57,9 +57,10 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
             vc.post = sender as? Post
         }
         else if segue.identifier == "commentsSegue"{
-//            let vc = segue.destination as! RanksAndComViewController
-//            vc.navigationController?.setNavigationBarHidden(false, animated: false)
-//            vc.navigationController?.navigationBar.isHidden = false
+            let vc = segue.destination as! RanksAndComViewController
+            let info = sender as! (String, [Comment])
+            vc.postId = info.0
+            vc.comments = info.1
         }
         else if segue.identifier == "showPhotographer"{
             let vc = segue.destination as! MyProfileViewController
@@ -72,8 +73,8 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         self.performSegue(withIdentifier: "showPhotographer", sender: user)
     }
     
-    func ranksTappd(post: Post) {
-        self.performSegue(withIdentifier: "commentsSegue", sender: post)
+    func ranksTappd(postId:String, comments:[Comment]) {
+        self.performSegue(withIdentifier: "commentsSegue", sender: (postId, comments))
     }
     
     func loadData(){

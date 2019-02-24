@@ -15,6 +15,8 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var addCommTextField: UITextField!
     
+    var postId:String?
+    var comments:[Comment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +30,27 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         setLogoTitle()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    func refreshComments(){
+        if let id = postId{
+            Model.instance.getAllCommentsOfPost(postId: id) { (data) in
+                self.comments = data
+                self.commentsTableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentsTableViewCell
         // Configure the cell...
-        
-        
+        cell.commentLabel.text = comments[indexPath.row].comment
+        cell.userId = comments[indexPath.row].userId
         return cell
     }
     
@@ -47,7 +58,21 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         if let btn = sender as? UIButton{
             btn.setTitleColor(UIColor.gray, for: .normal)
             btn.isEnabled = false
-            print("post pressed")
+            if let text = addCommTextField.text{
+                if text == "" {return}
+                let loadingView = Utility.getLoadingAlert(message: "Uploading Comment")
+                self.present(loadingView, animated: true, completion: nil)
+                let com = Comment(_commentId: "\(postId!)\(comments.count)", _userId:Model.connectedUser!.id, _comment: text, _userName: Model.connectedUser!.userName)
+                Model.instance.addCommentToPost(postId: postId!, comment: com) { (err, ref) in
+                    self.dismiss(animated: true, completion: {
+                        self.refreshComments()
+                        self.addCommTextField.endEditing(true)
+                        self.addCommTextField.text = nil
+                        btn.setTitleColor(UIColor.blue, for: .normal)
+                        btn.isEnabled = true
+                    })
+                }
+            }
         }
         
     }
@@ -67,15 +92,5 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         self.view.endEditing(true)
         return false
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

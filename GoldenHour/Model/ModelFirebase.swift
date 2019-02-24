@@ -23,6 +23,9 @@ class ModelFirebase{
         ref = Database.database().reference()
     }
     
+    // MARK: - Register, Login, Logout
+    // ==============================Register, Signin, Logout ==============================
+    
     func registerUser(mail:String  ,pass:String, callback:@escaping (AuthDataResult?, Error?)->Void)
     {
         
@@ -36,7 +39,6 @@ class ModelFirebase{
         }
     }
     
-    
     func signIn(mail:String  ,pass:String, callback:@escaping (AuthDataResult?, Error?)->Void){
         Auth.auth().signIn(withEmail: mail, password: pass) { (user, error) in
             if user != nil{
@@ -47,7 +49,32 @@ class ModelFirebase{
         }
     }
     
+    func signInByEmailAndPass(email : String, pass : String, callback : @escaping (Bool?)->Void){
+        Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
+            if(error != nil){
+                callback(false)
+            }
+            callback(true)
+        }
+    }
     
+    func checkIfSignIn()->Bool{
+        return (Auth.auth().currentUser != nil)
+    }
+    
+    func sign_Out() -> (Bool, Error?){
+        do{
+            try Auth.auth().signOut()
+            return (true, nil)
+        }catch let error{
+            print(error.localizedDescription)
+            return (false, error)
+        }
+    }
+    
+    
+    // MARK: - Users Methods
+    // ============================== Users Methods ==============================
     
     func getAllUsers(callback:@escaping ([User])->Void){
         ref.child("users").observe(.value, with:
@@ -61,8 +88,6 @@ class ModelFirebase{
                 callback(data)
         })
     }
-    
-    
     
     func getAllUserInfo(userId:String, callback:@escaping ([User])->Void){
         ref.child("users").observe(.value, with:
@@ -102,23 +127,22 @@ class ModelFirebase{
         ref.child("users").child(id).setValue(["email":email , "password":password , "userName":userName , "url" : url])
     }
     
-    
     func getUserId()->String{
         return Auth.auth().currentUser!.uid
     }
     
-    
-    
     func getUserName()->String?{
         return Auth.auth().currentUser?.email
     }
-    
     
     func getUser(byId : String)->Void{
         getUserInfo(userId: byId, callback: { (data) in
             print(data)
         })
     }
+    
+    // MARK: - Post Methods
+    // ============================== Post Methods ==============================
     
     func getPost(postId:String, callback: @escaping (Post)->Void){
         ref.child("posts").child(postId).observe(.value, with:
@@ -160,6 +184,33 @@ class ModelFirebase{
             callback(error, reference)
         }
     }
+    
+    // MARK: - Comment Methods
+    // ============================== Images Methods ==============================
+    
+    func addCommentToPost(postId:String, comment:Comment, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("posts").child(postId).child("comments").child(comment.commentId).setValue(comment.toJson()){ (error, reference) in
+            print(reference.debugDescription)
+            callback(error, reference)
+        }
+    }
+    
+    func getAllCommentsOfPost(postId:String, callback: @escaping ([Comment])->Void){
+        ref.child("posts").child(postId).child("comments").observe(.value, with:
+            {
+                (snapshot) in
+                var data = [Comment]()
+                if let value = snapshot.value as? [String : Any]{
+                    for(_, json) in value {
+                        data.append(Comment(json: json as! [String : Any]))
+                    }
+                }
+                callback(data)
+        })
+    }
+    
+    // MARK: - Images Methods
+    // ============================== Images Methods ==============================
     
     func saveImage(image:UIImage, name:String ,callback:@escaping (String?)->Void){
         let data = image.jpegData(compressionQuality: 0.8)
@@ -211,6 +262,8 @@ class ModelFirebase{
         }
     }
     
+    // MARK: - DB Methods
+    // ============================== DB Methods ==============================
     
     func sendPostToDb(imageUrl : String, rank : [User], date : String, comments : [Comment], metaData : [Metadata]) {
         let postRef = ref.child("posts")
@@ -230,8 +283,6 @@ class ModelFirebase{
         
     }
     
-    
-    
     func sendDataToDataBase(imageUrl : String){
         let postRef = ref.child("posts")
         let newPostId  = postRef.childByAutoId().key
@@ -246,33 +297,7 @@ class ModelFirebase{
             }
         }
     }
-    
-    func signInByEmailAndPass(email : String, pass : String, callback : @escaping (Bool?)->Void){
-        Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
-            if(error != nil){
-                callback(false)
-            }
-            callback(true)
-        }
-    }
-    
-    
-    func checkIfSignIn()->Bool{
-        return (Auth.auth().currentUser != nil)
-    }
-    
-    
-    func sign_Out() -> (Bool, Error?){
-        do{
-            try Auth.auth().signOut()
-            return (true, nil)
-        }catch let error{
-            print(error.localizedDescription)
-            return (false, error)
-        }
-    }
-    
-    
+  
 }
 
 

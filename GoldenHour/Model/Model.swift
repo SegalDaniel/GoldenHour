@@ -11,6 +11,10 @@ import UIKit
 import Foundation
 import FirebaseDatabase
 import Kingfisher
+
+// MARK: - ModelNotification class
+// ============================== ModelNotification class ==============================
+
 class ModelNotification{
     
     static let usersListNotification = MyNotification<[User]>("app.GoldenHour.userList")
@@ -48,7 +52,13 @@ class ModelNotification{
     
 }
 
+// MARK: - Model class
+// ============================== Model class ==============================
+
 class Model {
+    // MARK: - Model class properties
+    // ============================== Model class properties ==============================
+
     static let instance:Model = Model()
     static var connectedUser:User?
     
@@ -59,7 +69,9 @@ class Model {
         
     }
     
-    
+    // MARK: - User Methods
+    // ============================== User Methods ==============================
+
     func getAllUsers() {
         modelFirebase.getAllUsers(callback: {(data:[User]) in
             ModelNotification.usersListNotification.notify(data: data)
@@ -105,6 +117,17 @@ class Model {
         }
     }
     
+    func getUserInfo(userId:String, callback:@escaping (User)->Void){
+        modelFirebase.getUserInfo(userId: userId, callback: callback)
+    }
+    
+    func getUserID() -> String{
+        return modelFirebase.getUserId()
+    }
+    
+    // MARK: - Post Methods
+    // ============================== User Methods ==============================
+    
     func addNewPost(post:Post, callback: @escaping (Error?, DatabaseReference) -> Void){
         modelFirebase.addNewPost(post: post) { (error, ref) in
             self.modelFirebase.addPostUrlToUser(userID: Model.connectedUser!.id, postID: post.postId, callback: callback)
@@ -121,6 +144,20 @@ class Model {
         modelFirebase.getAllPosts(callback: callback)
     }
     
+    // MARK: - Comment Methods
+    // ============================== Comment Methods ==============================
+    
+    func addCommentToPost(postId:String, comment:Comment, callback:@escaping (Error?, DatabaseReference)->Void){
+       modelFirebase.addCommentToPost(postId: postId, comment: comment, callback: callback)
+    }
+    
+    func getAllCommentsOfPost(postId:String, callback: @escaping ([Comment])->Void){
+        modelFirebase.getAllCommentsOfPost(postId: postId, callback: callback)
+    }
+    
+    // MARK: - Images Methods
+    // ============================== Images Methods ==============================
+    
     func getImageKF(url:String, imageView:UIImageView, placeHolderNamed:String = "Image_placeholder"){
         let _url = URL(string: url)
         let image = UIImage(named: placeHolderNamed)
@@ -131,21 +168,9 @@ class Model {
         modelFirebase.getImage(url: url, callback: callback)
     }
     
-    func getUserInfo(userId:String, callback:@escaping (User)->Void){
-        modelFirebase.getUserInfo(userId: userId, callback: callback)
-    }
-    
-    func getUserID() -> String{
-        return modelFirebase.getUserId()
-    }
-    
     func savePostImage(image : UIImage, name:(String),callback:@escaping (String?)->Void){
         modelFirebase.saveImage(image: image, name: name, callback: callback)
     }
-    //
-    //    func getImage(url:String, callback:@escaping (UIImage?)->Void){
-    //        modelFirebase.getImage(url: url, callback: callback)
-    //    }
     
 }
 
