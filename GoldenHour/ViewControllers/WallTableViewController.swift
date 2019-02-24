@@ -16,7 +16,6 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         super.viewDidLoad()
         setLogoTitle()
         loadData()
-        self.navigationController?.viewControllers = [self]
     }
     
     // MARK: - Table view data source
@@ -37,7 +36,6 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "wallCell", for: indexPath) as! WallTableViewCell
-        // Configure the cell...
         cell.delegate = self
         cell.post = data?[indexPath.row]
         if cell.post!.rank.contains(Model.connectedUser!.id){

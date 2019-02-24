@@ -823,6 +823,7 @@
                         <outlet property="fullScreenImageView" destination="Oth-aQ-Vkm" id="9AN-Yd-SIx"/>
                         <outlet property="imageInfoBtn" destination="ohV-b1-wk0" id="Dxz-fX-L8S"/>
                         <outlet property="shareBtn" destination="wQE-tX-9of" id="tKT-Vd-R1G"/>
+                        <segue destination="NLo-K6-bec" kind="show" identifier="commentsSegue" id="cOD-VI-xmF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHY-2l-9c9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1118,6 +1119,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Fzp-O9-9cr"/>
         <segue reference="P7S-HF-ORT"/>
+        <segue reference="cOD-VI-xmF"/>
         <segue reference="2Fu-is-grV"/>
         <segue reference="Nfa-4D-xvR"/>
     </inferredMetricsTieBreakers>

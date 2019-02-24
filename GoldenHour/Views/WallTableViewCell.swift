@@ -11,13 +11,7 @@ import UIKit
 class WallTableViewCell: UITableViewCell {
     
     var ranked:Bool = false
-    var post:Post?{
-        didSet{
-            if post!.rank.count > 0 {
-                ranked = post!.rank.contains(Model.connectedUser!.id)
-            }
-        }
-    }
+    var post:Post?
     var postOwner:User?
     var delegate:wallTableViewCellDelegate?
     
@@ -29,10 +23,6 @@ class WallTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if ranked{
-            rankBtn.tintColor = UIColor.red
-            rankBtn.tag = 1
-        }
         
         Utility.viewTapRecognizer(target: self, toBeTapped: profileImageView, action: #selector(self.showPostOwnerUser))
         Utility.viewTapRecognizer(target: self, toBeTapped: imageByLabel, action: #selector(self.showPostOwnerUser))
@@ -48,7 +38,17 @@ class WallTableViewCell: UITableViewCell {
                 Model.instance.getImageKF(url: user.profileImage, imageView: self.profileImageView)
                 self.imageByLabel.text = "Image by \(user.userName)"
             }
+            ranked = post.rank.contains(Model.connectedUser!.id)
             ranksLabel.text = "Ranks \(post.rank.count) Comments \(post.comments.count)"
+        }
+        
+        if ranked{
+            rankBtn.tintColor = UIColor.red
+            rankBtn.tag = 1
+        }
+        else{
+            rankBtn.tintColor = UIColor.black
+            rankBtn.tag = 0
         }
     }
 

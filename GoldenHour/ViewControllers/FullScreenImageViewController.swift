@@ -45,9 +45,12 @@ class FullScreenImageViewController: UIViewController {
     }
     
     @IBAction func commentsBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "commentsSegue", sender: nil)
     }
     
     @IBAction func sharedBtnPressed(_ sender: Any) {
+        let ac = UIActivityViewController(activityItems: [fullScreenImageView.image!], applicationActivities: nil)
+        present(ac, animated: true)
     }
     
     func setImage(){
@@ -96,6 +99,12 @@ class FullScreenImageViewController: UIViewController {
         if segue.identifier == "showDetails"{
             let vc = segue.destination as! AddPostInfoViewController
             vc.data = post?.metaData
+        }
+        else if segue.identifier == "commentsSegue"{
+            let vc = segue.destination as! RanksAndComViewController
+            vc.postId = post!.postId
+            vc.comments = post!.comments
+            vc.ranks = post!.rank.count
         }
     }
     
