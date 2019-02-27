@@ -33,11 +33,10 @@ class PhotosStaticData{
             ["Lens Model","E 16mm F2.8","E 20mm F2.8","E 24mm F1.4","Carl Zeiss Sonnar T* E 24mm F1.8 ZA","FE 28mm F2","E 30mm F3.5 Macro","Zeiss Distagon T* FE 35mm F1.4 ZA","E 35mm F1.8 OSS","Carl Zeiss Sonnar T* FE 35mm F2.8 ZA","Zeiss Planar T* FE 50mm F1.4 ZA","E 50mm F1.8 OSS","FE 50mm F1.8","FE 50mm F2.8 Macro","Carl Zeiss Sonnar T* FE 55mm F1.8 ZA","FE 85mm F1.4 GM","FE 85mm F1.8","FE 90mm F2.8 Macro G OSS","FE 100mm F2.8 STF GM OSS","E 10-18mm F4 OSS","FE 12-24mm F4 G","FE 16-35mm F2.8 GM","Zeiss Vario-Tessar T* FE 16-35mm F4 ZA OSS","E PZ 16-50mm F3.5-5.6 OSS","Carl Zeiss Vario-Tessar T* E 16-70mm F4 ZA OSS","E 18-50mm F4-5.6","E 18-55mm F3.5-5.6 OSS","E PZ 18-105mm F4 G OSS","E PZ 18-110mm F4 G OSS","E 18-135mm F3.5-5.6 OSS","E 18-200mm F3.5-6.3 OSS","E 18-200mm F3.5-6.3 OSS","E PZ 18-200mm F3.5-6.3 OSS","Carl Zeiss Vario-Tessar T* FE 24-70mm F4 ZA OSS","FE 24-70mm F2.8 GM","FE 24-105mm F4 G OSS","FE 24-240mm F3.5-6.3 OSS","FE 28-70mm F3.5-5.6 OSS","FE PZ 28-135mm F4 G OSS","E 55-210mm F4.5-6.3 OSS","FE 70-200mm F4 G OSS","FE 70-200mm F2.8 GM OSS","FE 70-300mm F4.5-5.6 G OSS","FE 100-400mm F4.5-5.6 GM OSS"]
         ]
         aptRange = ["Select F Stop","0.7","0.8","0.9","1.0","1.1","1.2","1.4","1.6","1.8","2","2.2","2.5","2.8","3.2","3.5","4","4.5","5.0","5.6","6.3","7.1","8","9","10","11","13","14","16","18","20","22","25","29","32","36","40","45","51","57","64","72","80","90"]
-        shutterRange = ["Select Shutter Speed","1", "1/2","1/4", "1/8","1/15", "1/30","1/60", "1/80", "1/125", "1/150"]
+        shutterRange = ["Select Shutter Speed","1/4000","1/3200","1/2500","1/2000","1/1600","1/1250","1/1000","1/800","1/640","1/500","1/400","1/320","1/250","1/200","1/160","1/125","1/100","1/80","1/60","1/50","1/40","1/30","1/25","1/20","1/15","1/13","1/10","1/8","1/6","1/5","1/4","1/3","0.4s","1/2","0.6s","0.8s","1.0s","1.3s","1.6s","2.0s","2.5s","3s","4s","5s","6s","8s","10s","13s","15s","20s","25s","30s","40s","50s","1m00","1m20","1m40","2m00","2m30","3m30","4m00","5m00","7m00","8m00","10m00","12m30","15m00","20m00","25m00","30m00","40m00","50m00","1h00m"]
     }
     
-    
-    
-
-    
 }
+
+
+
