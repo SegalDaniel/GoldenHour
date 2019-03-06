@@ -10,7 +10,6 @@ import UIKit
 
 class WallTableViewCell: UITableViewCell {
     
-    var ranked:Bool = false
     var post:Post?
     var postOwner:User?
     var delegate:wallTableViewCellDelegate?
@@ -19,7 +18,6 @@ class WallTableViewCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var imageByLabel: UILabel!
-    @IBOutlet weak var rankBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,47 +36,20 @@ class WallTableViewCell: UITableViewCell {
                 Model.instance.getImageKF(url: user.profileImage, imageView: self.profileImageView)
                 self.imageByLabel.text = "Image by \(user.userName)"
             }
-            ranked = post.rank.contains(Model.connectedUser!.id)
             ranksLabel.text = "Ranks \(post.rank.count) Comments \(post.comments.count)"
-        }
-        
-        if ranked{
-            rankBtn.tintColor = UIColor.red
-            rankBtn.tag = 1
-        }
-        else{
-            rankBtn.tintColor = UIColor.black
-            rankBtn.tag = 0
         }
     }
 
     @IBAction func commentsBtnPressed(_ sender: Any) {
-        delegate?.commentsTappd(postId: post!.postId, comments: post!.comments, ranks: post!.rank.count)
+        delegate?.commentsTappd(postId: post!.postId, comments: post!.comments, ranks: post!.rank)
     }
-    
-    @IBAction func addRankBtnPressed(_ sender: Any) {
-        if ranked{
-            Model.instance.removeRank(postId: post!.postId, userId: Model.connectedUser!.id) { (err, ref) in
-                self.rankBtn.tag = 0
-                self.rankBtn.tintColor = UIColor.black
-                self.ranked = false
-            }
-        }
-        else{
-            Model.instance.addRank(postId: post!.postId, userId: Model.connectedUser!.id) { (err, ref) in
-                self.rankBtn.tag = 1
-                self.rankBtn.tintColor = UIColor.red
-                self.ranked = true
-            }
-        }
-    }
-    
+
     @objc func showPostOwnerUser(){
         delegate?.profileTapped(user: postOwner!)
     }
     
     @objc func showRanksAndComments(){
-       delegate?.commentsTappd(postId: post!.postId, comments: post!.comments, ranks: post!.rank.count)
+       delegate?.commentsTappd(postId: post!.postId, comments: post!.comments, ranks: post!.rank)
     }
 }
 

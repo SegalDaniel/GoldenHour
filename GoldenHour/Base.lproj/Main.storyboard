@@ -558,13 +558,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7 Ranks " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1h-z4-k9o">
-                                <rect key="frame" x="127.5" y="94" width="120" height="38"/>
+                                <rect key="frame" x="127.5" y="94" width="120" height="70"/>
                                 <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ejk-YQ-YR5">
-                                <rect key="frame" x="35" y="140" width="305" height="366"/>
+                                <rect key="frame" x="35" y="172" width="305" height="334"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="commentCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="60" id="3dm-ym-GHp" customClass="CommentsTableViewCell" customModule="GoldenHour" customModuleProvider="target">
@@ -609,17 +609,32 @@
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xso-gO-7dl">
+                                <rect key="frame" x="35" y="94" width="72" height="70"/>
+                                <fontDescription key="fontDescription" name="DayPosterBlackNF" family="Day Poster Black NF" pointSize="45"/>
+                                <state key="normal" title="+1">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="rankBtnPressed:" destination="NLo-K6-bec" eventType="touchUpInside" id="8y4-zB-vZf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="I04-DA-w3w" firstAttribute="trailing" secondItem="ejk-YQ-YR5" secondAttribute="trailing" id="58N-W7-hE4"/>
                             <constraint firstItem="ejk-YQ-YR5" firstAttribute="top" secondItem="R1h-z4-k9o" secondAttribute="bottom" constant="8" id="7O4-Ek-iuD"/>
+                            <constraint firstItem="Xso-gO-7dl" firstAttribute="bottom" secondItem="R1h-z4-k9o" secondAttribute="bottom" id="9yW-1y-6ut"/>
                             <constraint firstItem="R1h-z4-k9o" firstAttribute="top" secondItem="YcX-aG-c1p" secondAttribute="top" constant="30" id="DmC-SH-ksW"/>
+                            <constraint firstItem="Xso-gO-7dl" firstAttribute="centerY" secondItem="R1h-z4-k9o" secondAttribute="centerY" id="FiR-gz-7Lf"/>
                             <constraint firstItem="YcX-aG-c1p" firstAttribute="bottom" secondItem="I04-DA-w3w" secondAttribute="bottom" constant="27" id="JvO-nj-UH0"/>
                             <constraint firstItem="ejk-YQ-YR5" firstAttribute="leading" secondItem="YcX-aG-c1p" secondAttribute="leading" constant="35" id="KAl-Zd-owF"/>
                             <constraint firstItem="I04-DA-w3w" firstAttribute="top" secondItem="ejk-YQ-YR5" secondAttribute="bottom" constant="54" id="Tmb-hf-U8N"/>
+                            <constraint firstItem="Xso-gO-7dl" firstAttribute="leading" secondItem="ejk-YQ-YR5" secondAttribute="leading" id="Wqs-vS-Xd3"/>
                             <constraint firstItem="I04-DA-w3w" firstAttribute="leading" secondItem="ejk-YQ-YR5" secondAttribute="leading" id="cA2-pz-u3O"/>
+                            <constraint firstItem="Xso-gO-7dl" firstAttribute="top" secondItem="R1h-z4-k9o" secondAttribute="top" id="lZq-Qk-YBh"/>
                             <constraint firstItem="YcX-aG-c1p" firstAttribute="trailing" secondItem="ejk-YQ-YR5" secondAttribute="trailing" constant="35" id="lkr-zn-y3O"/>
+                            <constraint firstItem="R1h-z4-k9o" firstAttribute="leading" secondItem="Xso-gO-7dl" secondAttribute="trailing" constant="20.5" id="lqr-Dy-u3l"/>
                             <constraint firstItem="R1h-z4-k9o" firstAttribute="centerX" secondItem="Tqg-QZ-1Ey" secondAttribute="centerX" id="nOH-6S-cs1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YcX-aG-c1p"/>
@@ -627,6 +642,7 @@
                     <connections>
                         <outlet property="addCommTextField" destination="I04-DA-w3w" id="jzj-dx-NqI"/>
                         <outlet property="commentsTableView" destination="ejk-YQ-YR5" id="XOv-Nf-evN"/>
+                        <outlet property="rankBtn" destination="Xso-gO-7dl" id="0Vp-dp-4K3"/>
                         <outlet property="ranksLabel" destination="R1h-z4-k9o" id="Brb-Ik-jtZ"/>
                     </connections>
                 </viewController>
@@ -657,7 +673,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranks 0 Comments 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="Qve-dU-alF">
-                                            <rect key="frame" x="71" y="639" width="233" height="35.5"/>
+                                            <rect key="frame" x="16" y="639" width="288" height="35.5"/>
                                             <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="27"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -687,35 +703,19 @@
                                                 <segue destination="NLo-K6-bec" kind="show" identifier="commentsSegue" id="SEE-wk-sFP"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJN-ai-NqL">
-                                            <rect key="frame" x="16" y="632" width="50" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="kJN-ai-NqL" secondAttribute="height" multiplier="1:1" id="wpN-DR-pW6"/>
-                                            </constraints>
-                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" image="like-2">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="addRankBtnPressed:" destination="tnT-li-MyU" eventType="touchUpInside" id="eVx-9I-Igd"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="geG-1B-BbD" firstAttribute="leading" secondItem="TXf-dM-ZAn" secondAttribute="leading" id="8oB-WX-4b4"/>
                                         <constraint firstItem="yYq-59-aFI" firstAttribute="trailing" secondItem="Fwk-dm-V2r" secondAttribute="trailing" id="Aas-8j-qWs"/>
-                                        <constraint firstItem="kJN-ai-NqL" firstAttribute="centerY" secondItem="Qve-dU-alF" secondAttribute="centerY" id="Bub-35-KpD"/>
                                         <constraint firstItem="yYq-59-aFI" firstAttribute="leading" secondItem="Qve-dU-alF" secondAttribute="trailing" constant="5" id="Jb8-f0-11o"/>
                                         <constraint firstItem="Fwk-dm-V2r" firstAttribute="trailing" secondItem="TXf-dM-ZAn" secondAttribute="trailing" id="KfE-2c-zX4"/>
                                         <constraint firstItem="Fwk-dm-V2r" firstAttribute="leading" secondItem="geG-1B-BbD" secondAttribute="trailing" constant="8" id="Szf-mh-8tj"/>
+                                        <constraint firstItem="Qve-dU-alF" firstAttribute="leading" secondItem="geG-1B-BbD" secondAttribute="leading" id="TpX-Tr-Knc"/>
                                         <constraint firstItem="TXf-dM-ZAn" firstAttribute="leading" secondItem="7Gl-is-ld7" secondAttribute="leadingMargin" id="Wr6-rc-12K"/>
                                         <constraint firstItem="TXf-dM-ZAn" firstAttribute="top" secondItem="7Gl-is-ld7" secondAttribute="topMargin" id="aGM-E2-zL5"/>
                                         <constraint firstItem="geG-1B-BbD" firstAttribute="top" secondItem="TXf-dM-ZAn" secondAttribute="bottom" constant="8" id="fyU-wt-gnu"/>
                                         <constraint firstItem="yYq-59-aFI" firstAttribute="centerY" secondItem="Qve-dU-alF" secondAttribute="centerY" id="guh-ft-i0b"/>
                                         <constraint firstItem="Qve-dU-alF" firstAttribute="top" secondItem="geG-1B-BbD" secondAttribute="bottom" constant="20" id="hob-if-bEv"/>
-                                        <constraint firstItem="kJN-ai-NqL" firstAttribute="leading" secondItem="geG-1B-BbD" secondAttribute="leading" id="jNj-B9-5jG"/>
-                                        <constraint firstItem="Qve-dU-alF" firstAttribute="leading" secondItem="kJN-ai-NqL" secondAttribute="trailing" constant="5" id="mLd-AR-WxW"/>
-                                        <constraint firstItem="kJN-ai-NqL" firstAttribute="height" secondItem="geG-1B-BbD" secondAttribute="height" id="sec-Ox-FvT"/>
                                         <constraint firstItem="Fwk-dm-V2r" firstAttribute="centerY" secondItem="geG-1B-BbD" secondAttribute="centerY" id="tti-tB-7yl"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="TXf-dM-ZAn" secondAttribute="trailing" id="w74-t9-1NB"/>
                                     </constraints>
@@ -724,7 +724,6 @@
                                     <outlet property="imageByLabel" destination="Fwk-dm-V2r" id="VRd-Tb-vHV"/>
                                     <outlet property="postImageView" destination="TXf-dM-ZAn" id="mzm-iP-Gqa"/>
                                     <outlet property="profileImageView" destination="geG-1B-BbD" id="UVG-0I-ef9"/>
-                                    <outlet property="rankBtn" destination="kJN-ai-NqL" id="o3r-sI-gaO"/>
                                     <outlet property="ranksLabel" destination="Qve-dU-alF" id="Df8-wN-GwM"/>
                                 </connections>
                             </tableViewCell>
@@ -839,13 +838,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Image Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hr4-gm-r8P">
-                                <rect key="frame" x="123" y="91.5" width="243.5" height="30"/>
+                                <rect key="frame" x="123.5" y="91.5" width="243.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdr-Qk-OBQ">
-                                <rect key="frame" x="123" y="91.5" width="243.5" height="30"/>
+                                <rect key="frame" x="123.5" y="91.5" width="243.5" height="30"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -865,13 +864,13 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="External Excesories" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ce-bQ-EaY">
-                                <rect key="frame" x="123" y="416" width="243.5" height="30"/>
+                                <rect key="frame" x="123.5" y="416" width="243.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I72-Ef-fGL">
-                                <rect key="frame" x="123" y="416" width="243.5" height="30"/>
+                                <rect key="frame" x="123.5" y="416" width="243.5" height="30"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1099,7 +1098,6 @@
         <image name="info_icon" width="75" height="75"/>
         <image name="info_icon_pressed" width="100" height="100"/>
         <image name="lens_icon" width="75" height="75"/>
-        <image name="like-2" width="96" height="96"/>
         <image name="login_btn" width="457" height="132"/>
         <image name="login_pressed" width="457" height="132"/>
         <image name="msg_icon" width="75" height="75"/>
@@ -1119,7 +1117,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Fzp-O9-9cr"/>
         <segue reference="P7S-HF-ORT"/>
-        <segue reference="cOD-VI-xmF"/>
+        <segue reference="SEE-wk-sFP"/>
         <segue reference="2Fu-is-grV"/>
         <segue reference="Nfa-4D-xvR"/>
     </inferredMetricsTieBreakers>

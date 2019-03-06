@@ -15,5 +15,5 @@ protocol MyPickerDelegate {
 
 protocol wallTableViewCellDelegate{
     func profileTapped(user:User)
-    func commentsTappd(postId:String, comments:[Comment], ranks:Int)
+    func commentsTappd(postId:String, comments:[Comment], ranks:[String])
 }

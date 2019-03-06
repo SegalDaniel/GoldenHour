@@ -11,12 +11,13 @@ import UIKit
 class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
 
+    @IBOutlet weak var rankBtn: UIButton!
     @IBOutlet weak var ranksLabel: UILabel!
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var addCommTextField: UITextField!
     
     var postId:String?
-    var ranks:Int?
+    var ranks:[String]?
     var comments:[Comment] = []
     
     override func viewDidLoad() {
@@ -31,7 +32,10 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         setLogoTitle()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        ranksLabel.text = "\(ranks ?? 0) Ranks"
+        refreshRanks()
+        if ranks != nil && ranks!.contains(Model.connectedUser!.id){
+            rankBtn.setTitle("-1", for: .normal)
+        }
     }
     
     func refreshComments(){
@@ -41,6 +45,10 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
                 self.commentsTableView.reloadData()
             }
         }
+    }
+    
+    func refreshRanks(){
+        ranksLabel.text = "\(ranks?.count ?? 0) Ranks"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,6 +62,21 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         cell.userId = comments[indexPath.row].userId
         return cell
     }
+    
+    @IBAction func rankBtnPressed(_ sender: Any) {
+        if let index = self.ranks?.index(of: Model.connectedUser!.id){
+            Model.instance.removeRank(postId: postId!, userId: Model.connectedUser!.id) { (err, ref) in }
+            self.rankBtn.setTitle("+1", for: .normal)
+            self.ranks!.remove(at: index)
+        }
+        else{
+            Model.instance.addRank(postId: postId!, userId: Model.connectedUser!.id) { (err, ref) in }
+            self.rankBtn.setTitle("-1", for: .normal)
+            self.ranks!.append(Model.connectedUser!.id)
+        }
+        refreshRanks()
+    }
+    
     
     @IBAction func refresh(_ sender: Any) {
         if let btn = sender as? UIButton{

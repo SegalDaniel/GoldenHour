@@ -104,7 +104,7 @@ class FullScreenImageViewController: UIViewController {
             let vc = segue.destination as! RanksAndComViewController
             vc.postId = post!.postId
             vc.comments = post!.comments
-            vc.ranks = post!.rank.count
+            vc.ranks = post!.rank
         }
     }
     

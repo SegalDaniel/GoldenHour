@@ -38,9 +38,7 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         let cell = tableView.dequeueReusableCell(withIdentifier: "wallCell", for: indexPath) as! WallTableViewCell
         cell.delegate = self
         cell.post = data?[indexPath.row]
-        if cell.post!.rank.contains(Model.connectedUser!.id){
-            cell.ranked = true
-        }
+
         cell.awakeFromNib()
         return cell
     }
@@ -59,7 +57,7 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         }
         else if segue.identifier == "commentsSegue"{
             let vc = segue.destination as! RanksAndComViewController
-            let info = sender as! (String, [Comment], Int)
+            let info = sender as! (String, [Comment], [String])
             vc.postId = info.0
             vc.comments = info.1
             vc.ranks = info.2
@@ -75,13 +73,15 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         self.performSegue(withIdentifier: "showPhotographer", sender: user)
     }
     
-    func commentsTappd(postId:String, comments:[Comment], ranks:Int) {
+    func commentsTappd(postId:String, comments:[Comment], ranks:[String]) {
         self.performSegue(withIdentifier: "commentsSegue", sender: (postId, comments, ranks))
     }
     
     func loadData(){
         Model.instance.getAllPosts(){ (posts) in
-            self.data = posts
+            self.data = posts.sorted(by: { (post1, post2) -> Bool in
+                post1.date > post2.date
+            })
             self.tableView.reloadData()
             print("gethered all posts")
         }
