@@ -15,7 +15,11 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         setLogoTitle()
-        loadData()
+        loadData() 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.setContentOffset(CGPoint.zero, animated:true)
     }
     
     // MARK: - Table view data source
