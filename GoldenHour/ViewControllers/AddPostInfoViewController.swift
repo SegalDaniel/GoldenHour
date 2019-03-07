@@ -138,7 +138,9 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             metaInfo["apt"] == nil || metaInfo["ss"] == nil{
             return (false, nil)
         }
-        
+        if metaInfo["desc"] == nil || metaInfo["desc"] == ""{
+            return(false, nil)
+        }
         return (true, Metadata(_manufacturer: metaInfo["man"]!, _model: metaInfo["model"]!, _lens: metaInfo["lens"]!, _shutterSpeed: metaInfo["ss"]!, _aperture: metaInfo["apt"]!, _description: metaInfo["desc"]!,_externalAccesssories: metaInfo["ext"], _location: metaInfo["loc"]))
     }
     
@@ -163,15 +165,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             vc.url = sender as? String
         }
         else if segue.identifier == "unwindToWall"{
-            var navigationArray = self.navigationController?.viewControllers //To get all UIViewController stack as Array
-            navigationArray!.remove(at: (navigationArray?.count)! - 1) // To remove previous UIViewController
-            let vc = navigationArray!.first! as! UploadViewController
-            vc.userImageView.image = nil
-            vc.userImageView.isHidden = true
-            vc.selectImageLabel.isHidden = false
-            vc.bigPlusImageView.isHidden = false
-            self.navigationController?.viewControllers = []
-            self.navigationController?.popToRootViewController(animated: true)
+            dismiss(animated: true, completion: nil)
         }
     }
     

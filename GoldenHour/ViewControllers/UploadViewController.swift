@@ -71,6 +71,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             vc.userImage = img
         }
         vc.data = nil
+        userImageView.isHidden = true
+        selectImageLabel.isHidden = false
+        bigPlusImageView.isHidden = false
      }
     
     func allViewsToucable(){

@@ -18,6 +18,7 @@ import Kingfisher
 class ModelNotification{
     
     static let usersListNotification = MyNotification<[User]>("app.GoldenHour.userList")
+    static let connectedUser = MyNotification<User>("app.GoldenHour.connectedUser")
     
     class MyNotification<T>{
         let name:String
@@ -142,6 +143,10 @@ class Model {
     
     func getAllPosts(callback:@escaping ([Post]) -> Void){
         modelFirebase.getAllPosts(callback: callback)
+    }
+    
+    func removePost(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
+        modelFirebase.removePostForUser(post: post, callback: callback)
     }
     
     // MARK: - Comment, Rank Methods

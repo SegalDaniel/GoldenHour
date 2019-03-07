@@ -17,3 +17,8 @@ protocol wallTableViewCellDelegate{
     func profileTapped(user:User)
     func commentsTappd(postId:String, comments:[Comment], ranks:[String])
 }
+
+protocol postCollectionViewCellDelegate {
+    func longPressed(post:Post)
+    func tapped(post:Post)
+}

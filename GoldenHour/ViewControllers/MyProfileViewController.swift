@@ -8,7 +8,7 @@
 
 import UIKit
 import Kingfisher
-class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, postCollectionViewCellDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var editProfileBtn: UIButton!
@@ -28,7 +28,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         hideButtons()
         loadPosts()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
         
@@ -39,12 +39,35 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         cell.awakeFromNib()
         Model.instance.getImageKF(url: posts[indexPath.row].imageUrl!, imageView: cell.postImageView)
         cell.post = posts[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "fullScreenImageSegue", sender: posts[indexPath.row])
+        //
     }
+    
+    func longPressed(post: Post) {
+        if !showBtns {return}
+        let alert = UIAlertController(title: "Hey!", message: "Are you sure you want to delete this post?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+            let simpleAlert = SimpleAlert(_title: "Deleted Sucessfully", _message: "", dissmissCallback: {}).getAlert()
+            Model.instance.removePost(post: post, callback: { (error, ref) in
+                self.loadPosts()
+                alert.dismiss(animated: true, completion: {})
+                self.present(simpleAlert, animated: true, completion: nil)
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func tapped(post: Post) {
+        self.performSegue(withIdentifier: "fullScreenImageSegue", sender: post)
+    }
+    
     
     @IBAction func editProfileBtnPressed(_ sender: Any) {
     }

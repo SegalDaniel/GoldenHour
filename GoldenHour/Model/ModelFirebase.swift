@@ -149,11 +149,14 @@ class ModelFirebase{
             {
                 (snapshot) in
                 //var data = [User]()
-                let value = snapshot.value as! [String : Any]
+                let value = snapshot.value as? [String : Any]
                 //for(_, json) in value {
-                let post = Post(json: value)
+                if value != nil{
+                    let post = Post(json: value!)
+                    callback(post)
+                }
                 //}
-                callback(post)
+                
         })
     }
     
@@ -183,6 +186,21 @@ class ModelFirebase{
             print(reference.debugDescription)
             callback(error, reference)
         }
+    }
+    
+    func removePostForUser(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
+        let index:String = String(Int(String(post.postId.suffix(1)))! + 1)
+        ref.child("users").child(Model.connectedUser!.id).child("posts").child(index).removeValue { (err, ref) in
+            self.ref.child("posts").child(post.postId).removeValue(completionBlock: { (err2, ref2) in
+                self.removeImage(imageName: post.postId, callback: { (err3) in
+                    self.getUserInfo(userId: Model.connectedUser!.id, callback: { (user) in
+                        Model.connectedUser! = user
+                         callback(err, ref)
+                    })
+                })
+            })
+        }
+       
     }
     
     // MARK: - Comment, Rank Methods
@@ -272,6 +290,13 @@ class ModelFirebase{
                 let image = UIImage(data : data!)
                 callback(image)
             }
+        }
+    }
+    
+    func removeImage(imageName:String, callback:@escaping (Error?)->Void){
+        let imageRef = storageRef.child("post_images").child(imageName)
+        imageRef.delete { (error) in
+            callback(error)
         }
     }
     
