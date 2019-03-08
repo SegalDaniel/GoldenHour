@@ -19,16 +19,26 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     var user:User?
     var posts:[Post] = []
     var showBtns:Bool = true
+    var connectedUserListener:NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userPostsCollection.delegate = self
         userPostsCollection.dataSource = self
         Utility.roundImageView(imageView: profileImageView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         hideButtons()
-        loadPosts()
     }
 
+    deinit{
+        if connectedUserListener != nil{
+            ModelNotification.connectedUser.remove(observer: connectedUserListener!)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
         
@@ -51,9 +61,10 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         if !showBtns {return}
         let alert = UIAlertController(title: "Hey!", message: "Are you sure you want to delete this post?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
-            let simpleAlert = SimpleAlert(_title: "Deleted Sucessfully", _message: "", dissmissCallback: {}).getAlert()
+            let simpleAlert = SimpleAlert(_title: "Deleted Sucessfully", _message: "", dissmissCallback: {
+                self.userPostsCollection.reloadData()
+            }).getAlert()
             Model.instance.removePost(post: post, callback: { (error, ref) in
-                self.loadPosts()
                 alert.dismiss(animated: true, completion: {})
                 self.present(simpleAlert, animated: true, completion: nil)
             })
@@ -88,19 +99,16 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     func loadPosts(){
         if let user = user{
             posts = []
-            Model.instance.getImageKF(url: user.profileImage, imageView: profileImageView, placeHolderNamed: "profile_placeholder")
-            userNameLabel.text = user.userName
             user.post.forEach { (postId) in
                 Model.instance.getPost(postId: postId, callback: { (post) in
-                    self.posts.append(post)
-                    self.userPostsCollection.reloadData()
+                    if self.posts.count < user.post.count{
+                        self.posts.append(post)
+                        self.userPostsCollection.reloadData()
+                    }
                 })
             }
-        }else{
-            Model.instance.getUserInfo(userId: Model.instance.getUserID()) { (user) in
-                self.user = user
-                self.loadPosts()
-            }
+            Model.instance.getImageKF(url: user.profileImage, imageView: self.profileImageView, placeHolderNamed: "profile_placeholder")
+            self.userNameLabel.text = user.userName
         }
     }
     
@@ -108,9 +116,14 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         if !showBtns{
             logoutBtn.isHidden = true
             editProfileBtn.isHidden = true
+            loadPosts()
         }
         else{
-            user = Model.connectedUser
+            connectedUserListener = ModelNotification.connectedUser.observe(cb: { (user) in
+                self.user = user
+                self.loadPosts()
+            })
+            Model.instance.updateConnectedUser()
             logoutBtn.isHidden = false
             editProfileBtn.isHidden = false
         }

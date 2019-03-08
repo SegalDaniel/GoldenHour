@@ -44,7 +44,12 @@ class User{
                     post.append(value as! String)
                 }
             }
-            
+        }
+        else if let posts = json["posts"] as? NSDictionary{
+            posts.forEach { (arg0) in
+                let (_, value) = arg0
+                self.post.append(value as! String)
+            }
         }
 //        let posts:[String] = json["posts"] as! [String]
 //        posts.forEach { (value) in
@@ -66,4 +71,9 @@ class User{
         return json
     }
     
+    static func ==(lhs:User, rhs:User)->Bool{
+        return lhs.id == rhs.id
+    }
 }
+
+

@@ -45,6 +45,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         descritionTextField.delegate = self
         extnAccTextField.delegate = self
         hideBtns()
+        Model.instance.updateConnectedUser()
         // Do any additional setup after loading the view.
     }
 
@@ -112,13 +113,14 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         if userImage != nil && meta.0{
             let loadingView = Utility.getLoadingAlert(message: "Uploading your post, please wait..")
             self.present(loadingView, animated: true, completion: nil)
-            let postID = "\(Model.connectedUser!.id)\(Model.connectedUser!.post.count)"
+            let index = Int(String(Model.connectedUser?.post.last?.suffix(1) ?? "0")) ?? 0
+            let postID = "\(Model.connectedUser!.id)\(index+1)"
             let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil, metadata: meta.1!)
             Model.instance.savePostImage(image: userImage!, name: postID) { (url) in
                 post.imageUrl = url
                 Model.instance.addNewPost(post: post) { (error, ref) in
                     print("new post at \(ref)")
-                    self.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
                     self.performSegue(withIdentifier: "unwindToWall", sender: nil)
                 }
             }
@@ -165,7 +167,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             vc.url = sender as? String
         }
         else if segue.identifier == "unwindToWall"{
-            dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

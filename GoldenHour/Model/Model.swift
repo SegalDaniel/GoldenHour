@@ -16,8 +16,8 @@ import Kingfisher
 // ============================== ModelNotification class ==============================
 
 class ModelNotification{
-    
-    static let usersListNotification = MyNotification<[User]>("app.GoldenHour.userList")
+    static let usersListNotification = MyNotification<[User]>("app.GoldenHour.usersList")
+    static let postsListNotification = MyNotification<[Post]>("app.GoldenHour.postsList")
     static let connectedUser = MyNotification<User>("app.GoldenHour.connectedUser")
     
     class MyNotification<T>{
@@ -126,12 +126,21 @@ class Model {
         return modelFirebase.getUserId()
     }
     
+    func updateConnectedUser(){
+        modelFirebase.getUserInfo(userId: getUserID()) { (user) in
+            ModelNotification.connectedUser.notify(data: user)
+            Model.connectedUser = user
+        }
+    }
+    
     // MARK: - Post Methods
     // ============================== User Methods ==============================
     
     func addNewPost(post:Post, callback: @escaping (Error?, DatabaseReference) -> Void){
         modelFirebase.addNewPost(post: post) { (error, ref) in
             self.modelFirebase.addPostUrlToUser(userID: Model.connectedUser!.id, postID: post.postId, callback: callback)
+            self.getAllPosts()
+            self.updateConnectedUser()
         }
     }
     
@@ -141,12 +150,19 @@ class Model {
         }
     }
     
-    func getAllPosts(callback:@escaping ([Post]) -> Void){
-        modelFirebase.getAllPosts(callback: callback)
+    func getAllPosts(){
+        modelFirebase.getAllPosts { (posts) in
+            ModelNotification.postsListNotification.notify(data: posts)
+        }
+        //modelFirebase.getAllPosts(callback: callback)
     }
     
     func removePost(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
-        modelFirebase.removePostForUser(post: post, callback: callback)
+        modelFirebase.removePostForUser(post: post) { (err, ref) in
+            self.getAllPosts()
+            self.updateConnectedUser()
+            callback(err,ref)
+        }
     }
     
     // MARK: - Comment, Rank Methods

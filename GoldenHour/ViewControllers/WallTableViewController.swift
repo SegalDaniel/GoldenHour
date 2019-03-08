@@ -11,11 +11,24 @@ import UIKit
 class WallTableViewController: UITableViewController, wallTableViewCellDelegate {
     
     var data:[Post]?
+    var postsListener:NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setLogoTitle()
-        loadData() 
+        postsListener = ModelNotification.postsListNotification.observe(cb: { (posts) in
+            self.data = posts.sorted(by: { (post1, post2) -> Bool in
+                post1.date > post2.date
+            })
+            self.tableView.reloadData()
+        })
+        Model.instance.getAllPosts()
+    }
+    
+    deinit{
+        if postsListener != nil{
+            ModelNotification.postsListNotification.remove(observer: postsListener!)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,15 +94,6 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         self.performSegue(withIdentifier: "commentsSegue", sender: (postId, comments, ranks))
     }
     
-    func loadData(){
-        Model.instance.getAllPosts(){ (posts) in
-            self.data = posts.sorted(by: { (post1, post2) -> Bool in
-                post1.date > post2.date
-            })
-            self.tableView.reloadData()
-            print("gethered all posts")
-        }
-    }
     
     @IBAction func unwindToWall(segue:UIStoryboardSegue) {}
     /*

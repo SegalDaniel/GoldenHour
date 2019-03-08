@@ -182,21 +182,19 @@ class ModelFirebase{
     }
     
     func addPostUrlToUser(userID:String, postID:String, callback:@escaping (Error?, DatabaseReference)->Void){
-        ref.child("users").child(userID).child("posts").child("\(Model.connectedUser!.post.count+1)").setValue(postID){ (error, reference) in
+        let index = String(postID.suffix(1))
+        ref.child("users").child(userID).child("posts").child(index).setValue(postID){ (error, reference) in
             print(reference.debugDescription)
             callback(error, reference)
         }
     }
     
     func removePostForUser(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
-        let index:String = String(Int(String(post.postId.suffix(1)))! + 1)
+        let index:String = String(Int(String(post.postId.suffix(1)))!)
         ref.child("users").child(Model.connectedUser!.id).child("posts").child(index).removeValue { (err, ref) in
             self.ref.child("posts").child(post.postId).removeValue(completionBlock: { (err2, ref2) in
                 self.removeImage(imageName: post.postId, callback: { (err3) in
-                    self.getUserInfo(userId: Model.connectedUser!.id, callback: { (user) in
-                        Model.connectedUser! = user
-                         callback(err, ref)
-                    })
+                    callback(err, ref)
                 })
             })
         }
