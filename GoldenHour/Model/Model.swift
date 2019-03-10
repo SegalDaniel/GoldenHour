@@ -154,7 +154,6 @@ class Model {
         modelFirebase.getAllPosts { (posts) in
             ModelNotification.postsListNotification.notify(data: posts)
         }
-        //modelFirebase.getAllPosts(callback: callback)
     }
     
     func removePost(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
@@ -162,6 +161,31 @@ class Model {
             self.getAllPosts()
             self.updateConnectedUser()
             callback(err,ref)
+        }
+    }
+    
+    func updateUserProfileImage(image:UIImage, callback:@escaping (Error?, DatabaseReference)->Void){
+        modelFirebase.saveProfileImage(image: image, name: Model.connectedUser!.id) { (url) in
+            if let url = url{
+                self.modelFirebase.updateUserProfileImage(url: url, callback: { (err, ref) in
+                    self.updateConnectedUser()
+                    callback(err, ref)
+                })
+            }
+        }
+    }
+    
+    func updateUsername(new_name:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        modelFirebase.updateUsername(new_name: new_name) { (err, ref) in
+            self.updateConnectedUser()
+            callback(err, ref)
+        }
+    }
+    
+    func updateDescription(description:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        modelFirebase.updateDescription(description: description) { (err, ref) in
+            self.updateConnectedUser()
+            callback(err, ref)
         }
     }
     

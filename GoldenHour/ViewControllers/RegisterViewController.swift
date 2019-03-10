@@ -76,6 +76,20 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == usernameTextField{
+            guard let text = textField.text else { return true }
+            let count = text.count + string.count - range.length
+            if count > 15{
+                let simpleAlert = SimpleAlert(_title: "Wait", _message: "no more then 15 chrachters allow") {
+                    }.getAlert()
+                self.present(simpleAlert, animated: true, completion: nil)
+            }
+            return count <= 15
+        }
+        else{ return true }
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true)
         

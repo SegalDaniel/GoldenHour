@@ -422,57 +422,122 @@
             </objects>
             <point key="canvasLocation" x="2840.8000000000002" y="926.98650674662679"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Profile View Controller-->
         <scene sceneID="I8K-xb-uzM">
             <objects>
-                <viewController id="xfM-cs-kp5" sceneMemberID="viewController">
+                <viewController id="xfM-cs-kp5" customClass="EditProfileViewController" customModule="GoldenHour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6z0-uQ-Gi8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="neg-OL-lFW">
-                                <rect key="frame" x="16" y="30" width="120" height="120"/>
+                                <rect key="frame" x="94" y="20" width="187.5" height="187.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="8xm-ox-Qp6"/>
-                                    <constraint firstAttribute="width" secondItem="neg-OL-lFW" secondAttribute="height" multiplier="1:1" id="ipp-fL-0Cx"/>
+                                    <constraint firstAttribute="width" secondItem="neg-OL-lFW" secondAttribute="height" multiplier="1:1" id="h0A-S9-tUF"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3Qo-HN-sU8">
-                                <rect key="frame" x="136" y="54" width="219" height="72"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="paj-Fg-bYb">
+                                <rect key="frame" x="94" y="216" width="187.5" height="35"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iab-TU-v2B">
-                                        <rect key="frame" x="0.0" y="0.0" width="219" height="32"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fr-eg-rpd">
-                                        <rect key="frame" x="0.0" y="40" width="219" height="32"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmh-X2-LWs">
+                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="35"/>
                                         <color key="backgroundColor" red="0.0" green="0.44705882349999998" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="18"/>
+                                        <state key="normal" title="Change">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeImageBtnPressed:" destination="xfM-cs-kp5" eventType="touchUpInside" id="hiU-M9-1yH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6h-Te-M0d">
+                                        <rect key="frame" x="97.5" y="0.0" width="90" height="35"/>
+                                        <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="18"/>
                                         <state key="normal" title="Save">
                                             <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveImageBtnPressed:" destination="xfM-cs-kp5" eventType="touchUpInside" id="CNg-aw-tvl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jlu-T8-1ea">
+                                <rect key="frame" x="16" y="300" width="225" height="100"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L4U-wg-8Dh">
+                                        <rect key="frame" x="0.0" y="0.0" width="225" height="46"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-yo-Cwk">
+                                        <rect key="frame" x="0.0" y="54" width="225" height="46"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ziV-N9-3ka">
+                                <rect key="frame" x="249" y="300" width="110" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLU-wr-w9O">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="46"/>
+                                        <color key="backgroundColor" red="0.0" green="0.44705882349999998" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="21"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="usernameSaveBtnPressed:" destination="xfM-cs-kp5" eventType="touchUpInside" id="OFc-ma-lHR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnK-ZQ-ud0">
+                                        <rect key="frame" x="0.0" y="54" width="110" height="46"/>
+                                        <color key="backgroundColor" red="0.0" green="0.44705882349999998" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="21"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="descBtnPressed:" destination="xfM-cs-kp5" eventType="touchUpInside" id="0R6-hh-uG6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="neg-OL-lFW" firstAttribute="leading" secondItem="HWg-PY-yie" secondAttribute="leading" constant="16" id="Qut-RW-6Pa"/>
-                            <constraint firstItem="neg-OL-lFW" firstAttribute="width" secondItem="neg-OL-lFW" secondAttribute="height" multiplier="1:1" id="goB-o3-mav"/>
-                            <constraint firstItem="neg-OL-lFW" firstAttribute="top" secondItem="HWg-PY-yie" secondAttribute="top" constant="10" id="hCh-Ef-cyC"/>
-                            <constraint firstItem="HWg-PY-yie" firstAttribute="trailing" secondItem="3Qo-HN-sU8" secondAttribute="trailing" constant="20" id="ipe-Zu-J5A"/>
-                            <constraint firstItem="3Qo-HN-sU8" firstAttribute="leading" secondItem="neg-OL-lFW" secondAttribute="trailing" id="kz3-GT-5SB"/>
-                            <constraint firstItem="3Qo-HN-sU8" firstAttribute="height" secondItem="neg-OL-lFW" secondAttribute="height" multiplier="0.6" id="sHX-BN-X18"/>
-                            <constraint firstItem="3Qo-HN-sU8" firstAttribute="centerY" secondItem="neg-OL-lFW" secondAttribute="centerY" id="uta-dW-L5l"/>
+                            <constraint firstItem="neg-OL-lFW" firstAttribute="centerX" secondItem="HWg-PY-yie" secondAttribute="centerX" id="1kh-fy-wIL"/>
+                            <constraint firstItem="jlu-T8-1ea" firstAttribute="width" secondItem="6z0-uQ-Gi8" secondAttribute="width" multiplier="0.6" id="6sc-K7-9bS"/>
+                            <constraint firstItem="ziV-N9-3ka" firstAttribute="bottom" secondItem="jlu-T8-1ea" secondAttribute="bottom" id="EOf-bG-eHy"/>
+                            <constraint firstItem="jlu-T8-1ea" firstAttribute="leading" secondItem="HWg-PY-yie" secondAttribute="leading" constant="16" id="GPJ-Hb-3pP"/>
+                            <constraint firstItem="paj-Fg-bYb" firstAttribute="top" secondItem="neg-OL-lFW" secondAttribute="bottom" constant="8.5" id="Gh3-oF-4VY"/>
+                            <constraint firstItem="ziV-N9-3ka" firstAttribute="centerY" secondItem="jlu-T8-1ea" secondAttribute="centerY" id="HSS-T9-pvE"/>
+                            <constraint firstItem="ziV-N9-3ka" firstAttribute="leading" secondItem="jlu-T8-1ea" secondAttribute="trailing" constant="8" id="Iiu-a2-tL9"/>
+                            <constraint firstItem="paj-Fg-bYb" firstAttribute="leading" secondItem="neg-OL-lFW" secondAttribute="leading" id="KEQ-DI-HPl"/>
+                            <constraint firstItem="paj-Fg-bYb" firstAttribute="centerX" secondItem="HWg-PY-yie" secondAttribute="centerX" id="KQU-9X-0M0"/>
+                            <constraint firstItem="neg-OL-lFW" firstAttribute="top" secondItem="HWg-PY-yie" secondAttribute="top" id="an3-68-cIg"/>
+                            <constraint firstItem="jlu-T8-1ea" firstAttribute="height" secondItem="6z0-uQ-Gi8" secondAttribute="height" multiplier="0.15" id="cnN-Bv-8J3"/>
+                            <constraint firstItem="neg-OL-lFW" firstAttribute="width" secondItem="6z0-uQ-Gi8" secondAttribute="width" multiplier="0.5" id="jhL-ao-fZC"/>
+                            <constraint firstItem="HWg-PY-yie" firstAttribute="trailing" secondItem="ziV-N9-3ka" secondAttribute="trailing" constant="16" id="kOP-Th-7cG"/>
+                            <constraint firstItem="jlu-T8-1ea" firstAttribute="top" secondItem="paj-Fg-bYb" secondAttribute="bottom" constant="49" id="whX-hZ-OgY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HWg-PY-yie"/>
                     </view>
+                    <connections>
+                        <outlet property="descTextField" destination="PTu-yo-Cwk" id="HUP-xr-WrH"/>
+                        <outlet property="profileBtn" destination="Cmh-X2-LWs" id="4xO-CN-kHw"/>
+                        <outlet property="profileImageView" destination="neg-OL-lFW" id="AaC-Za-M4K"/>
+                        <outlet property="saveImageBtn" destination="z6h-Te-M0d" id="fGb-XH-Eme"/>
+                        <outlet property="usernameTextField" destination="L4U-wg-8Dh" id="I8r-AY-Fg9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2m-c7-m9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3661.5999999999999" y="926.98650674662679"/>
+            <point key="canvasLocation" x="3669.5999999999999" y="926.98650674662679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xc6-Cc-0i3">
