@@ -18,7 +18,7 @@
 		1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B1F321E1079D006E1B39 /* WallTableViewController.swift */; };
 		181DB11221E5E42200E01FDA /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DB11121E5E42200E01FDA /* PickerViewController.swift */; };
 		18393D0421E7BB310031384B /* AddPostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0321E7BB310031384B /* AddPostInfoViewController.swift */; };
-		18393D0B21E7D0F60031384B /* MyPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */; };
+		18393D0B21E7D0F60031384B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0A21E7D0F60031384B /* Protocols.swift */; };
 		18393D0D21E8FD9B0031384B /* RanksAndComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */; };
 		184DF82521E9E2FF00118DE0 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF82421E9E2FF00118DE0 /* MyProfileViewController.swift */; };
 		184DF82721E9E42C00118DE0 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF82621E9E42C00118DE0 /* PostCollectionViewCell.swift */; };
@@ -27,6 +27,9 @@
 		1855CD7C21E63EB50055FA4A /* pfennig-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */; };
 		1855CD7D21E63EB50055FA4A /* pfennigbold-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1855CD7921E63EB50055FA4A /* pfennigbold-webfont.ttf */; };
 		18AC333A22357EFB0059C4F6 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC333922357EFB0059C4F6 /* EditProfileViewController.swift */; };
+		18BD98B02236D7E100250EB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD98AF2236D7E100250EB8 /* SearchViewController.swift */; };
+		18BD98B22236DAA800250EB8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD98B12236DAA800250EB8 /* SearchTableViewCell.swift */; };
+		18BD98B42236DE2300250EB8 /* searchTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD98B32236DE2300250EB8 /* searchTypeCollectionViewCell.swift */; };
 		18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848721E33DE000B9BA55 /* UploadViewController.swift */; };
 		18CE848A21E3994200B9BA55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18CE848921E3994200B9BA55 /* GoogleService-Info.plist */; };
 		18CE848C21E39EA300B9BA55 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE848B21E39EA300B9BA55 /* Model.swift */; };
@@ -67,7 +70,7 @@
 		181DB11121E5E42200E01FDA /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		18393D0321E7BB310031384B /* AddPostInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostInfoViewController.swift; sourceTree = "<group>"; };
 		18393D0521E7BDCF0031384B /* GoldenHour.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoldenHour.entitlements; sourceTree = "<group>"; };
-		18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerDelegate.swift; sourceTree = "<group>"; };
+		18393D0A21E7D0F60031384B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksAndComViewController.swift; sourceTree = "<group>"; };
 		184DF82421E9E2FF00118DE0 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		184DF82621E9E42C00118DE0 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -76,6 +79,9 @@
 		1855CD7821E63EB50055FA4A /* pfennig-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennig-webfont.ttf"; sourceTree = "<group>"; };
 		1855CD7921E63EB50055FA4A /* pfennigbold-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfennigbold-webfont.ttf"; sourceTree = "<group>"; };
 		18AC333922357EFB0059C4F6 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		18BD98AF2236D7E100250EB8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		18BD98B12236DAA800250EB8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		18BD98B32236DE2300250EB8 /* searchTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		18CE848721E33DE000B9BA55 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		18CE848921E3994200B9BA55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18CE848B21E39EA300B9BA55 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 				18393D0C21E8FD9B0031384B /* RanksAndComViewController.swift */,
 				184DF82421E9E2FF00118DE0 /* MyProfileViewController.swift */,
 				18AC333922357EFB0059C4F6 /* EditProfileViewController.swift */,
+				18BD98AF2236D7E100250EB8 /* SearchViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -185,7 +192,7 @@
 		18393D0921E7D0E80031384B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				18393D0A21E7D0F60031384B /* MyPickerDelegate.swift */,
+				18393D0A21E7D0F60031384B /* Protocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -197,6 +204,8 @@
 				18EC36FF21E5020700709CFF /* WallTableViewCell.swift */,
 				18EC370121E509CC00709CFF /* CommentsTableViewCell.swift */,
 				184DF82621E9E42C00118DE0 /* PostCollectionViewCell.swift */,
+				18BD98B12236DAA800250EB8 /* SearchTableViewCell.swift */,
+				18BD98B32236DE2300250EB8 /* searchTypeCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,7 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184DF82521E9E2FF00118DE0 /* MyProfileViewController.swift in Sources */,
-				18393D0B21E7D0F60031384B /* MyPickerDelegate.swift in Sources */,
+				18393D0B21E7D0F60031384B /* Protocols.swift in Sources */,
 				18CE848821E33DE000B9BA55 /* UploadViewController.swift in Sources */,
 				18393D0421E7BB310031384B /* AddPostInfoViewController.swift in Sources */,
 				1818B1F021E0F903006E1B39 /* RegisterViewController.swift in Sources */,
@@ -394,7 +403,9 @@
 				18CE848F21E3AA0800B9BA55 /* SimpleAlert.swift in Sources */,
 				A824166821DD746000131C0E /* Like.swift in Sources */,
 				A824166621DD4DF700131C0E /* Comment.swift in Sources */,
+				18BD98B22236DAA800250EB8 /* SearchTableViewCell.swift in Sources */,
 				18EC370221E509CC00709CFF /* CommentsTableViewCell.swift in Sources */,
+				18BD98B02236D7E100250EB8 /* SearchViewController.swift in Sources */,
 				18393D0D21E8FD9B0031384B /* RanksAndComViewController.swift in Sources */,
 				18180EB421DCE85000A52AC2 /* ViewController.swift in Sources */,
 				18CE849321E3C37E00B9BA55 /* PhotosStaticData.swift in Sources */,
@@ -410,6 +421,7 @@
 				18180EB221DCE85000A52AC2 /* AppDelegate.swift in Sources */,
 				A8FA9FA521E1FCF8008482B6 /* ModelFirebase.swift in Sources */,
 				1818B1F421E1079D006E1B39 /* WallTableViewController.swift in Sources */,
+				18BD98B42236DE2300250EB8 /* searchTypeCollectionViewCell.swift in Sources */,
 				181DB11221E5E42200E01FDA /* PickerViewController.swift in Sources */,
 				A824166121DD204900131C0E /* User.swift in Sources */,
 				A8D84D3521E222A600A245A1 /* ModelSql.swift in Sources */,
