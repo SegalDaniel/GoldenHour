@@ -10,15 +10,50 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var postImageView: UIImageView!
+    
+    var delegate:searchTableViewCellDelegate?
+    
+    var post:Post?{
+        didSet{
+            if post != nil && postImageView != nil && nameLabel != nil{
+                Model.instance.getImageKF(url: post!.imageUrl!, imageView: postImageView)
+                nameLabel.text = post!.metaData.description
+                Utility.removeRoundness(imageView: postImageView)
+            }
+        }
+    }
+    var user:User?{
+        didSet{
+            if user != nil && postImageView != nil && nameLabel != nil{
+                Model.instance.getImageKF(url: user!.profileImage, imageView: postImageView)
+                nameLabel.text = user!.userName
+                Utility.roundImageView(imageView: postImageView)
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        postImageView.contentMode = .scaleAspectFit
+        Utility.viewTapRecognizer(target: self, toBeTapped: postImageView, action: #selector(selected))
+        Utility.viewTapRecognizer(target: self, toBeTapped: nameLabel, action: #selector(selected))
+        
+        if let post = post{
+            Model.instance.getImageKF(url: post.imageUrl!, imageView: postImageView)
+            nameLabel.text = post.metaData.description
+            Utility.removeRoundness(imageView: postImageView)
+        }
+        if let user = user{
+            Model.instance.getImageKF(url: user.profileImage, imageView: postImageView, placeHolderNamed: "profile_icon")
+            nameLabel.text = user.userName
+            Utility.roundImageView(imageView: postImageView)
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @objc func selected(){
+        delegate?.pressed(post: post, user: user)
     }
 
 }

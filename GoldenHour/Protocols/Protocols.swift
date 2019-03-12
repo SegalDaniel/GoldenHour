@@ -26,3 +26,7 @@ protocol postCollectionViewCellDelegate {
 protocol searchTypeCollectionCellDelegate {
     func pressed(type:PhotosStaticData.nameSearchTitles, sender: UIButton)
 }
+
+protocol searchTableViewCellDelegate {
+    func pressed(post:Post?, user:User?)
+}
