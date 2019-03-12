@@ -109,6 +109,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
             }
             Model.instance.getImageKF(url: user.profileImage, imageView: self.profileImageView, placeHolderNamed: "profile_placeholder")
             self.userNameLabel.text = user.userName
+            self.userDescLabel.text = user.description
         }
     }
     

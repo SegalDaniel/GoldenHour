@@ -141,6 +141,24 @@ class ModelFirebase{
         })
     }
     
+    func updateUserProfileImage(url:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("users").child(Model.connectedUser!.id).child("profileImage").setValue(url) { (err, ref) in
+            callback(err, ref)
+        }
+    }
+    
+    func updateUsername(new_name:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("users").child(Model.connectedUser!.id).child("userName").setValue(new_name) { (err, ref) in
+            callback(err, ref)
+        }
+    }
+    
+    func updateDescription(description:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("users").child(Model.connectedUser!.id).child("description").setValue(description) { (err, ref) in
+            callback(err, ref)
+        }
+    }
+    
     // MARK: - Post Methods
     // ============================== Post Methods ==============================
     
@@ -297,6 +315,7 @@ class ModelFirebase{
             callback(error)
         }
     }
+    
     
     // MARK: - DB Methods
     // ============================== DB Methods ==============================
