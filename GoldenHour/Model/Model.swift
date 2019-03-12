@@ -63,11 +63,14 @@ class Model {
     static let instance:Model = Model()
     static var connectedUser:User?
     
+
+    
     var modelSql = ModelSql();
     var modelFirebase = ModelFirebase();
     
     private init(){
-        
+        self.createUsersTable();
+        self.createPostTable();
     }
     
     // MARK: - User Methods
@@ -77,6 +80,7 @@ class Model {
         modelFirebase.getAllUsers(callback: {(data:[User]) in
             ModelNotification.usersListNotification.notify(data: data)
         })
+        
     }
     
     func getAllUsers(callback:@escaping ([User])->Void){
@@ -113,6 +117,8 @@ class Model {
                         return
                     })
                 }
+               //try to add locally
+               self.saveUsersCache(users: [user])
             }
             
         }
@@ -142,6 +148,8 @@ class Model {
             self.getAllPosts()
             self.updateConnectedUser()
         }
+        //save post cache
+        self.saveCache(posts: [post])
     }
     
     func getPost(postId:String, callback:@escaping (Post) -> Void){
@@ -162,6 +170,7 @@ class Model {
             self.updateConnectedUser()
             callback(err,ref)
         }
+        
     }
     
     func updateUserProfileImage(image:UIImage, callback:@escaping (Error?, DatabaseReference)->Void){
