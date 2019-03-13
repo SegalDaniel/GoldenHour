@@ -13,7 +13,6 @@ class CommentsTableViewCell: UITableViewCell {
     //MARK: - Variables
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var commentLabel: UILabel!
-    
     var userId:String?{
         didSet{
             if let imgView = userProfileImageView{
@@ -23,12 +22,18 @@ class CommentsTableViewCell: UITableViewCell {
             }
         }
     }
+    var commentId:String?
     
     //MARK: - Override UITableViewCell Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        Utility.roundImageView(imageView: userProfileImageView)
+        initViews()
         addUserPic()
+    }
+    
+    //MARK: - Views intit
+    func initViews(){
+        Utility.roundImageView(imageView: userProfileImageView)
     }
 
     //MARK: - Update content

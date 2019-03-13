@@ -65,6 +65,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: - searchTypeCollectionCellDelegate
     func pressed(type: PhotosStaticData.nameSearchTitles, sender: UIButton) {
+        var showPicker:Bool = true
         switch type {
         case .Manufacture:
             pickerData = data.cameraManufacture
@@ -73,13 +74,19 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             if let x = pickedMan{
                 pickerData = data.cameraModels[x]
             }
-            else{ showSelectManALert() }
+            else{
+                showPicker = false
+                showSelectManALert()
+            }
             break
         case .Lens:
             if let x = pickedMan{
                 pickerData = data.lensModels[x]
             }
-            else{ showSelectManALert() }
+            else{
+                showPicker = false
+                showSelectManALert()
+            }
             break
         case .Apt:
             pickerData = data.aptRange
@@ -89,7 +96,9 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             break
         
         }
-        self.performSegue(withIdentifier: "picker", sender: sender)
+        if showPicker{
+            self.performSegue(withIdentifier: "picker", sender: sender)
+        }
     }
     
     //MARK: - MyPickerDelegate

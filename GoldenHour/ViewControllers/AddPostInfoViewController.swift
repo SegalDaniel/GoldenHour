@@ -208,7 +208,14 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             metaInfo["desc"] = textField.text
         }
         else if textField == extnAccTextField{
+            Utility.removeMoveWithKeyboard(viewController: self)
             metaInfo["ext"] = textField.text
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == extnAccTextField{
+            Utility.moveWithKeyboard(viewController: self)
         }
     }
     
