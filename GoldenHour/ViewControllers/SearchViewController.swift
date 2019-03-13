@@ -30,6 +30,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     var filterdPosts:[Post]?
     var filterdUsers:[User]?
     
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         Utility.viewTapRecognizer(target: self.view, toBeTapped: self.view, action: #selector(UIView.endEditing(_:)))
@@ -49,7 +50,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         Model.instance.getAllUsers()
     }
     
-    //MARK: - CollectionView
+    //MARK: - CollectionViewDelegate and Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -62,11 +63,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         return cell
     }
     
-    @IBAction func refreshBtnPressed(_ sender: Any) {
-        clearSearch()
-    }
-    
-    //MARK: - search Type cell delegate
+    //MARK: - searchTypeCollectionCellDelegate
     func pressed(type: PhotosStaticData.nameSearchTitles, sender: UIButton) {
         switch type {
         case .Manufacture:
@@ -95,14 +92,14 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.performSegue(withIdentifier: "picker", sender: sender)
     }
     
-    //MARK: - My picker delegate
+    //MARK: - MyPickerDelegate
     func userPickedProperty(sender: UIButton?, property: String?) {
         if sender != nil && property != nil{
             let type = PhotosStaticData.nameSearchTitles(rawValue: sender!.tag)!
             switch type{
             case .Manufacture:
-                pickedMan = data.cameraManufacture.firstIndex(of: property!)
                 clearSearch()
+                pickedMan = data.cameraManufacture.firstIndex(of: property!)
                 searchInfo["man"] = property!
                 break
             case .Model:
@@ -148,9 +145,15 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         return cell
     }
     
+    //MARK: - Logic Alert
     func showSelectManALert(){
         let alert = SimpleAlert(_title: "Wait!", _message: "Please select manufacture") {}.getAlert()
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Buttons actions
+    @IBAction func refreshBtnPressed(_ sender: Any) {
+        clearSearch()
     }
     
     @IBAction func searchBtnPressed(_ sender: Any) {
@@ -236,20 +239,20 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func clearSearch(){
+        pickedMan = nil
         searchInfo = [:]
         titles = data.searchTitles
         mainTextField.text = ""
         optionsCollectionView.reloadData()
     }
     
+    //MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "picker"{
             let vc = segue.destination as! PickerViewController
@@ -269,6 +272,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+    //MARK: - searchTableViewCellDelegate
     func pressed(post: Post?, user: User?) {
         if let user = user{
             self.performSegue(withIdentifier: "displayUser", sender: user)

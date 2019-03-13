@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, postCollectionViewCellDelegate {
 
+    //MARK: - Variables
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var editProfileBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
@@ -21,6 +22,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     var showBtns:Bool = true
     var connectedUserListener:NSObjectProtocol?
     
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         userPostsCollection.delegate = self
@@ -39,6 +41,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
+    //MARK: - UICollectionViewDelegate and Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
         
@@ -53,10 +56,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
-    }
-    
+    //MARK: - postCollectionViewCellDelegate
     func longPressed(post: Post) {
         if !showBtns {return}
         let alert = UIAlertController(title: "Hey!", message: "Are you sure you want to delete this post?", preferredStyle: .alert)
@@ -80,9 +80,9 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     
+    //MARK: - Buttons actions
     @IBAction func editProfileBtnPressed(_ sender: Any) {
     }
-    
     
     @IBAction func logoutBtnPressed(_ sender: Any) {
         let result:(Bool, Error?) = Model.instance.modelFirebase.sign_Out()
@@ -96,6 +96,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
+    //MARK: - Update content
     func loadPosts(){
         if let user = user{
             posts = []
@@ -113,6 +114,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
+    //MARK: - Views init
     func hideButtons(){
         if !showBtns{
             logoutBtn.isHidden = true
@@ -131,10 +133,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     //fullScreenImageSegue , logoutSegue
         if segue.identifier == "fullScreenImageSegue"{
             let vc = segue.destination as! FullScreenImageViewController
             vc.hidesBottomBarWhenPushed = true
@@ -144,8 +143,4 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
             
         }
     }
-    
-    
-    
-
 }

@@ -10,9 +10,12 @@ import UIKit
 
 class WallTableViewController: UITableViewController, wallTableViewCellDelegate {
     
+    //MARK: - Variabels
     var data:[Post]?
     var postsListener:NSObjectProtocol?
     
+    
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setLogoTitle()
@@ -35,15 +38,12 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         self.tableView.setContentOffset(CGPoint.zero, animated:true)
     }
     
-    // MARK: - Table view data source
-
+    // MARK: - Table view data source and delegate
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if let data = data{
             return data.count
         }
@@ -86,6 +86,8 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
         }
     }
     
+    //MARK: - wall table cell delegate
+    
     func profileTapped(user: User) {
         self.performSegue(withIdentifier: "showPhotographer", sender: user)
     }
@@ -96,24 +98,4 @@ class WallTableViewController: UITableViewController, wallTableViewCellDelegate 
     
     
     @IBAction func unwindToWall(segue:UIStoryboardSegue) {}
-    /*
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        if(velocity.y>0) {
-            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
-            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(true, animated: true)
-                //self.navigationController?.setToolbarHidden(true, animated: true)
-                print("Hide")
-            }, completion: nil)
-            
-        } else if(velocity.y < -0.5) {
-            UIView.animate(withDuration: 1, delay: 0, options: UIView.AnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
-                //self.navigationController?.setToolbarHidden(false, animated: true)
-                print("Unhide")
-            }, completion: nil)
-        }
-    }
-  */
 }

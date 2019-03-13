@@ -11,6 +11,7 @@ import CoreLocation
 
 class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 
+    //MARK: - Variables
     @IBOutlet weak var descritionTextField: UITextField!
     @IBOutlet weak var extnAccTextField: UITextField!
     @IBOutlet weak var camManLabel: UILabel!
@@ -39,6 +40,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     var location:String?
     var metaInfo:[String:String] = [:]
     
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         Utility.viewTapRecognizer(target: self.view, toBeTapped: self.view, action: #selector(UIView.endEditing(_:)))
@@ -46,9 +48,9 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         extnAccTextField.delegate = self
         hideBtns()
         Model.instance.updateConnectedUser()
-        // Do any additional setup after loading the view.
     }
 
+    //MARK: - Buttons actions
     @IBAction func camManBtnPressed(_ sender: Any) {
         pickerData = imageData.cameraManufacture
         self.performSegue(withIdentifier: "picker", sender: sender)
@@ -131,29 +133,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         }
     }
     
-    
-    func getMetaInfo()->(Bool,Metadata?){
-        if metaInfo.count < 5{
-            return (false, nil)
-        }
-        if metaInfo["man"] == nil || metaInfo["model"] == nil || metaInfo["lens"] == nil ||
-            metaInfo["apt"] == nil || metaInfo["ss"] == nil{
-            return (false, nil)
-        }
-        if metaInfo["desc"] == nil || metaInfo["desc"] == ""{
-            return(false, nil)
-        }
-        return (true, Metadata(_manufacturer: metaInfo["man"]!, _model: metaInfo["model"]!, _lens: metaInfo["lens"]!, _shutterSpeed: metaInfo["ss"]!, _aperture: metaInfo["apt"]!, _description: metaInfo["desc"]!,_externalAccesssories: metaInfo["ext"], _location: metaInfo["loc"]))
-    }
-    
-    func selectManAlert(){
-        let alert = SimpleAlert(_title: "Wait!", _message: "Please Select Manufacturer First") {}
-        self.present(alert.getAlert(), animated: true, completion: nil)
-    }
-    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "picker"{
             let vc = segue.destination as! PickerViewController
@@ -171,6 +151,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         }
     }
     
+    //MARK: - MyPickerDelegate
     func userPickedProperty(sender: UIButton?, property: String?) {
         if sender != nil && property != nil{
             switch sender!{
@@ -201,6 +182,27 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         }
     }
     
+    func getMetaInfo()->(Bool,Metadata?){
+        if metaInfo.count < 5{
+            return (false, nil)
+        }
+        if metaInfo["man"] == nil || metaInfo["model"] == nil || metaInfo["lens"] == nil ||
+            metaInfo["apt"] == nil || metaInfo["ss"] == nil{
+            return (false, nil)
+        }
+        if metaInfo["desc"] == nil || metaInfo["desc"] == ""{
+            return(false, nil)
+        }
+        return (true, Metadata(_manufacturer: metaInfo["man"]!, _model: metaInfo["model"]!, _lens: metaInfo["lens"]!, _shutterSpeed: metaInfo["ss"]!, _aperture: metaInfo["apt"]!, _description: metaInfo["desc"]!,_externalAccesssories: metaInfo["ext"], _location: metaInfo["loc"]))
+    }
+    
+    func selectManAlert(){
+        let alert = SimpleAlert(_title: "Wait!", _message: "Please Select Manufacturer First") {}
+        self.present(alert.getAlert(), animated: true, completion: nil)
+    }
+    
+    
+    //MARK: - UITextFieldDelegate
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == descritionTextField{
             metaInfo["desc"] = textField.text
@@ -210,6 +212,12 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    //MARK: - Views init
     func hideBtns(){
         if let data = data{
             camManBtn.isHidden = true
@@ -250,6 +258,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         }
     }
     
+    //MARK: - Location manager
     /******************************** Location stuff *********************************/
     func locationInit(){
         locationManager = CLLocationManager()
@@ -288,10 +297,4 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
         
         print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-
 }

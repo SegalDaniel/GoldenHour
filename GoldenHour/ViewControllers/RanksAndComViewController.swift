@@ -10,7 +10,7 @@ import UIKit
 
 class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-
+    //MARK: - Variables
     @IBOutlet weak var rankBtn: UIButton!
     @IBOutlet weak var ranksLabel: UILabel!
     @IBOutlet weak var commentsTableView: UITableView!
@@ -20,6 +20,7 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
     var ranks:[String]?
     var comments:[Comment] = []
     
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         commentsTableView.delegate = self
@@ -38,6 +39,7 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    //MARK: - Update Content
     func refreshComments(){
         if let id = postId{
             Model.instance.getAllCommentsOfPost(postId: id) { (data) in
@@ -51,6 +53,7 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         ranksLabel.text = "\(ranks?.count ?? 0) Ranks"
     }
     
+    //MARK: - UITableViewDelegate and Datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
     }
@@ -63,6 +66,7 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
+    //MARK: - Buttons actions
     @IBAction func rankBtnPressed(_ sender: Any) {
         if let index = self.ranks?.index(of: Model.connectedUser!.id){
             Model.instance.removeRank(postId: postId!, userId: Model.connectedUser!.id) { (err, ref) in }
@@ -101,6 +105,7 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
+    //MARK: - Views init
     func addPostBtn(){
         let button = UIButton(type: .custom)
         button.setTitle("Post", for: .normal)
@@ -112,6 +117,7 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
         addCommTextField.rightViewMode = .whileEditing
     }
     
+    //MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false

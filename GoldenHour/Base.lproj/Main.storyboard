@@ -975,7 +975,6 @@
                                             <state key="normal" image="msg_icon"/>
                                             <connections>
                                                 <action selector="commentsBtnPressed:" destination="tnT-li-MyU" eventType="touchUpInside" id="FlH-5r-JHy"/>
-                                                <segue destination="NLo-K6-bec" kind="show" identifier="commentsSegue" id="SEE-wk-sFP"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1012,6 +1011,7 @@
                     <connections>
                         <segue destination="bQ2-Sc-DK7" kind="show" identifier="fullScreen" id="P7S-HF-ORT"/>
                         <segue destination="fyH-ku-4zR" kind="show" identifier="showPhotographer" id="2Fu-is-grV"/>
+                        <segue destination="NLo-K6-bec" kind="show" identifier="commentsSegue" id="3cT-Ud-sQY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0E-iR-baV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1113,25 +1113,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Image Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hr4-gm-r8P">
-                                <rect key="frame" x="1309" y="91.5" width="3328" height="30"/>
+                                <rect key="frame" x="123" y="91.5" width="243.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdr-Qk-OBQ">
-                                <rect key="frame" x="1309" y="91.5" width="3328" height="30"/>
+                                <rect key="frame" x="123" y="91.5" width="243.5" height="30"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lens Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Fdu-wG-CU6">
-                                <rect key="frame" x="1304" y="254.5" width="2816" height="28.5"/>
+                                <rect key="frame" x="118" y="254.5" width="206" height="28.5"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQJ-sa-hdx">
-                                <rect key="frame" x="4125" y="255.5" width="512" height="26.5"/>
+                                <rect key="frame" x="329" y="255.5" width="37.5" height="26.5"/>
                                 <state key="normal" image="small_plus"/>
                                 <state key="highlighted" image="small_plus_pressed"/>
                                 <connections>
@@ -1139,25 +1139,25 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="External Excesories" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ce-bQ-EaY">
-                                <rect key="frame" x="1309" y="416" width="3328" height="30"/>
+                                <rect key="frame" x="123" y="416" width="243.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I72-Ef-fGL">
-                                <rect key="frame" x="1309" y="416" width="3328" height="30"/>
+                                <rect key="frame" x="123" y="416" width="243.5" height="30"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GIT-CR-1ze">
-                                <rect key="frame" x="1304" y="498" width="2816" height="29"/>
+                                <rect key="frame" x="118" y="498" width="206" height="29"/>
                                 <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buK-US-fdN">
-                                <rect key="frame" x="4125" y="499" width="512" height="26.5"/>
+                                <rect key="frame" x="329" y="499" width="37.5" height="26.5"/>
                                 <state key="normal" image="small_plus"/>
                                 <state key="highlighted" image="small_plus_pressed"/>
                                 <connections>
@@ -1165,7 +1165,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGi-4l-7az">
-                                <rect key="frame" x="1536" y="554.5" width="2048" height="53.5"/>
+                                <rect key="frame" x="112.5" y="554.5" width="150" height="53.5"/>
                                 <color key="backgroundColor" red="0.1888804436" green="0.44014376399999999" blue="0.71375775340000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="30"/>
                                 <state key="normal" title="Upload">
@@ -1176,39 +1176,39 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CZV-fZ-TrM" userLabel="icons stack">
-                                <rect key="frame" x="16" y="74" width="1280" height="471"/>
+                                <rect key="frame" x="16" y="74" width="94" height="471"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info_icon" translatesAutoresizingMaskIntoConstraints="NO" id="t9e-rm-xmY">
-                                        <rect key="frame" x="0.0" y="0.0" width="1280" height="65"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="65"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_icon" translatesAutoresizingMaskIntoConstraints="NO" id="OMG-dH-8EK">
-                                        <rect key="frame" x="0.0" y="81" width="1280" height="65.5"/>
+                                        <rect key="frame" x="0.0" y="81" width="94" height="65.5"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lens_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Asm-9K-T8T">
-                                        <rect key="frame" x="0.0" y="162.5" width="1280" height="65"/>
+                                        <rect key="frame" x="0.0" y="162.5" width="94" height="65"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aperature_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Eth-Ho-qEU">
-                                        <rect key="frame" x="0.0" y="243.5" width="1280" height="65"/>
+                                        <rect key="frame" x="0.0" y="243.5" width="94" height="65"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tripod_icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKn-dw-Lnb">
-                                        <rect key="frame" x="0.0" y="324.5" width="1280" height="65.5"/>
+                                        <rect key="frame" x="0.0" y="324.5" width="94" height="65.5"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Fpb-U4-FYy">
-                                        <rect key="frame" x="0.0" y="406" width="1280" height="65"/>
+                                        <rect key="frame" x="0.0" y="406" width="94" height="65"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zi2-uq-9ju" userLabel="cam labels">
-                                <rect key="frame" x="1304" y="155" width="2816" height="65.5"/>
+                                <rect key="frame" x="118" y="155" width="206" height="65.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Manefacture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IQz-re-lFN">
-                                        <rect key="frame" x="0.0" y="0.0" width="2816" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="206" height="28.5"/>
                                         <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="19B-n8-X6H">
-                                        <rect key="frame" x="0.0" y="36.5" width="2816" height="29"/>
+                                        <rect key="frame" x="0.0" y="36.5" width="206" height="29"/>
                                         <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1216,10 +1216,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="L2Y-3I-b4F" userLabel="cam btns">
-                                <rect key="frame" x="4125" y="155" width="512" height="65.5"/>
+                                <rect key="frame" x="329" y="155" width="37.5" height="65.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fad-dm-VQf">
-                                        <rect key="frame" x="0.0" y="0.0" width="512" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="26.5"/>
                                         <state key="normal" image="small_plus"/>
                                         <state key="highlighted" image="small_plus_pressed"/>
                                         <connections>
@@ -1227,7 +1227,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beJ-ig-Z6N">
-                                        <rect key="frame" x="0.0" y="38.5" width="512" height="27"/>
+                                        <rect key="frame" x="0.0" y="38.5" width="37.5" height="27"/>
                                         <state key="normal" image="small_plus"/>
                                         <state key="highlighted" image="small_plus_pressed"/>
                                         <connections>
@@ -1237,16 +1237,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zUr-I2-Ztz" userLabel="apt labels">
-                                <rect key="frame" x="1304" y="317.5" width="2816" height="65"/>
+                                <rect key="frame" x="118" y="317.5" width="206" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aperture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kHd-rS-WxG">
-                                        <rect key="frame" x="0.0" y="0.0" width="2816" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="206" height="28.5"/>
                                         <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Shutter Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="VIH-Th-Km5">
-                                        <rect key="frame" x="0.0" y="36.5" width="2816" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="36.5" width="206" height="28.5"/>
                                         <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1254,10 +1254,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="4sO-tk-lyh" userLabel="apt btns">
-                                <rect key="frame" x="4125" y="317.5" width="512" height="65"/>
+                                <rect key="frame" x="329" y="317.5" width="37.5" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZtE-T7-U51">
-                                        <rect key="frame" x="0.0" y="0.0" width="512" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="26.5"/>
                                         <state key="normal" image="small_plus"/>
                                         <state key="highlighted" image="small_plus_pressed"/>
                                         <connections>
@@ -1265,7 +1265,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ld2-U0-NxM">
-                                        <rect key="frame" x="0.0" y="38.5" width="512" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="38.5" width="37.5" height="26.5"/>
                                         <state key="normal" image="small_plus"/>
                                         <state key="highlighted" image="small_plus_pressed"/>
                                         <connections>
@@ -1391,9 +1391,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fzp-O9-9cr"/>
-        <segue reference="eCS-2R-SsR"/>
-        <segue reference="SEE-wk-sFP"/>
-        <segue reference="BPd-de-5wc"/>
+        <segue reference="P7S-HF-ORT"/>
+        <segue reference="3cT-Ud-sQY"/>
+        <segue reference="2Fu-is-grV"/>
         <segue reference="PD5-7c-1Ki"/>
         <segue reference="yHa-z4-s7M"/>
     </inferredMetricsTieBreakers>
