@@ -65,7 +65,12 @@ class ModelSql : CacheService{
                 onError()
             }
         }
-        sqlite3_finalize(sqlite3_stmt)
+        else
+        {
+            NSLog("Error while creating update statement. '%s'", sqlite3_errmsg(dbSql))
+             sqlite3_finalize(sqlite3_stmt)
+        }
+       
     }
     
     func QuestionmMarks(count: Int) -> String {

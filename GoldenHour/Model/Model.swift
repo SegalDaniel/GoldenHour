@@ -65,12 +65,12 @@ class Model {
     
 
     
-    var modelSql = ModelSql();
-    var modelFirebase = ModelFirebase();
+    var modelSql = ModelSql()
+    var modelFirebase = ModelFirebase()
     
     private init(){
-        self.createUsersTable();
-        self.createPostTable();
+//        self.createUsersTable()
+        self.createPostTable()
     }
     
     // MARK: - User Methods
@@ -118,7 +118,7 @@ class Model {
                     })
                 }
                //try to add locally
-               self.saveUsersCache(users: [user])
+             //  self.saveUsersCache(users: [user])
             }
             
         }
@@ -144,12 +144,13 @@ class Model {
     
     func addNewPost(post:Post, callback: @escaping (Error?, DatabaseReference) -> Void){
         modelFirebase.addNewPost(post: post) { (error, ref) in
+            self.saveCache(posts: [post])
             self.modelFirebase.addPostUrlToUser(userID: Model.connectedUser!.id, postID: post.postId, callback: callback)
             self.getAllPosts()
             self.updateConnectedUser()
         }
         //save post cache
-        self.saveCache(posts: [post])
+        
     }
     
     func getPost(postId:String, callback:@escaping (Post) -> Void){
