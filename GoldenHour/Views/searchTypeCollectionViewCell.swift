@@ -10,6 +10,7 @@ import UIKit
 
 class searchTypeCollectionViewCell: UICollectionViewCell {
     
+    //MARK: - Variables
     var delegate:searchTypeCollectionCellDelegate?
     var title:String?{
         didSet{
@@ -18,7 +19,6 @@ class searchTypeCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
     @IBOutlet weak var btn: UIButton!
     var data:PhotosStaticData.nameSearchTitles?{
         didSet{
@@ -28,6 +28,7 @@ class searchTypeCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    //MARK: - Override UICollectionViewCell Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         if let data = data{
@@ -38,9 +39,8 @@ class searchTypeCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    //MARK: - Buttons actions
     @IBAction func btnPressed(_ sender: Any) {
         delegate?.pressed(type: data!, sender: sender as! UIButton)
     }
-    
-    
 }

@@ -10,11 +10,10 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
+    //MARK: - Variables
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
-    
     var delegate:searchTableViewCellDelegate?
-    
     var post:Post?{
         didSet{
             if post != nil && postImageView != nil && nameLabel != nil{
@@ -34,6 +33,7 @@ class SearchTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - Override UITableViewCell Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         postImageView.contentMode = .scaleAspectFit
@@ -52,6 +52,7 @@ class SearchTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - Button actions
     @objc func selected(){
         delegate?.pressed(post: post, user: user)
     }

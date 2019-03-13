@@ -10,6 +10,7 @@ import UIKit
 
 class WallTableViewCell: UITableViewCell {
     
+    //MAKR: - Variables
     var post:Post?
     var postOwner:User?
     var delegate:wallTableViewCellDelegate?
@@ -19,6 +20,7 @@ class WallTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var imageByLabel: UILabel!
     
+    //MARK: - Override UITableViewCell Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -40,6 +42,7 @@ class WallTableViewCell: UITableViewCell {
         }
     }
 
+    //MARK: - Buttons actions
     @IBAction func commentsBtnPressed(_ sender: Any) {
         delegate?.commentsTappd(postId: post!.postId, comments: post!.comments, ranks: post!.rank)
     }
