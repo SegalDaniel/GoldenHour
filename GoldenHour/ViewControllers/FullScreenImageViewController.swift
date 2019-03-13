@@ -9,7 +9,8 @@
 import UIKit
 
 class FullScreenImageViewController: UIViewController {
-
+ 
+    //MARK: - Variables
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var fullScreenImageView: UIImageView!
     @IBOutlet weak var imageInfoBtn: UIButton!
@@ -18,6 +19,7 @@ class FullScreenImageViewController: UIViewController {
     var post:Post?
     var url:String?
     
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         fullScreenImageView.contentMode = .scaleAspectFit
@@ -41,6 +43,7 @@ class FullScreenImageViewController: UIViewController {
         self.footerView.isHidden = true
     }
     
+    //MARK: - Buttons actions
     @IBAction func imageInfoBtnPressed(_ sender: Any) {
     }
     
@@ -51,12 +54,6 @@ class FullScreenImageViewController: UIViewController {
     @IBAction func sharedBtnPressed(_ sender: Any) {
         let ac = UIActivityViewController(activityItems: [fullScreenImageView.image!], applicationActivities: nil)
         present(ac, animated: true)
-    }
-    
-    func setImage(){
-        if let post = post{
-            Model.instance.getImageKF(url: post.imageUrl!, imageView: fullScreenImageView)
-        }
     }
     
     @objc func toggleHiddenViews(){
@@ -81,6 +78,13 @@ class FullScreenImageViewController: UIViewController {
         }
     }
     
+    //MARK: - Views init
+    func setImage(){
+        if let post = post{
+            Model.instance.getImageKF(url: post.imageUrl!, imageView: fullScreenImageView)
+        }
+    }
+    
     func roundFooter(){
         footerView.layer.borderWidth = 1
         footerView.layer.masksToBounds = false
@@ -89,12 +93,7 @@ class FullScreenImageViewController: UIViewController {
         footerView.clipsToBounds = true
     }
     
-    
-    
-    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails"{
             let vc = segue.destination as! AddPostInfoViewController

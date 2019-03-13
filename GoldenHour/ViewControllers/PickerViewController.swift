@@ -10,21 +10,33 @@ import UIKit
 
 class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    
+    //MARK: - Variables
     var data:[String]?
     var delegate:MyPickerDelegate?
     var selectedRow:Int?
     var sentWith:UIButton?
     @IBOutlet weak var dataPickerView: UIPickerView!
     
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         dataPickerView.delegate = self
         dataPickerView.dataSource = self
         self.navigationController?.navigationBar.isHidden = true
-        // Do any additional setup after loading the view.
     }
     
+    override func viewDidLayoutSubviews() {
+        let width:CGFloat  = self.view.bounds.width/1.3
+        let height:CGFloat = self.view.bounds.height/1.8
+        let x:CGFloat      = self.view.center.x - (width/2)
+        let y:CGFloat      = self.view.center.y - (height/2)
+        let frame:CGRect   = CGRect(x: x, y: y, width: width, height: height)
+        
+        self.view.frame = frame
+        self.view.dropShadow()
+    }
+    
+    //MARK: - UIPickerViewDelegate and Datasource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -47,6 +59,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.selectedRow = row
     }
     
+    
+    //MARK: - Buttons actions
     @IBAction func savePressed(_ sender: Any) {
         if data != nil && selectedRow != nil && selectedRow != 0 && sentWith != nil{
             delegate?.userPickedProperty(sender: sentWith!, property: data![selectedRow!])
@@ -57,16 +71,4 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.navigationController?.navigationBar.isHidden = false
         self.dismiss(animated: true, completion: nil)
     }
-    
-    override func viewDidLayoutSubviews() {
-        let width:CGFloat  = self.view.bounds.width/1.3
-        let height:CGFloat = self.view.bounds.height/1.8
-        let x:CGFloat      = self.view.center.x - (width/2)
-        let y:CGFloat      = self.view.center.y - (height/2)
-        let frame:CGRect   = CGRect(x: x, y: y, width: width, height: height)
-        
-        self.view.frame = frame
-        self.view.dropShadow()
-    }
-
 }

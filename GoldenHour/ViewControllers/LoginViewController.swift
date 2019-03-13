@@ -10,10 +10,11 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    //MARK: - Variabels
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         Utility.viewTapRecognizer(target: self.view, toBeTapped: self.view, action: #selector(UIView.endEditing(_:)))
@@ -34,6 +35,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    //MARK: - Buttons actions
     @IBAction func loginPressed(_ sender: Any) {
         let loadingView = Utility.getLoadingAlert(message: "We are logging in..")
         self.present(loadingView, animated: true, completion: nil)
@@ -54,11 +56,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func registerPressed(_ sender: Any) {
     }
     
+    
+    //MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
+    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loggedInSegue"{
             Model.instance.getUserInfo(userId: Model.instance.getUserID()){ (user) in

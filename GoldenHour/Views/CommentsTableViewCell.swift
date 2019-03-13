@@ -10,6 +10,7 @@ import UIKit
 
 class CommentsTableViewCell: UITableViewCell {
     
+    //MARK: - Variables
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var commentLabel: UILabel!
     
@@ -23,18 +24,14 @@ class CommentsTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - Override UITableViewCell Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         Utility.roundImageView(imageView: userProfileImageView)
         addUserPic()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    //MARK: - Update content
     func addUserPic(){
         if let userId = userId{
             Model.instance.getUserInfo(userId: userId) { (user) in

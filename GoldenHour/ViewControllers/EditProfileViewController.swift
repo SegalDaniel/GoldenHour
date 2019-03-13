@@ -10,7 +10,7 @@ import UIKit
 
 class EditProfileViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
-    
+    //MARK: - Variables
     @IBOutlet weak var saveImageBtn: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileBtn: UIButton!
@@ -21,6 +21,7 @@ class EditProfileViewController: UIViewController,  UIImagePickerControllerDeleg
     var user:User!
     var permissions:Permissions?
     
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         user = Model.connectedUser
@@ -31,12 +32,14 @@ class EditProfileViewController: UIViewController,  UIImagePickerControllerDeleg
         initViews()
     }
     
+    //MARK: - Views init
     func initViews(){
         Utility.roundImageView(imageView: profileImageView)
         Model.instance.getImageKF(url: user.profileImage, imageView: self.profileImageView, placeHolderNamed: "profile_placeholder")
         saveImageBtn.isEnabled = false
     }
     
+    //MARK: - Buttons actions
     @IBAction func changeImageBtnPressed(_ sender: Any) {
         self.view.endEditing(true)
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
@@ -48,18 +51,6 @@ class EditProfileViewController: UIViewController,  UIImagePickerControllerDeleg
             self.permissions?.checkPermissionGallery()
         }))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        imagePicker.dismiss(animated: true)
-        
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            print("No image found")
-            return
-        }
-        profileImageView.image = image
-        saveImageBtn.backgroundColor = profileBtn.backgroundColor
-        saveImageBtn.isEnabled = true
     }
     
     @IBAction func saveImageBtnPressed(_ sender: Any) {
@@ -109,11 +100,26 @@ class EditProfileViewController: UIViewController,  UIImagePickerControllerDeleg
         }
     }
     
+    //MARK: - UIImagePickerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true)
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+        profileImageView.image = image
+        saveImageBtn.backgroundColor = profileBtn.backgroundColor
+        saveImageBtn.isEnabled = true
+    }
+    
+    //MARK: - Logic Alert
     func noTextAlert(){
         let alert = SimpleAlert(_title: "Wait!", _message: "please fill the text field") {}.getAlert()
         self.present(alert, animated: true, completion: nil)
     }
     
+    //MARK: - UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == descTextField{
             guard let text = textField.text else { return true }
@@ -136,18 +142,4 @@ class EditProfileViewController: UIViewController,  UIImagePickerControllerDeleg
             return count <= 15
         }
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

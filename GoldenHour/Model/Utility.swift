@@ -20,6 +20,11 @@ class Utility{
         imageView.contentMode = .scaleAspectFill
     }
     
+    static func removeRoundness(imageView:UIImageView){
+        imageView.layer.borderWidth = 0
+        imageView.layer.cornerRadius = 0
+    }
+    
     static func viewTapRecognizer(target:Any, toBeTapped:UIView, action:Selector){
         let tapGestureRecognizer = UITapGestureRecognizer(target: target, action: action)
         toBeTapped.isUserInteractionEnabled = true

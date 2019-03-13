@@ -10,11 +10,13 @@ import UIKit
 
 class PostCollectionViewCell: UICollectionViewCell {
   
+    //MARK: - Variables
     @IBOutlet weak var postImageView: UIImageView!
     var image:UIImage?
     var post:Post?
     var delegate:postCollectionViewCellDelegate?
     
+    //MARK: - Override UICollectionViewCell Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         postImageView.contentMode = .scaleAspectFit
@@ -22,6 +24,7 @@ class PostCollectionViewCell: UICollectionViewCell {
         initTouches()
     }
     
+    //MARK: - Views init
     func initTouches(){
         postImageView.isUserInteractionEnabled = true
         
@@ -32,6 +35,7 @@ class PostCollectionViewCell: UICollectionViewCell {
         postImageView.addGestureRecognizer(longPressRecognizer)
     }
     
+    //MARK: - Buttons actions
     @objc func tapped(sender: UITapGestureRecognizer){
         delegate?.tapped(post: post!)
         print("tapped")

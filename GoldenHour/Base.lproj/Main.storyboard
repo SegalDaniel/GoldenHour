@@ -123,7 +123,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="17k-wX-7wa" kind="relationship" relationship="viewControllers" id="kv4-ip-heD"/>
-                        <segue destination="Lj6-LF-6A5" kind="relationship" relationship="viewControllers" id="6X5-yj-7og"/>
+                        <segue destination="B2v-OX-kBK" kind="relationship" relationship="viewControllers" id="zb3-uv-hwr"/>
                         <segue destination="cnv-pY-OJY" kind="relationship" relationship="viewControllers" id="SNQ-Fr-Hri"/>
                         <segue destination="iXE-TA-HKe" kind="relationship" relationship="viewControllers" id="THY-Ur-EgE"/>
                     </connections>
@@ -263,6 +263,23 @@
             <point key="canvasLocation" x="3612" y="260"/>
         </scene>
         <!--Search-->
+        <scene sceneID="gr9-hi-saX">
+            <objects>
+                <navigationController id="B2v-OX-kBK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="search_icon" id="6J5-vI-cDT"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vsn-fZ-BE0">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Lj6-LF-6A5" kind="relationship" relationship="rootViewController" id="RV0-Ig-7yP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LFc-dJ-AoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2132" y="230"/>
+        </scene>
+        <!--Search-->
         <scene sceneID="vah-qe-wQX">
             <objects>
                 <viewController id="Lj6-LF-6A5" customClass="SearchViewController" customModule="GoldenHour" customModuleProvider="target" sceneMemberID="viewController">
@@ -270,17 +287,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dwn-Qr-K2D">
-                                <rect key="frame" x="19" y="37" width="337.5" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by User Name Only!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dwn-Qr-K2D">
+                                <rect key="frame" x="19" y="81" width="337.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ZfJ-Cn-kj7"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="PfennigItalic" family="Pfennig" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Geb-g1-KdH">
-                                <rect key="frame" x="19" y="75" width="337.5" height="65"/>
+                                <rect key="frame" x="19" y="119" width="337.5" height="65"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="A8n-3x-oio"/>
@@ -325,7 +342,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S42-AP-fBk">
-                                <rect key="frame" x="19" y="148" width="337.5" height="30"/>
+                                <rect key="frame" x="19" y="192" width="337.5" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.44705882349999998" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="27"/>
                                 <state key="normal" title="Search">
@@ -335,28 +352,44 @@
                                     <action selector="searchBtnPressed:" destination="Lj6-LF-6A5" eventType="touchUpInside" id="Fbj-tf-ECn"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="360" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n0L-VS-zzJ">
-                                <rect key="frame" x="19" y="186" width="337.5" height="424"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n0L-VS-zzJ">
+                                <rect key="frame" x="19" y="230" width="337.5" height="380"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="search cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="search cell" rowHeight="360" id="yhF-sU-zvh" customClass="SearchTableViewCell" customModule="GoldenHour" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="337.5" height="360"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="search cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="search cell" rowHeight="200" id="yhF-sU-zvh" customClass="SearchTableViewCell" customModule="GoldenHour" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="337.5" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yhF-sU-zvh" id="hEX-tF-ml6">
-                                            <rect key="frame" x="0.0" y="0.0" width="337.5" height="359.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="337.5" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Aia-SS-vL7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="337.5" height="359.5"/>
+                                                    <rect key="frame" x="0.0" y="20" width="159.5" height="159.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Aia-SS-vL7" secondAttribute="height" multiplier="1:1" id="MGm-96-gMt"/>
+                                                    </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="fcG-Xg-B9a">
+                                                    <rect key="frame" x="167.5" y="20" width="162" height="159.5"/>
+                                                    <fontDescription key="fontDescription" name="PfennigBoldItalic" family="Pfennig" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Aia-SS-vL7" firstAttribute="width" secondItem="hEX-tF-ml6" secondAttribute="width" id="Pgx-hf-jmc"/>
-                                                <constraint firstItem="Aia-SS-vL7" firstAttribute="height" secondItem="hEX-tF-ml6" secondAttribute="height" id="Tw8-aD-MQK"/>
-                                                <constraint firstItem="Aia-SS-vL7" firstAttribute="centerX" secondItem="hEX-tF-ml6" secondAttribute="centerX" id="pDR-ek-ihs"/>
-                                                <constraint firstItem="Aia-SS-vL7" firstAttribute="centerY" secondItem="hEX-tF-ml6" secondAttribute="centerY" id="z7q-Ug-rZJ"/>
+                                                <constraint firstItem="Aia-SS-vL7" firstAttribute="leading" secondItem="hEX-tF-ml6" secondAttribute="leading" id="ErC-wT-6ro"/>
+                                                <constraint firstItem="Aia-SS-vL7" firstAttribute="centerY" secondItem="hEX-tF-ml6" secondAttribute="centerY" id="FHz-9D-Bx8"/>
+                                                <constraint firstAttribute="trailing" secondItem="fcG-Xg-B9a" secondAttribute="trailing" constant="8" id="FkY-mh-Rrg"/>
+                                                <constraint firstItem="fcG-Xg-B9a" firstAttribute="height" secondItem="Aia-SS-vL7" secondAttribute="height" id="FtD-ow-qGR"/>
+                                                <constraint firstItem="Aia-SS-vL7" firstAttribute="height" secondItem="hEX-tF-ml6" secondAttribute="height" multiplier="0.8" id="HxY-vQ-oqM"/>
+                                                <constraint firstItem="fcG-Xg-B9a" firstAttribute="centerY" secondItem="Aia-SS-vL7" secondAttribute="centerY" id="IkD-c8-gS7"/>
+                                                <constraint firstItem="fcG-Xg-B9a" firstAttribute="leading" secondItem="Aia-SS-vL7" secondAttribute="trailing" constant="8" id="Zfi-UF-w5D"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="fcG-Xg-B9a" id="6Pf-lR-2h1"/>
+                                            <outlet property="postImageView" destination="Aia-SS-vL7" id="14S-W5-oKJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -381,17 +414,26 @@
                         <viewLayoutGuide key="safeArea" id="8TJ-VJ-JLQ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="search_icon" id="X9S-Jf-laH"/>
+                    <navigationItem key="navigationItem" id="uoA-cQ-F6t">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="g4j-aZ-LOk">
+                            <connections>
+                                <action selector="refreshBtnPressed:" destination="Lj6-LF-6A5" id="11J-2k-RZX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mainTextField" destination="Dwn-Qr-K2D" id="cTX-t8-dMa"/>
                         <outlet property="optionsCollectionView" destination="Geb-g1-KdH" id="EYa-S0-Sw6"/>
                         <outlet property="resultsTableView" destination="n0L-VS-zzJ" id="Rgm-HT-TzJ"/>
                         <outlet property="searchBtn" destination="S42-AP-fBk" id="D6T-qS-QuB"/>
                         <segue destination="d2Y-C0-dJI" kind="presentation" identifier="picker" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="PD5-7c-1Ki"/>
+                        <segue destination="fyH-ku-4zR" kind="show" identifier="displayUser" id="BPd-de-5wc"/>
+                        <segue destination="bQ2-Sc-DK7" kind="show" identifier="displayPost" id="eCS-2R-SsR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Jv-1o-7uu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2132" y="259.52023988005999"/>
+            <point key="canvasLocation" x="2841" y="246"/>
         </scene>
         <!--Profile-->
         <scene sceneID="4ty-JP-z9L">
@@ -933,7 +975,6 @@
                                             <state key="normal" image="msg_icon"/>
                                             <connections>
                                                 <action selector="commentsBtnPressed:" destination="tnT-li-MyU" eventType="touchUpInside" id="FlH-5r-JHy"/>
-                                                <segue destination="NLo-K6-bec" kind="show" identifier="commentsSegue" id="SEE-wk-sFP"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -970,6 +1011,7 @@
                     <connections>
                         <segue destination="bQ2-Sc-DK7" kind="show" identifier="fullScreen" id="P7S-HF-ORT"/>
                         <segue destination="fyH-ku-4zR" kind="show" identifier="showPhotographer" id="2Fu-is-grV"/>
+                        <segue destination="NLo-K6-bec" kind="show" identifier="commentsSegue" id="3cT-Ud-sQY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0E-iR-baV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1350,7 +1392,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Fzp-O9-9cr"/>
         <segue reference="P7S-HF-ORT"/>
-        <segue reference="SEE-wk-sFP"/>
+        <segue reference="3cT-Ud-sQY"/>
         <segue reference="2Fu-is-grV"/>
         <segue reference="PD5-7c-1Ki"/>
         <segue reference="yHa-z4-s7M"/>

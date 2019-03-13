@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
+    //MARK: - Variabels
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -18,7 +19,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     var permissions:Permissions?
     let imagePicker = UIImagePickerController()
     
-    
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         Utility.viewTapRecognizer(target: self.view, toBeTapped: self.view, action: #selector(UIView.endEditing(_:)))
@@ -29,9 +30,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         usernameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        // Do any additional setup after loading the view.
     }
     
+    //MARK: - Buttons actions
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         self.view.endEditing(true)
@@ -76,6 +77,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    //MARK: - UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == usernameTextField{
             guard let text = textField.text else { return true }
@@ -90,6 +92,12 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         else{ return true }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    //MARK: - UIImagePickerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true)
         
@@ -100,11 +108,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         profileImageView.image = image
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-
+    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RegisteredSegue"{
             Model.connectedUser = sender as? User

@@ -11,6 +11,7 @@ import Photos
 
 class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    //MARK: - Variables
     @IBOutlet weak var selectImageLabel: UILabel!
     @IBOutlet weak var bigPlusImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
@@ -21,6 +22,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     var selctedImage: UIImage?
     var data:PhotosStaticData = PhotosStaticData()
     
+    //MARK: - Override UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         allViewsToucable()
@@ -28,6 +30,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         permissions = Permissions(target: self, imagePicker: imagePicker)
     }
     
+    //MARK: - UIIMagePickerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true)
         
@@ -44,6 +47,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         bigPlusImageView.isHidden = true
     }
 
+    //MARK: - Buttons actions
     @IBAction func editImagePressed(_ sender: Any) {
         selectImageTapped()
     }
@@ -62,8 +66,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //addInfo segue
         let vc = segue.destination as! AddPostInfoViewController
@@ -76,6 +78,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         bigPlusImageView.isHidden = false
      }
     
+    // MARK: - Init Views
     func allViewsToucable(){
         Utility.viewTapRecognizer(target: self, toBeTapped: self.view, action: #selector(self.selectImageTapped))
         Utility.viewTapRecognizer(target: self, toBeTapped: bigPlusImageView, action: #selector(self.selectImageTapped))
