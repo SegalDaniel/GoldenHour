@@ -20,14 +20,19 @@ class Post {
     var comments:[Comment]
     var metaData:Metadata
     
-    init(_userId:String, _postId:String, /*_rankId:String,*/ _title:String,_imageUrl:String?, metadata:Metadata){
+    init(_userId:String, _postId:String, /*_rankId:String,*/ _title:String,_imageUrl:String?, metadata:Metadata, _date:String?){
         userId = _userId
         postId = _postId
         //rankId = _rankId
         title = _title
         imageUrl = _imageUrl
         rank = []
-        date = DateFormatter.sharedFormatter.string(from: Date())
+        if let  d = _date{
+            date = d
+        }
+        else{
+            self.date = DateFormatter.sharedFormatter.string(from: Date())
+        }
         comments = []
         metaData = metadata
     }
@@ -68,8 +73,16 @@ class Post {
         json["title"] = title
         json["imageUrl"] = imageUrl
         json["date"] = date
+//        json["comments"] = comments.forEach({ (Comment) in
+//            comments.append([String:Any](Comment.toJson()))
+//        })
         json["metaData"] = metaData.toJson()
         return json
+    }
+    
+    func setRanksAndComments(ranks:[String], comments:[Comment]){
+        self.rank = ranks
+        self.comments = comments
     }
 }
 

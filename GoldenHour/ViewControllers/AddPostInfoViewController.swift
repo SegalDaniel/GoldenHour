@@ -117,7 +117,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
             self.present(loadingView, animated: true, completion: nil)
             let index = Int(String(Model.connectedUser?.post.last?.suffix(1) ?? "0")) ?? 0
             let postID = "\(Model.connectedUser!.id)\(index+1)"
-            let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil, metadata: meta.1!)
+            let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil, metadata: meta.1!, _date: nil)
             Model.instance.savePostImage(image: userImage!, name: postID) { (url) in
                 post.imageUrl = url
                 Model.instance.addNewPost(post: post) { (error, ref) in

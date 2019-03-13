@@ -65,7 +65,7 @@ class Model {
     
 
     
-    var modelSql = ModelSql()
+  //  var modelSql = ModelSql()
     var modelFirebase = ModelFirebase()
     
     private init(){
@@ -160,9 +160,20 @@ class Model {
     }
     
     func getAllPosts(){
-        modelFirebase.getAllPosts { (posts) in
-            ModelNotification.postsListNotification.notify(data: posts)
+        if Reachability.isConnectedToNetwork(){
+             modelFirebase.getAllPosts { (posts) in
+                 ModelNotification.postsListNotification.notify(data: posts)
+             }
+        } else {
+            getCache { (posts) in
+                if posts != nil{
+                    ModelNotification.postsListNotification.notify(data: posts!)
+                }
+            }
+            
         }
+      
+       
     }
     
     func removePost(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){
