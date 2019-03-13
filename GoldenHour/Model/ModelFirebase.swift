@@ -256,6 +256,12 @@ class ModelFirebase{
         }
     }
     
+    func removeComment(postId:String, commentId:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        ref.child("posts").child(postId).child("comments").child(commentId).removeValue { (err, ref) in
+            callback(err, ref)
+        }
+    }
+    
     // MARK: - Images Methods
     // ============================== Images Methods ==============================
     

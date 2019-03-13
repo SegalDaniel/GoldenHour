@@ -60,10 +60,29 @@ class RanksAndComViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentsTableViewCell
-        // Configure the cell...
         cell.commentLabel.text = comments[indexPath.row].comment
         cell.userId = comments[indexPath.row].userId
+        cell.commentId = comments[indexPath.row].commentId
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let cell = tableView.cellForRow(at: editActionsForRowAt) as! CommentsTableViewCell
+        if cell.userId == Model.connectedUser!.id{
+            let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+                Model.instance.removeComment(postId: self.postId!, commentId: cell.commentId!, callback: { (err, ref) in
+                    self.refreshComments()
+                    tableView.reloadData()
+                })
+            }
+            delete.backgroundColor = .red
+            return [delete]
+        }
+        return []
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     //MARK: - Buttons actions

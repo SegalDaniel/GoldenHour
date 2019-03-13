@@ -36,6 +36,11 @@ class Utility{
         NotificationCenter.default.addObserver(viewController, selector: #selector(viewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    static func removeMoveWithKeyboard(viewController:UIViewController){
+        NotificationCenter.default.removeObserver(viewController, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(viewController, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     static func getLoadingAlert(message:String = "Please wait...") ->UIAlertController{
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         

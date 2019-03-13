@@ -229,6 +229,10 @@ class Model {
         modelFirebase.removeRank(postId: postId, userId: userId, callback: callback)
     }
     
+    func removeComment(postId:String, commentId:String, callback:@escaping (Error?, DatabaseReference)->Void){
+        modelFirebase.removeComment(postId: postId, commentId: commentId, callback: callback)
+    }
+    
     // MARK: - Images Methods
     // ============================== Images Methods ==============================
     
