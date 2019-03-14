@@ -160,16 +160,17 @@ class Model {
     }
     
     func getAllPosts(){
-        if Reachability.isConnectedToNetwork(){
-             modelFirebase.getAllPosts { (posts) in
-                 ModelNotification.postsListNotification.notify(data: posts)
-             }
-        } else {
+//        if Reachability.isConnectedToNetwork(){
+//             modelFirebase.getAllPosts { (posts) in
+//                 ModelNotification.postsListNotification.notify(data: posts)
+//                self.saveCache(posts: posts)
+//             }
+//        } else {
             getCache { (posts) in
                 if posts != nil{
                     ModelNotification.postsListNotification.notify(data: posts!)
                 }
-            }
+//            }
             
         }
       

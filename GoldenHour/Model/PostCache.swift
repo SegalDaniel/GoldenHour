@@ -49,13 +49,15 @@ extension Model{
             }
             postAsString.append(com_to_save)
             postAsString.append(stringify(json: post.metaData.toJson()))
+            CacheHandler.cache.save(name: "POSTS", dataToSave: postAsString, onSuccess: {
+                completion?(true)
+            }, onError: {
+                completion?(false)
+            })
+            postAsString.removeAll()
         }
         
-        CacheHandler.cache.save(name: "POSTS", dataToSave: postAsString, onSuccess: {
-            completion?(true)
-        }, onError: {
-            completion?(false)
-        })
+       
     }
         
     
