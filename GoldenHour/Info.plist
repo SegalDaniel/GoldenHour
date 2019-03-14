@@ -20,6 +20,20 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) use Camera</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Do you allow this app to know your current location?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) use Library</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DayPosterBlackNF.ttf</string>
+		<string>pfennig-webfont.ttf</string>
+		<string>pfennigbold-webfont.ttf</string>
+		<string>pfennigbolditalic-webfont.ttf</string>
+		<string>pfennigitalic-webfont.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -34,14 +48,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>DayPosterBlackNF.ttf</string>
-		<string>pfennig-webfont.ttf</string>
-		<string>pfennigbold-webfont.ttf</string>
-		<string>pfennigbolditalic-webfont.ttf</string>
-		<string>pfennigitalic-webfont.ttf</string>
-	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -49,11 +55,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) use Library</string>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) use Camera</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Do you allow this app to know your current location?</string>
 </dict>
 </plist>

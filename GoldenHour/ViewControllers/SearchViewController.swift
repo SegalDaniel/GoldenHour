@@ -172,10 +172,11 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         //search by users
         if mainTextField.text != nil && mainTextField.text != "" && !textFieldShouldReturn(mainTextField){
-            let userName = mainTextField.text!
+            let lowUserName = mainTextField.text!.lowercased()
+            let uppUserName = mainTextField.text!.uppercased()
             if let users = users{
                 filterdUsers = users.filter({ (usr) -> Bool in
-                    if usr.userName.contains(userName){
+                    if usr.userName.contains(lowUserName) || usr.userName.contains(uppUserName){
                         return true
                     }
                     return false
