@@ -9,7 +9,7 @@
 import Foundation
 extension Model{
     func createPostTable(completion: ((Bool)->Void)? = nil)   {
-       // self.dropPostTable()
+        //self.dropPostTable()
         let tableName   = "POSTS"
         let tableColumn = "(POST_ID TEXT PRIMARY KEY, USER_ID TEXT, PHOTO_URL TEXT, DATE TEXT, TITLE TEXT, RANKS TEXT, COMMENTS TEXT, METADATA TEXT)"
         CacheHandler.cache.create(name: tableName, data: tableColumn, onSuccess: {
@@ -94,7 +94,7 @@ extension Model{
                 catch let error as NSError {
                     print(error)
                 }
-                let post = Post(_userId: postAsString[1], _postId: postAsString[0], _title: postAsString[5], _imageUrl: postAsString[3], metadata: meta!, _date: postAsString[4])
+                let post = Post(_userId: postAsString[1], _postId: postAsString[0], _title: postAsString[4], _imageUrl: postAsString[2], metadata: meta!, _date: postAsString[3])
                 post.setRanksAndComments(ranks: ranks, comments: comments)
                 completePosts!.append(post)
             })
