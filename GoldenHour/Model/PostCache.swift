@@ -9,7 +9,7 @@
 import Foundation
 extension Model{
     func createPostTable(completion: ((Bool)->Void)? = nil)   {
-        //self.dropPostTable()
+//        self.dropPostTable()
         let tableName   = "POSTS"
         let tableColumn = "(POST_ID TEXT PRIMARY KEY, USER_ID TEXT, PHOTO_URL TEXT, DATE TEXT, TITLE TEXT, RANKS TEXT, COMMENTS TEXT, METADATA TEXT)"
         CacheHandler.cache.create(name: tableName, data: tableColumn, onSuccess: {
@@ -46,6 +46,7 @@ extension Model{
             var com_to_save:String = ""
             post.comments.forEach { (comment) in
                 com_to_save.append(stringify(json: comment.toJson()))
+                com_to_save.append("§")
             }
             postAsString.append(com_to_save)
             postAsString.append(stringify(json: post.metaData.toJson()))
@@ -77,7 +78,6 @@ extension Model{
                 //Comments
                 var comments:[Comment] = []
                 var meta:Metadata?
-                let comString = postAsString[6]
                 do{
                     //Metadata
                     let metaString = postAsString[7].data(using: .utf8)!
@@ -85,11 +85,14 @@ extension Model{
                         meta = Metadata(json: metaJson)
                     }
                     
-                    if let jsonArray = try JSONSerialization.jsonObject(with: comString.data(using: .utf8)!, options : .allowFragments) as? [Dictionary<String,Any>]{
-                        jsonArray.forEach({ (jsonComment) in
-                            comments.append(Comment(json: jsonComment))
-                        })
-                    }
+                    let comSplts = postAsString[6].split(separator: "§")
+                    try comSplts.forEach({ (substring) in
+                        let comData = String(substring).data(using: .utf8)!
+                        if let jsonCom = try JSONSerialization.jsonObject(with: comData, options : .allowFragments) as? Dictionary<String,Any>{
+                            comments.append(Comment(json: jsonCom))
+                        }
+                    })
+
                 }
                 catch let error as NSError {
                     print(error)

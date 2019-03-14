@@ -144,12 +144,11 @@ class Model {
     
     func addNewPost(post:Post, callback: @escaping (Error?, DatabaseReference) -> Void){
         modelFirebase.addNewPost(post: post) { (error, ref) in
-            self.saveCache(posts: [post])
             self.modelFirebase.addPostUrlToUser(userID: Model.connectedUser!.id, postID: post.postId, callback: callback)
             self.getAllPosts()
             self.updateConnectedUser()
         }
-        //save post cache
+//         self.saveCache(posts: [post])
         
     }
     
@@ -174,7 +173,6 @@ class Model {
         
         }
     
-       
     }
     
     func removePost(post:Post, callback:@escaping (Error?, DatabaseReference)->Void){

@@ -112,10 +112,11 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
     
     @IBAction func uploadBtnPressed(_ sender: Any) {
         let meta = getMetaInfo()
+        Model.instance.updateConnectedUser()
         if userImage != nil && meta.0{
             let loadingView = Utility.getLoadingAlert(message: "Uploading your post, please wait..")
             self.present(loadingView, animated: true, completion: nil)
-            let index = Int(String(Model.connectedUser?.post.last?.suffix(1) ?? "0")) ?? 0
+            let index = Model.connectedUser?.post.count ?? 0
             let postID = "\(Model.connectedUser!.id)\(index+1)"
             let post = Post(_userId: Model.connectedUser!.id, _postId:postID, _title: descritionTextField.text!, _imageUrl: nil, metadata: meta.1!, _date: nil)
             Model.instance.savePostImage(image: userImage!, name: postID) { (url) in
@@ -123,6 +124,7 @@ class AddPostInfoViewController: UIViewController, MyPickerDelegate, UITextField
                 Model.instance.addNewPost(post: post) { (error, ref) in
                     print("new post at \(ref)")
                     //self.dismiss(animated: true, completion: nil)
+                    
                     self.performSegue(withIdentifier: "unwindToWall", sender: nil)
                 }
             }
